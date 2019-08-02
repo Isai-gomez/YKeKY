@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1050" height="750" viewBox="0 0 2100 1500">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #feee00;
+        stroke: url(#linear-gradient);
+      }
+
+      .cls-1, .cls-2 {
+        stroke-width: 1px;
+      }
+
+      .cls-2 {
+        fill: #4d2612;
+        stroke: #000;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill-rule: evenodd;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="1050.5" y1="1308" x2="1050.5" y2="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0"/>
+      <stop offset="1" stop-opacity="0"/>
+    </linearGradient>
+    <image id="image" width="212" height="72" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGoAAAAkCAYAAABhc6+LAAAFaklEQVRoge2b22scVRzHP7uT2U13E9vG9JKoaYKmWqVVW2uN1MuDIgpFBR9E9EF9UAo+9MU3Ly8WFP8AQUFf+jcoikiwKoLYijeoRAUv9Vqh0bSb3U3kwPfgrzObOJud2d0k+4XDzM4lO3s+5/s7v3POJHdo5xCrTAWgD7ga2AjUgRDYoNJvtmVgHvgJ+FXX5nTsF5WqPne1+rr8+YrALmALkAd2A5u0v10gcrp2AVg0xX925/cBgY4tCM5ZYBaoAd8Ap4EfgZluBNeNoDYLyARwFbAVGFSlV3VNaEAE2oY6l9fnvCAtmGv9Ofe7XSgZFqgr9HfOqPwOfC3HfaFrOqpuAXWpoOwSoO3GAa6yfeUWdTzU50AF46ycKfCfuxbMft0cq6lU5daLgB3AQbnuB+AEcBL4LvbkbVKnQR0AbgXGFd7qOh6oL+oXlEDPmjeAQnOMCBy7HwVVj+xXBcrvV02/5fq6SfWHdwGnBO1z4I/Yr8lQnQBVAm4EbpGDCqaTL8s1HlLRuCgwwPw2TAiqHgEWdVPNAKsJkodVAc4rJB9Qcf3ZV8A77XJZO0G5/uBmYAq43FRmSS03FKCi2farBBE3BREYzWrRgLOgqgaYh1TRvoN1TmUbMAbsB94XsNNZVl47QLm4f7da4iWqnEDuGVCJwvH7NrSlKQ85H6kD7z4PryIwFeMsD2tOv+0+AZsG3gX+yqISsx5HOfc8oKxqXpUyIBd5SIMGTpgRmFZUM6AqBpLb/qNSEXgXBt8D3jT9bSrKylHOOfcDt6vyQ7W+simDAlaI3d1d6lMpq/J9GPxbkOa0PauMdUIN9FXg+7R+SXDlxRtiB1uUC3OPA3vljs0aC20xZUj9UpD2l2esvJkFKUfCdFHnXR83AtwgsKfSeKQ0Qbmxx2HgkMYi/ep0RzQuGpaLwhaSgG5SXnDKZsrK97U17e9TJJmRC1estEDdATyl8UZeUEYVArcqxHVb35OWcoJTirgsZ2Y9dmt66reVfmcaoB5WqBvSg7pZhssEamANA4oqZ/qykumb64ow+xXqv4zdmUCtgnoMeFCtaERji1E92HoB1EihGqkPhwu6Zq9gfdbgnmW1UlAutB0B7tGD7NA00MZVmCBkpZxZavGh36X012r/ZDPfuxJQLrQ9A1ynh5hUqAtjV/aEGm7JdAPnBWuxGWc1C8q55jl1kMOaqxteI1lc1goVcfo0QN6jkJgIVjOgnJNe0nKEy+Z2Ki3tKbnyZibGwbomKaykoFyCcFSd4ZgSh/WcLLSinAmFVQ1pzmmBckklAeVmFl5QejmhjK6n1lVQKPSwPllunJXEFUcMpFLsbE+tqKAlH5eMPa/JgYb6P0c9ATyi/qgcO9tTGsqrbrcper3V6G8uB+oh4GklD8XY2Z7SVKDEbFzrWSeSgroXeFlpeC9paI9ySjCuB44DP9tvbQTBZXQvarahp/ZrTPV/gYMaOeo14LZVBmhWC3pLldUWuif0mz7wB6JL8a5fOha7LVvNNVi2/kgliT5McO2UXqxJoikVq8E21wlaMZ70KbsFNapcfiR2S2uaM+/MvWLedkWtP3oMtaZOKgomCtpNBz1p5jeDjIYux7SMdAGot4E7Y5c2J1/B3hEWRF3Q1opKZqXAgytEHJmGE90q8af+5ZZnm4TUyCU2BHXaEe1QtNEdNfsekHeidWCz7nvDTeA6R+1JOIM7KxDTa9glWco70EMra5vkfb1HHahvlWVENWtCmHfLenBKO1XSPyP4N4gPLuG2Px2oedMpnpFbpntgOqIh47bDeoPJqepAuZXGj9VPHe+Fsq7RJvP63U1uwDuqt1pnGqTJPXVObsne/QPC68D4v9vYPzkS/atGAAAAAElFTkSuQmCC"/>
+  </defs>
+  <g id="Mesa_de_trabajo_2" data-name="Mesa de trabajo 2">
+    <ellipse id="Elipse_1" data-name="Elipse 1" class="cls-1" cx="1050.5" cy="714" rx="565.5" ry="594"/>
+    <use id="Forma_1" data-name="Forma 1" x="686" y="498" xlink:href="#image"/>
+    <use id="Forma_1-2" data-name="Forma 1" x="1215" y="498" xlink:href="#image"/>
+    <path id="Forma_4" data-name="Forma 4" class="cls-2" d="M3515.18,750.452q20.16,11.6,40.25,23.145c-123.46,222.292-445.65,228.533-577.26,1.629q20.13-11.5,40.29-22.993c66.69,76.505,153.44,108.824,239.73,110.527q16.275,0.257,32.64-1.028,8.175-.645,16.36-1.683t16.39-2.48a338.779,338.779,0,0,0,65.47-18.42c43.4-17.261,86.7-44.257,126.13-88.7h0Z" transform="translate(-2200)"/>
+  </g>
+</svg>

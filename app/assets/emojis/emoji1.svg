@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1050" height="750" viewBox="0 0 2100 1500">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #feee00;
+        stroke: url(#linear-gradient);
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7 {
+        stroke-width: 1px;
+      }
+
+      .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7 {
+        fill: #4d2612;
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        stroke: url(#linear-gradient-2);
+      }
+
+      .cls-3 {
+        stroke: url(#linear-gradient-3);
+      }
+
+      .cls-4 {
+        stroke: url(#linear-gradient-4);
+      }
+
+      .cls-5 {
+        stroke: url(#linear-gradient-5);
+      }
+
+      .cls-6 {
+        stroke: url(#linear-gradient-6);
+      }
+
+      .cls-7 {
+        stroke: #000;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="1050.5" y1="1308" x2="1050.5" y2="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0"/>
+      <stop offset="1" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="7401.5" y1="641" x2="7401.5" y2="503" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-3" x1="7398" y1="682" x2="7398" y2="608" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-4" x1="7905.5" y1="630" x2="7905.5" y2="500" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-5" x1="7915.5" y1="675" x2="7915.5" y2="601" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-6" x1="7674.5" y1="976.906" x2="7674.5" y2="866.406" xlink:href="#linear-gradient"/>
+  </defs>
+  <g id="Mesa_de_trabajo_4" data-name="Mesa de trabajo 4">
+    <ellipse id="Elipse_1" data-name="Elipse 1" class="cls-1" cx="1050.5" cy="714" rx="565.5" ry="594"/>
+    <path id="Forma_5" data-name="Forma 5" class="cls-2" d="M7299,535.015L7313.45,503,7504,608.985l-14.45,32.02Z" transform="translate(-6600)"/>
+    <path id="Forma_5-2" data-name="Forma 5" class="cls-3" d="M7291.89,682l-5.9-34.984L7504.08,608l5.91,34.984Z" transform="translate(-6600)"/>
+    <path id="Forma_5-3" data-name="Forma 5" class="cls-4" d="M8016,530.159L8000.43,500,7795,599.841l15.57,30.164Z" transform="translate(-6600)"/>
+    <path id="Forma_5-4" data-name="Forma 5" class="cls-5" d="M8035.34,675l6.68-34.984L7795.66,601l-6.68,34.984Z" transform="translate(-6600)"/>
+    <path id="Forma_7" data-name="Forma 7" class="cls-6" d="M7350.75,941.106q1.635-23.3,3.28-46.6c64.42,113.75,152.68-107.6,217.1,6.059q-1.65,23.3-3.29,46.6c-64.41-113.747-152.67,107.594-217.09-6.06h0Zm215.38,2.3q1.635-23.3,3.28-46.6c64.42,113.742,152.68-107.6,217.1,6.059q-1.65,23.3-3.29,46.6c-64.41-113.747-152.67,107.6-217.09-6.059h0Zm211.74-2.974q1.65-23.3,3.29-46.6c64.41,113.746,152.67-107.594,217.09,6.06q-1.635,23.3-3.28,46.6c-64.42-113.746-152.68,107.6-217.1-6.059h0Z" transform="translate(-6600)"/>
+    <path id="Forma_6" data-name="Forma 6" class="cls-7" d="M7226.19,491.32q-0.465-9.739-.62-19.394c89.3,26.128,163.93-21.171,194.44-95.829q7.08,4.918,14.3,9.521c-32.9,81.453-112.96,132.282-208.12,105.7h0Z" transform="translate(-6600)"/>
+    <path id="Forma_6-2" data-name="Forma 6" class="cls-7" d="M8076.39,490.9q0.45-9.713.6-19.34c-86.84,26.055-159.42-21.112-189.08-95.56q-6.885,4.905-13.91,9.5c32,81.224,109.85,131.91,202.39,105.405h0Z" transform="translate(-6600)"/>
+  </g>
+</svg>

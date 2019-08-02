@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1050" height="750" viewBox="0 0 2100 1500">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #feee00;
+        stroke: url(#linear-gradient);
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        stroke-width: 1px;
+      }
+
+      .cls-2, .cls-3, .cls-4 {
+        fill: #4d2612;
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        stroke: url(#linear-gradient-2);
+      }
+
+      .cls-3 {
+        stroke: url(#linear-gradient-3);
+      }
+
+      .cls-4 {
+        stroke: #582d1a;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 10px;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="1050.5" y1="1308" x2="1050.5" y2="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0"/>
+      <stop offset="1" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="5165" y1="646" x2="5165" y2="596" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-3" x1="5748" y1="646" x2="5748" y2="596" xlink:href="#linear-gradient"/>
+  </defs>
+  <g id="Mesa_de_trabajo_3" data-name="Mesa de trabajo 3">
+    <ellipse id="Elipse_1" data-name="Elipse 1" class="cls-1" cx="1050.5" cy="714" rx="565.5" ry="594"/>
+    <path id="Forma_5" data-name="Forma 5" class="cls-2" d="M5048,642.875L5048.06,596,5282,599.125,5281.94,646Z" transform="translate(-4400)"/>
+    <path id="Forma_5-2" data-name="Forma 5" class="cls-3" d="M5631,642.875L5631.06,596,5865,599.125,5864.94,646Z" transform="translate(-4400)"/>
+    <path id="Forma_5-3" data-name="Forma 5" class="cls-4" d="M5126,929.125L5126.18,871,5775,874.875,5774.82,933Z" transform="translate(-4400)"/>
+  </g>
+</svg>
