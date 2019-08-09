@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import {View,Text,Animated,TouchableOpacity,Dimensions,StyleSheet,Alert,Image} from 'react-native';
 import Slide from '../components/Slider';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 const matchAreaByQuestionNumber = require('../lib/questions/MachAreaVida');
 
@@ -18,18 +19,18 @@ export default class LifeScreen extends Component {
         state = {
             index : 0,
             questions :  [
-                "¿Cómo te sientes en relación a su salud y disposición?",
+                "¿Cómo te sientes en relación a tu salud y disposición?",
                 "En relación a su vida social, ¿cómo se siente?",
-                "¿cómo te sientes en relación a los hijos? si tuviera, como se siente en relación a eso?",
+                "¿cómo te sientes en relación a los hijos? sí tuviera, como se siente en relación a eso?",
                 "Con respecto a su vida conyugal, ¿cómo esta?",
-                "Como se siente en relación a sus parientes o familiares?",
-                "Como se sient en relación a sus espitualidad?",
-                "Como se siente en relación a su situacion sentimetal?",
-                "Con relacion a su vida profecional como se siente?",
-                "Como se siente en relacion a su ambiente laboral?",
-                "Como se siente usted relacionado a sus recursos finacieros?",
-                "Como se siente en relacion a sus desenvolvimiento intelectual?",
-                "Como se siente usted con relacion a sus comunicacion social?",
+                "¿Cómo se siente en relación a sus parientes o familiares?",
+                "¿Cómo se sient en relación a sus espiritualidad?",
+                "¿Cómo se siente en relación a su situación sentimental?",
+                "Con relacion a su vida profesional, ¿cómo se siente?",
+                "¿Cómo se siente en relación a su ambiente laboral?",
+                "¿Cómo se siente usted relacionado a sus recursos finacieros?",
+                "¿Cómo se siente en relación a su desenvolvimiento intelectual?",
+                "¿Cómo se siente usted con relación a su comunicación social?",
 
             ],
             answers : ["Muy mal","Mal","Bien","Muy Bien"],
@@ -152,8 +153,7 @@ export default class LifeScreen extends Component {
                             activeOpacity={.7}
                             style={styles.option}
                         >
-                            <Image source={require('../assets/emojis/emoji4.png')} />
-                            <Text style={styles.optionText}>Siguiente</Text>
+                            <Text style={styles.optionText}><Icon name="arrow-circle-right" size={45} color="#000000"/></Text>
                     </TouchableOpacity>
                     
                 </View>                  

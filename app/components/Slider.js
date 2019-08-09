@@ -21,7 +21,7 @@ export default class Slide extends Component {
                 thumbTintColor= 'rgba(2,2,53, 1.0)'
                 />
                 <Text>
-                Tu calicacion es: {this.state.value}
+                Tu calicación es: {this.state.value}
                 </Text>
             </View>
         );

@@ -9,21 +9,22 @@ export default class LoginScreen extends Component {
     }
 
     componentDidMount(){
-        this.storeData();
-        this.getData();
+        // this.storeData();
+        // this.getData();
     }
 
     constructor(){
         super();
         this.state = {
-            email: '',
+            email: 'ykeky@ykeky.com',
             password: ''
         }
     }
 
-    storeData = async () => {
+    storeData = async (email) => {
         try {
-          await AsyncStorage.setItem('@storage_Key', 'stored value')
+          await AsyncStorage.setItem('email', email);
+          this.getData();
         } catch (e) {
           Alert.alert("Error en Store")
         }
@@ -31,7 +32,7 @@ export default class LoginScreen extends Component {
 
     getData = async () => {
         try {
-          const value = await AsyncStorage.getItem('@storage_Key')
+          const value = await AsyncStorage.getItem('email')
           if(value !== null) {
             Alert.alert("Data in storage: " + value)
           }
@@ -40,13 +41,17 @@ export default class LoginScreen extends Component {
         }
       }
 
-    // onLoginPressed = () => {
-    //     try{
-
-    //     }catch(error){
-    //         console.warn("Error: ", error)
-    //     }
-    // }
+    onLoginPressed = async() => {
+        if(this.state.email !== '' && this.state.password !== ''){
+            const firstPair = ["isLoggedIn", "1"]
+            const secondPair = ["usuario", this.state.email]
+            await AsyncStorage.multiSet([firstPair, secondPair])
+            console.log('email: ' + this.state.email);
+            this.props.navigation.navigate('Home');
+        } else {
+            Alert.alert("Email y/o Password son requeridos")
+        }
+    }
 
     render() {
         return (
@@ -63,6 +68,7 @@ export default class LoginScreen extends Component {
                             
                             <TextInput
                                 style={styles.textInput} 
+                                value={this.state.email}
                                 placeholder={'Nombre de Usuario'}
                                 placeholderTextColor={'rgba(2,2,53, 1.0)'}
                                 onChangeText={(email) => {this.setState({email: email})}}
@@ -79,7 +85,7 @@ export default class LoginScreen extends Component {
                             <TouchableOpacity 
                                 style={styles.botonIS}
                                 // onPress={() => {this.props.navigation.navigate('Home', {email: this.state.email})}}
-                                onPress={() => {this.props.navigation.navigate('Home')}}
+                                onPress={() => {this.onLoginPressed()}}
                                 >
                                     <Text style={styles.textIS}>INICIAR SESIÓN</Text>
                             </TouchableOpacity>

@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import {ImageBackground,View,Text,Image,TouchableOpacity,Alert,StyleSheet,ScrollView,Linking} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import AsyncStorage from '@react-native-community/async-storage';
 
 class Logo extends React.Component {
     render() {
@@ -26,23 +27,56 @@ class MenuButton extends React.Component {
     }
 }
 
+// class LogoutButton extends React.Component{
+//     render(){
+//         return( 
+//             <TouchableOpacity onPress={() => {this.props.navigation.navigate("Initial")}} ><Text><Icon name="power-off" size={30} color="#fff" /></Text></TouchableOpacity>
+//         );
+//     }
+// }
+
 export default class HomeScreen extends Component {
     static navigationOptions = ({ navigation }) => {
         return {
-            headerLeft: <MenuButton onPress={() => {this.props.navigation.openDrawer();}} />,
+            // headerLeft: <MenuButton onPress={() => {}} />,
+            // headerRight: <LogoutButton />,
             headerTitle: <Logo />,
             headerBackTitle: "Home",
             headerLayoutPreset: "center",
             headerStyle: {
                 backgroundColor: 'rgba(2,2,53, 1.0)',
-              },
+            },
         };
       };
+
+    componentDidMount() {
+        this.getData();
+    }
 
     constructor(props) {
         super(props);
         this.state = {
-            // email : this.props.navigation.state.params.email,
+            email : ''
+        }
+    }
+
+    _logout = async() => {
+        try {
+            await AsyncStorage.clear();
+            this.props.navigation.navigate("Login");
+          } catch(e) {
+            console.log("Error" + e)
+          }
+        
+          console.log('Done.')
+    }
+
+    getData = async() =>{
+        try {
+            const usuario = await AsyncStorage.getItem('usuario');
+            this.setState({email: usuario})
+        } catch(error) {
+            console.log("Error")
         }
     }
       
@@ -52,12 +86,13 @@ export default class HomeScreen extends Component {
                 
                 <View style={styles.titulo}>
                         <Text style={styles.textT}>Bienvenido a YKEKY</Text>
+                        <Text style={styles.textT}>{this.state.email}</Text>
                         {/* <Text style={styles.textT}>{this.state.email.substr(0,10)}</Text> */}
                 </View>
                 <ScrollView style={{flex: 1}}>
                     <View style={styles.card}>
                         <TouchableOpacity style={styles.cartita}
-                            onPress={() => {this.props.navigation.navigate("Test")}}
+                            onPress={() => {this.props.navigation.navigate("Instruccion_Ts")}}
                             >
                             <Text><Icon name='user-graduate' size={50} color="black" /></Text>
                             <Text  style={{fontSize:15}} >
@@ -65,23 +100,40 @@ export default class HomeScreen extends Component {
                             </Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.cartita}
-                            onPress={() => {this.props.navigation.navigate("LifePlanner")}}
+                            onPress={() => {this.props.navigation.navigate("Instruccion_Lp")}}
                             >
                             <Text><Icon name='hand-holding-heart' size={50} color="black"/></Text>
                             <Text style={{fontSize:15}}>
                                 Plan de Vida
                             </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.cartita}>
+                        <TouchableOpacity style={styles.cartita}
+                            onPress={() => {this.props.navigation.navigate("Directorio")}}
+                            >
                             <Text><Icon name='atlas' size={50} color="black"/></Text>
                             <Text style={{fontSize:15}}>
-                                Directorio Escolar
+                                Directorio
+                            </Text>
+                            <Text style={{fontSize:15}}>
+                                Escolar
                             </Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.cartita} onPress={ ()=> Linking.openURL('https://www.becas.sep.gob.mx/') } >
                             <Text><Icon name='edit' size={50} color="black"/></Text>
                             <Text style={{fontSize:15}}>
                                Becas
+                            </Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.cartita} onPress={ ()=> Linking.openURL("https://www.16personalities.com/es") } >
+                            <Text><Icon name='users' size={50} color="black"/></Text>
+                            <Text style={{fontSize:15}}>
+                                16personalities
+                            </Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.cartita} onPress={ ()=> {this._logout()} } >
+                            <Text><Icon name='power-off' size={50} color="black"/></Text>
+                            <Text style={{fontSize:15}}>
+                               Salir
                             </Text>
                         </TouchableOpacity>
                     </View>

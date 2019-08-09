@@ -5,9 +5,13 @@ import { createStackNavigator, createAppContainer,createSwitchNavigator, createD
 import Home from '../screens/HomeScreen';
 import Test from '../screens/TestScreen';
 import LifePlanner from '../screens/LifePlannerScreen';
+import Directorio from '../screens/DirectorioScreen';
 
 import ResultTS from '../screens/ResultTestScreen';
 import ResultLP from '../screens/ResultLifePlannerScreen';
+
+import Instruccion_Lp from '../screens/_Instruccion_lp';
+import Instruccion_Ts from '../screens/_Instruccion_Ts';
 
 //Screens Auth
 import Initial from '../screens/InitialScreen';
@@ -24,7 +28,10 @@ const AppNavigator = createStackNavigator(
       Test,
       LifePlanner,
       ResultTS,
-      ResultLP
+      ResultLP,
+      Directorio,
+      Instruccion_Lp,
+      Instruccion_Ts
     },
     {
       initialRouteName: "Home",
@@ -78,8 +85,7 @@ const Drawer = createDrawerNavigator({
 export default createAppContainer(createSwitchNavigator({
   AuthNavigator,
   AppNavigator,
-  AuthLoading,
-  Drawer
+  AuthLoading
 },
 {
   initialRouteName: "AuthLoading",

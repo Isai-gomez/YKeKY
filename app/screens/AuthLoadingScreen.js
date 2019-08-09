@@ -1,24 +1,37 @@
 import React,{Component} from 'react';
-import {View,Text,ActivityIndicator,StatusBar,StyleSheet} from 'react-native';
+import {View,Text,ActivityIndicator,StatusBar,StyleSheet,Alert} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
 export default class AuthLoadingScreen extends Component{
     static navigationOptions = {
         header: null
     }
 
-    componentDidMount(){
-        setTimeout(() => {
-            this.getUser();
-        }, 2000); 
+    constructor(props){
+        super(props);
+        this._loadData();
     }
 
-    getUser(){
-        if(false){
-            this.props.navigation.navigate("AppNavigator");
-        }else{
-            this.props.navigation.navigate("AuthNavigator");
-        }
+    // componentDidMount(){
+    //     setTimeout(() => {
+    //         this.getUser();
+    //     }, 2000); 
+    // }
+
+    _loadData = async() => {
+        const isLoggedIn = await AsyncStorage.getItem('isLoggedIn');
+        // Alert.alert("IsLoggedIn: " + isLoggedIn);
+        setTimeout(() => {this.props.navigation.navigate(isLoggedIn !== '1'? 'AuthNavigator': 'AppNavigator')}, 1000);
     }
+
+    // getUser(){
+    //     let user = await AsyncStorage.getItem()
+    //     if(this.state.usuario !== ''){
+    //         this.props.navigation.navigate("AppNavigator");
+    //     }else{
+    //         this.props.navigation.navigate("AuthNavigator");
+    //     }
+    // }
 
     render(){
         return(

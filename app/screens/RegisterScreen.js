@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import {View,ImageBackground,TextInput,TouchableOpacity,StyleSheet,Text,Image} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default class RegisterScreen extends Component {
     static navigationOptions = {

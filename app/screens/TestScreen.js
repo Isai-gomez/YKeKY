@@ -264,7 +264,7 @@ const styles = StyleSheet.create({
     },
     optionText: {
         fontSize: 25,
-        color: "#BDBDBD",
+        color: "black",
         marginBottom: 50
     },
     overlay: {
@@ -275,7 +275,7 @@ const styles = StyleSheet.create({
         backgroundColor: "transparent",
         position: "absolute",
         fontSize: 20,
-        color: "#BDBDBD",
+        color: "black",
         textAlign: "center"
     }
 })
