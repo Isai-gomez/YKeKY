@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import {ImageBackground,View,Text,Image,TouchableOpacity,Alert,StyleSheet,ScrollView,Linking} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import AsyncStorage from '@react-native-community/async-storage';
+import InAppBrowser from 'react-native-inappbrowser-reborn';
 
 class Logo extends React.Component {
     render() {
@@ -80,6 +81,46 @@ export default class HomeScreen extends Component {
         }
     }
       
+    async openLink() {
+        try {
+          const url = 'https://www.becas.sep.gob.mx/'
+          if (await InAppBrowser.isAvailable()) {
+            const result = await InAppBrowser.open(url, {
+              // iOS Properties
+              dismissButtonStyle: 'cancel',
+              preferredBarTintColor: '#020235',
+              preferredControlTintColor: 'white',
+              readerMode: false,
+              animated: true,
+              modalPresentationStyle: 'overFullScreen',
+              modalTransitionStyle: 'partialCurl',
+              modalEnabled: true,
+              // Android Properties
+              showTitle: true,
+              toolbarColor: '#020235',
+              secondaryToolbarColor: 'black',
+              enableUrlBarHiding: true,
+              enableDefaultShare: true,
+              forceCloseOnRedirection: false,
+              // Specify full animation resource identifier(package:anim/name)
+              // or only resource name(in case of animation bundled with app).
+              animations: {
+                startEnter: 'slide_in_right',
+                startExit: 'slide_out_left',
+                endEnter: 'slide_in_left',
+                endExit: 'slide_out_right'
+              },
+              headers: {
+                'my-custom-header': 'my custom header value'
+              }
+            })
+            // Alert.alert(JSON.stringify(result))
+          }
+          else Linking.openURL(url)
+        } catch (error) {
+          Alert.alert(error.message)
+        }
+      }
     render() {
         return (
             <View style={styles.container}>
@@ -118,13 +159,13 @@ export default class HomeScreen extends Component {
                                 Escolar
                             </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.cartita} onPress={ ()=> Linking.openURL('https://www.becas.sep.gob.mx/') } >
+                        <TouchableOpacity style={styles.cartita} onPress={ ()=> {this.openLink()}} >
                             <Text><Icon name='edit' size={50} color="black"/></Text>
                             <Text style={{fontSize:15}}>
                                Becas
                             </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.cartita} onPress={ ()=> Linking.openURL("https://www.16personalities.com/es") } >
+                        <TouchableOpacity style={styles.cartita} onPress={ ()=> Linking.openURL('https://www.16personalities.com/es') } >
                             <Text><Icon name='users' size={50} color="black"/></Text>
                             <Text style={{fontSize:15}}>
                                 16personalities
