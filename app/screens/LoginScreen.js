@@ -55,15 +55,17 @@ export default class LoginScreen extends Component {
 
     render() {
         return (
-            <ImageBackground source={require('../assets/screen2.png')} style={{width:'100%',height:'100%'}} >
-                <ImageBackground source={require('../assets/screen1.png')} style={{width:'100%',height:'100%'}}>
+            <ImageBackground source={require('../assets/fondo1.png')} style={{width:'100%',height:'100%'}} >
+                <ImageBackground source={require('../assets/fondo2.png')} style={{width:'100%',height:'100%'}}>
                     <View style={styles.container}>
-                        <View style={styles.title}>
-                            <Text style={styles.titulo}>INICIAR SESIÓN</Text>
-                        </View>
                         <View style={styles.logoContainer}>
-                            <Image source={require('../assets/logo-ultimate01.png')} style={styles.logo} />
+                            <Image source={require('../assets/inicio.png')} style={styles.logo} />
+                            <View style={styles.title}>
+                                <Text style={styles.titulo}>INICIAR SESIÓN</Text>
+                            </View>
+                        
                         </View>
+                       
                         <View style={styles.form}>
                             
                             <TextInput
@@ -89,29 +91,28 @@ export default class LoginScreen extends Component {
                                 >
                                     <Text style={styles.textIS}>INICIAR SESIÓN</Text>
                             </TouchableOpacity>
+                            <View style={[styles.redesContainer,{marginTop: '5%'}]}>
+                                <TouchableOpacity 
+                                    style={styles.botonRS}
+                                    onPress={() => {this.props.navigation.navigate("Register")}}
+                                    >
+                                        <Text style={{color: 'rgba(2,2,53, 1.0)'}}>Crea una cuenta</Text>
+                                </TouchableOpacity>
+                            </View>
                             <Text style={{color: 'rgba(2,2,53, 1.0)',marginTop:'5%'}}>Inicia sesión con:</Text>
                             <View style={styles.redesContainer}>
                                 <TouchableOpacity 
                                     style={styles.botonR}
                                     onPress={() => {Alert.alert("Facebook aún no disponible")}}
                                 >
-                                    <Text style={{fontSize: 20, textAlign: 'center'}}><Icon name='facebook-f' size={30} color="black"/></Text>
+                                    <Text style={{fontSize: 12, }}><Icon name='facebook-f' size={25} color="black"/>Iniciar sesión con Facebook</Text>
                                 </TouchableOpacity>
 
                                 <TouchableOpacity 
                                     style={styles.botonR}
                                     onPress={() => {Alert.alert("Google aún no disponible")}}
                                 >
-                                    <Text style={{fontSize: 20,textAlign:'center'}}><Icon name='google' size={30} color="black"/></Text>
-                                </TouchableOpacity>
-                            </View>
-                            <View style={[styles.redesContainer,{marginTop: '5%'}]}>
-                                <Text>¿No te has registado? </Text>
-                                <TouchableOpacity 
-                                    style={styles.boton}
-                                    onPress={() => {this.props.navigation.navigate("Register")}}
-                                    >
-                                        <Text style={{color: 'rgba(2,2,53, 1.0)'}}>Crea una cuenta</Text>
+                                    <Text style={{fontSize: 12,textAlign:'center'}}><Icon name='google' size={25} color="black"/>Iniciar sesión con Google</Text>
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -127,14 +128,14 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     title:{
-        flex: 0.4,
+        flex: 0.3,
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'flex-end',
         // backgroundColor: 'blue',
     },
     logoContainer: {
-        flex: 0.2,
+        flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
         // backgroundColor: 'green'
@@ -145,13 +146,13 @@ const styles = StyleSheet.create({
         resizeMode: 'contain'
     },
     form: {
-        flex: 1,
+        flex: 2,
         alignItems: 'center',
         // backgroundColor: 'yellow'
     },
     titulo: {
         // fontFamily: 'Roboto',
-        fontSize: 30,
+        fontSize: 20,
         //fontWeight: 'bold',
         color: 'rgba(2,2,53, 1.0)',
         alignItems: 'flex-end'
@@ -162,12 +163,12 @@ const styles = StyleSheet.create({
         borderBottomWidth: 2
     },
     botonR: {
-        borderRadius: 100,
+        borderRadius: 5,
         borderWidth: 2,
         padding: 0,
         borderColor: 'rgba(2,2,53, 1.0)',
-        marginHorizontal: 10,
-        width: 40,
+        marginHorizontal: 1,
+        width: '49.5%',
         height: 40,
         alignItems: 'center',
         justifyContent: 'center'
@@ -179,7 +180,18 @@ const styles = StyleSheet.create({
         marginTop: '5%',
         backgroundColor: 'rgba(2,2,53, 1.0)',
         width: '80%',
-        borderRadius: 30
+        borderRadius: 5
+    },
+    botonRS : {
+        borderRadius: 5,
+        borderWidth: 2,
+        padding: 0,
+        borderColor: 'rgba(2,2,53, 1.0)',
+        marginHorizontal: 1,
+        width: '49.5%',
+        height: 40,
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     textIS: {
         fontSize: 20,
@@ -189,6 +201,8 @@ const styles = StyleSheet.create({
     },
     redesContainer:{
         flexDirection: 'row',
-        flexWrap: 'wrap'
+        width: '100%',
+        justifyContent:'center',
+        alignItems: 'center',
     }
 })
