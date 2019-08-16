@@ -18,6 +18,7 @@ import Initial from '../screens/InitialScreen';
 import Swiper from '../screens/SwiperScreen';
 import Login from '../screens/LoginScreen';
 import Register from '../screens/RegisterScreen';
+import Recuperar from '../screens/RecuperarContrasenaScreen';
 
 //Screens AuthLoading
 import AuthLoading from '../screens/AuthLoadingScreen';
@@ -52,7 +53,8 @@ const AuthNavigator = createStackNavigator(
     Initial,
     Swiper,
     Login,
-    Register
+    Register,
+    Recuperar
 },
 {
   initialRouteName: "Initial",

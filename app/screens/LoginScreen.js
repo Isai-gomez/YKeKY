@@ -55,7 +55,7 @@ export default class LoginScreen extends Component {
 
     render() {
         return (
-            <ImageBackground source={require('../assets/screen2.png')} style={{width:'100%',height:'100%'}} >
+            <ImageBackground source={require('../assets/login/fondo.png')} style={{width:'100%',height:'100%'}} >
                 <ImageBackground source={require('../assets/screen1.png')} style={{width:'100%',height:'100%'}}>
                     <View style={styles.container}>
                         <View style={styles.title}>
@@ -81,7 +81,12 @@ export default class LoginScreen extends Component {
                                 secureTextEntry={true}
                                 onChangeText={(password) => {this.setState({password: password})}}
                             />
-                            <TouchableOpacity style={styles.botonIzq}><Text style={{color: 'rgba(2,2,53, 1.0)'}}>¿Olvido su contraseña?</Text></TouchableOpacity>
+                            <TouchableOpacity 
+                            style={styles.botonIzq}
+                            onPress={()=>{this.props.navigation.navigate('Recuperar')}}
+                            >
+                                <Text style={{color: 'rgba(2,2,53, 1.0)'}}>¿Olvido su contraseña?</Text>
+                            </TouchableOpacity>
                             <TouchableOpacity 
                                 style={styles.botonIS}
                                 // onPress={() => {this.props.navigation.navigate('Home', {email: this.state.email})}}
