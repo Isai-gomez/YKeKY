@@ -1,48 +1,58 @@
 import React from 'react';
-import {ScrollView, View , Text ,TouchableOpacity,StyleSheet,Image} from 'react-native';
+import {ScrollView, View , Text ,TouchableOpacity,StyleSheet,Image,ImageBackground} from 'react-native';
 
 
 
 class Instruccion_Ts extends React.Component {
+    static navigationOptions = {
+        header:null
+        // title: 'Instrucciones',
+        // headerStyle: {
+        //   backgroundColor: 'rgba(2,2,53, 1.0)',
+        // },
+        // headerTintColor: '#fff',
+        // headerTitleStyle: {
+        //   fontWeight: 'bold',
+        // },
+      };
     render () {
         return (
-            <View style={styles.container}>
-                <ScrollView style={styles.card}>
-                    <View style={styles.contenido}>
-                        <Text style={{fontSize:25, textAlign:'center', color:'black'}}>
-                            Instrucciones
-                        </Text>
-                        <Text style={styles.p}>
-                             Con este test identificarás tus intereses y habilidades vocacionales   
-                        </Text>  
-                       
-                    </View>  
-                    <View style={{alignItems:'center',justifyContent:'center',margin:10}}>
-                        <Image 
-                                source={require('./../assets/imagenSlider2.png')}s
-                                style={{ width: 160, height: 180}}
-                                resizeMode={'contain'}
-                        />    
-                    </View>                                     
-                    <View style={{alignItems:"center"}}>
-                       
-                        
-                        <TouchableOpacity style={styles.boton} onPress={() => this.props.navigation.navigate("Test")}>
-                            <Text style={{color: '#fff',textAlign:"center"}}>
-                                Iniciar Prueba
-                            </Text>
-                        </TouchableOpacity>
+            <ImageBackground source={require('../assets/ifont2.png')} style={{width:'100%',height:'100%'}}>
+                 <ImageBackground source={require('../assets/ifont1.png')} style={{width:'100%',height:'100%'}}>
+                    <View style={styles.container}>
+                        <ScrollView style={styles.card}>                        
+                            <View style={styles.contenido}>
+                                <Text style={{fontSize:30, textAlign:'center', color:'#fff',fontWeight:'bold'}}>
+                                    Instrucciones
+                                </Text>
+                                <Text style={styles.p}>
+                                    Con este test identificarás tus intereses y habilidades vocacionales   
+                                </Text>                              
+                            </View>  
+                            <View style={{alignItems:'center',justifyContent:'center',margin:10}}>
+                                <Image 
+                                        source={require('./../assets/insilus.png')}s
+                                        style={{ width: 200, height: 210}}
+                                        resizeMode={'contain'}
+                                />    
+                            </View>                                     
+                            <View style={{alignItems:"center"}}>
+                                <TouchableOpacity style={styles.boton} onPress={() => this.props.navigation.navigate("Test")}>
+                                    <Text style={{color: '#fff',textAlign:"center"}}>
+                                        Iniciar Prueba
+                                    </Text>
+                                </TouchableOpacity>
+                            </View>                            
+                        </ScrollView>                
                     </View>
-                   
-                </ScrollView>                
-            </View>
+                </ImageBackground>
+            </ImageBackground>
         )
     }
 }
 const styles = StyleSheet.create({ 
     container: {
       flex: 1,
-      backgroundColor: '#eeeeee',
       flexDirection: "row", 
       justifyContent: 'center',
     //   flexWrap: 'wrap',
@@ -50,7 +60,6 @@ const styles = StyleSheet.create({
     },
     card: {
       flex:1,
-      backgroundColor:'#fff',
       width:'100%',
       height:'97%',
       margin: '2%',
@@ -69,13 +78,13 @@ const styles = StyleSheet.create({
         height: 24,
       },
     boton : {
-        margin:10,
+        margin:20,
         height:40,
         width:110 ,
-        backgroundColor: '#0096d2',
+        backgroundColor: '#FFC500',
         borderRadius: 4,
         borderWidth: 4.3,
-        borderColor: '#00aae4',
+        borderColor: '#FFC500',
         alignItems: 'center',
         justifyContent: 'center',
 
@@ -88,9 +97,9 @@ const styles = StyleSheet.create({
     },
     
     p : {
-        textAlign:'justify',
-        fontSize:15,
-        color: 'black'
+        textAlign:'center',
+        fontSize:20,
+        color: '#fff'
     },
   });
 export default Instruccion_Ts;

@@ -5,7 +5,10 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 
 export default class ResultLifePlannerScreen extends Component {
     static navigationOptions = {
-        title: "Resultados plan de vida"
+        title: "Resultados plan de vida",
+        headerStyle: {
+            backgroundColor: '#f4511e',
+          },
       }
     render() {
         return (

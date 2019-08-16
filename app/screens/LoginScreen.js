@@ -55,8 +55,8 @@ export default class LoginScreen extends Component {
 
     render() {
         return (
-            <ImageBackground source={require('../assets/fondo1.png')} style={{width:'100%',height:'100%'}} >
-                <ImageBackground source={require('../assets/fondo2.png')} style={{width:'100%',height:'100%'}}>
+            <ImageBackground source={require('../assets/fondo1.png')} style={{flex:1}} resizeMode={'cover'} >
+                <ImageBackground source={require('../assets/fondo2.png')} style={{flex:1}} resizeMode={'cover'}>
                     <View style={styles.container}>
                         <View style={styles.logoContainer}>
                             <Image source={require('../assets/inicio.png')} style={styles.logo} />

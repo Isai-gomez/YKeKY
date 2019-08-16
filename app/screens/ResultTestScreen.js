@@ -9,7 +9,8 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 export default class ResultTestScreen extends Component {
     static navigationOptions = {
-        title: "Resultados TV"
+        title: "Resultados TV",
+        
     }
 
     constructor(props){
