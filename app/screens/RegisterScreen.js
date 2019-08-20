@@ -9,7 +9,11 @@ export default class RegisterScreen extends Component {
     render() {
         return (
             <ImageBackground source={require('../assets/fondo1.png')} style={{width:'100%', height:'100%',resizeMode: 'cover'}}>
-                <ImageBackground source={require('../assets/fondo2.png')} style={{width:'100%', height:'100%',resizeMode: 'cover'}}>
+                <ImageBackground style={{width:'100%', height:'100%',resizeMode: 'cover'}}>
+                    <Image source={require('../assets/Recurso1.1.png')} style={{width:135, height:70,position:'absolute',top:'0%',left:'0%'}}/>
+                    <Image source={require('../assets/Recurso2.2.png')} style={{width:176, height:60,position:'absolute',top:'0%',right:'0%'}}/>
+                    <Image source={require('../assets/Recurso4.4.png')} style={{width:130, height:70,position:'absolute',bottom:'0%',left:'0%'}}/>
+                    <Image source={require('../assets/Recurso3.3.png')} style={{width:130, height:70,position:'absolute',bottom:'0%',right:'0%'}}/>
                     <View style={styles.container}>
                         <View style={styles.logoContainer}>
                             <Image source={require('../assets/inicio.png')} style={styles.logo} />
@@ -40,13 +44,13 @@ export default class RegisterScreen extends Component {
                                  placeholderTextColor= 'rgba(2,2,53, 0.5)'
                                  style={styles.textInput}
                             />
-                            <TouchableOpacity style={styles.botonI}><Text style={styles.textBoton}>REGISTRARSE</Text></TouchableOpacity>
+                            <TouchableOpacity style={styles.botonI}><Text style={styles.textBoton}>REGÍSTRATE</Text></TouchableOpacity>
                             <View style={styles.containerR}> 
                                 <TouchableOpacity 
                                     style={styles.boton}
                                     onPress={() => {this.props.navigation.navigate("Login")}}
                                 >
-                                    <Text style={styles.textSesion}> Inicia Sesión</Text>
+                                    <Text style={styles.textSesion}>INICIA SESIÓN</Text>
                                 </TouchableOpacity>
                             </View>
                             <View style={styles.containerR}>
@@ -98,15 +102,21 @@ export default class RegisterScreen extends Component {
         borderBottomWidth: 2
     },
     botonI: {
-        marginTop:'5%',
-        alignItems: 'center',
-        width:'80%',
         backgroundColor:'rgba(2,2,53, 1.0)',
-        borderRadius: 5
+        borderRadius: 5,
+        borderWidth: 2,
+        padding: 0,
+        borderColor: 'rgba(2,2,53, 1.0)',
+        marginHorizontal: 1,
+        width: '80%',
+        height: 35,
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     textBoton:{
         color: 'white',
-        fontSize: 20
+        fontSize: 15,
+        fontWeight:'bold'
     },
     containerR: {
         marginTop:'3%',
@@ -123,13 +133,21 @@ export default class RegisterScreen extends Component {
         marginHorizontal: 1
     },
     boton:{
+        backgroundColor:'#ffcf24',
         borderRadius: 5,
-        borderWidth: 2 ,
-        width:'49.5%',
-        height:35,
-        borderColor: 'rgba(2,2,53, 1.0)',
+        borderWidth: 2,
+        padding: 0,
+        borderColor: '#ffcf24',
+        marginHorizontal: 1,
+        width: '80%',
+        height: 35,
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     textSesion:{
-        color: 'rgba(2,2,53, 1.0)'
+        color: 'rgba(2,2,53, 1.0)',
+        fontSize: 15,
+        fontWeight: 'bold'
+
     }
  })

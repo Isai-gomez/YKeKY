@@ -71,7 +71,7 @@ export default class UniversidadesContainer extends Component{
   renderHeader = () => {
     return (
       <SearchBar
-        placeholder="Type Here..."
+        placeholder="busca Aquí..."
         lightTheme
         round
         onChangeText={text => this.searchFilterFunction(text)}
