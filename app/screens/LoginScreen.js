@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import {View,Image,Text,TextInput,ImageBackground,StyleSheet,TouchableOpacity,Alert} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import AsyncStorage from '@react-native-community/async-storage';
 
 export default class LoginScreen extends Component {
@@ -56,18 +56,19 @@ export default class LoginScreen extends Component {
     render() {
         return (
             <ImageBackground source={require('../assets/fondo1.png')} style={{flex:1}} resizeMode={'cover'} >
-                <ImageBackground source={require('../assets/fondo2.png')} style={{flex:1}} resizeMode={'cover'}>
+                <ImageBackground  style={{flex:1}} resizeMode={'cover'}>
                     <View style={styles.container}>
+                        <Image source={require('../assets/Recurso1.1.png')} style={{width:135, height:70,position:'absolute',top:'0%',left:'0%'}}/>
+                        <Image source={require('../assets/Recurso2.2.png')} style={{width:176, height:60,position:'absolute',top:'0%',right:'0%'}}/>
+                        <Image source={require('../assets/Recurso4.4.png')} style={{width:130, height:70,position:'absolute',bottom:'0%',left:'0%'}}/>
+                        <Image source={require('../assets/Recurso3.3.png')} style={{width:130, height:70,position:'absolute',bottom:'0%',right:'0%'}}/>
                         <View style={styles.logoContainer}>
                             <Image source={require('../assets/inicio.png')} style={styles.logo} />
                             <View style={styles.title}>
                                 <Text style={styles.titulo}>INICIAR SESIÓN</Text>
                             </View>
-                        
-                        </View>
-                       
-                        <View style={styles.form}>
-                            
+                        </View>                       
+                        <View style={styles.form}> 
                             <TextInput
                                 style={styles.textInput} 
                                 value={this.state.email}
@@ -89,14 +90,14 @@ export default class LoginScreen extends Component {
                                 // onPress={() => {this.props.navigation.navigate('Home', {email: this.state.email})}}
                                 onPress={() => {this.onLoginPressed()}}
                                 >
-                                    <Text style={styles.textIS}>INICIAR SESIÓN</Text>
+                                    <Text style={styles.textIS}>INICIA SESIÓN</Text>
                             </TouchableOpacity>
                             <View style={[styles.redesContainer,{marginTop: '5%'}]}>
                                 <TouchableOpacity 
                                     style={styles.botonRS}
                                     onPress={() => {this.props.navigation.navigate("Register")}}
                                     >
-                                        <Text style={{color: 'rgba(2,2,53, 1.0)'}}>Crea una cuenta</Text>
+                                        <Text style={{color:'rgba(2,2,53, 1.0)',fontSize:15,fontWeight:'bold'}}>REGÍSTRATE</Text>
                                 </TouchableOpacity>
                             </View>
                             <Text style={{color: 'rgba(2,2,53, 1.0)',marginTop:'5%'}}>Inicia sesión con:</Text>
@@ -105,14 +106,14 @@ export default class LoginScreen extends Component {
                                     style={styles.botonR}
                                     onPress={() => {Alert.alert("Facebook aún no disponible")}}
                                 >
-                                    <Text style={{fontSize: 12, }}><Icon name='facebook-f' size={25} color="black"/>Iniciar sesión con Facebook</Text>
+                                    <Text style={{fontSize: 12, }}><Icon name='facebook' size={25} color="black"/>Regístrate con Facebook</Text>
                                 </TouchableOpacity>
 
                                 <TouchableOpacity 
                                     style={styles.botonR}
                                     onPress={() => {Alert.alert("Google aún no disponible")}}
                                 >
-                                    <Text style={{fontSize: 12,textAlign:'center'}}><Icon name='google' size={25} color="black"/>Iniciar sesión con Google</Text>
+                                    <Text style={{fontSize: 12,textAlign:'center'}}><Icon name='google' size={25} color="black"/>Regístrate con Google</Text>
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -180,23 +181,28 @@ const styles = StyleSheet.create({
         marginTop: '5%',
         backgroundColor: 'rgba(2,2,53, 1.0)',
         width: '80%',
-        borderRadius: 5
+        borderRadius: 5,
+        height: 35,
+        justifyContent: 'center',
+        alignItems:'center'
     },
     botonRS : {
+        backgroundColor:'#ffcf24',
         borderRadius: 5,
         borderWidth: 2,
         padding: 0,
-        borderColor: 'rgba(2,2,53, 1.0)',
+        borderColor: '#ffcf24',
         marginHorizontal: 1,
-        width: '49.5%',
-        height: 40,
+        width: '80%',
+        height: 35,
         alignItems: 'center',
         justifyContent: 'center'
     },
     textIS: {
-        fontSize: 20,
+        fontSize: 15,
         color: 'rgba(255,255,255,1.0)',
-        textAlign: 'center'
+        textAlign: 'center',
+        fontWeight:'bold'
 
     },
     redesContainer:{

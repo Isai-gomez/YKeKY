@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {ImageBackground,View,Text,Image,TouchableOpacity,Alert,StyleSheet,ScrollView,Linking} from 'react-native';
+import {ImageBackground,View,Text,Image,TouchableOpacity,Alert,StyleSheet,ScrollView,Linking,StatusBar} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import AsyncStorage from '@react-native-community/async-storage';
 import InAppBrowser from 'react-native-inappbrowser-reborn';
@@ -8,11 +8,12 @@ class Logo extends React.Component {
     render() {
         return (
             //Add your logo in the image tag
-            <View style={{ flex: 0.8 }}>
+            <View style={{ flex: 1 }}>
+             <StatusBar backgroundColor='transparent' barStyle="dark-content" animated/>
             <Image
                 source={require('../assets/logo2.png')}
                 resizeMode = "contain"
-                style = {{width: 115,
+                style = {{width: 120,
                 marginRight: 0,alignSelf:'center'}}
             />
             </View>
@@ -28,22 +29,26 @@ class MenuButton extends React.Component {
     }
 }
 
-// class LogoutButton extends React.Component{
-//     render(){
-//         return( 
-//             <TouchableOpacity onPress={() => {this.props.navigation.navigate("Initial")}} ><Text><Icon name="power-off" size={30} color="#fff" /></Text></TouchableOpacity>
-//         );
-//     }
-// }
+class LogoutButton extends React.Component{
+    render(){
+        return( 
+            <TouchableOpacity onPress={() => {this.props.navigation.navigate("Initial")}} ><Text><Icon name="power-off" size={30} color="#fff" /></Text></TouchableOpacity>
+        );
+    }
+}
 
 export default class HomeScreen extends Component {
     static navigationOptions = ({ navigation }) => {
         return {
-            // headerLeft: <MenuButton onPress={() => {}} />,
-            // headerRight: <LogoutButton />,
+            headerLeft: <MenuButton />,
+            headerRight: <LogoutButton />,
             headerTitle: <Logo />,
-            headerBackTitle: "Home",
-            headerLayoutPreset: "center",
+            headerTitleStyle: {
+                textAlign: 'center',
+                backgroundColor: 'red',
+                flexGrow:1,
+                alignSelf:'center',
+            },
             headerStyle: {
                 backgroundColor: 'rgba(2,2,53, 1.0)',
             },
@@ -124,7 +129,6 @@ export default class HomeScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-                
                 <View style={styles.titulo}>
                         <Text style={styles.textT}>Bienvenido a YKEKY</Text>
                         <Text style={styles.textT}>{this.state.email}</Text>

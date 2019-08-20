@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView, View , Text ,TouchableOpacity,StyleSheet,Image,ImageBackground} from 'react-native';
+import {ScrollView, View , Text ,TouchableOpacity,StyleSheet,Image,ImageBackground,StatusBar} from 'react-native';
 
 
 
@@ -17,53 +17,55 @@ class Instruccion_lp extends React.Component {
       };
     render () {
         return (
-            <ImageBackground source={require('../assets/ifont2.png')} style={{width:'100%',height:'100%'}}>
-                <ImageBackground source={require('../assets/ifont1.png')} style={{width:'100%',height:'100%'}}>
-            <View style={styles.container}>
-                <ScrollView style={styles.card}>
-                    <View style={styles.contenido}>
-                        <Text style={{fontSize:25, textAlign:'center', color:'#fff',fontWeight:'bold'}}>
-                            Instrucciones
-                        </Text>
-                        <Text style={styles.p}>
-                                Al cultivar una óptima relación con nosotros mismos encontramos interiormente lo que buscamos afuera, una manera de cultivar esa relación es haciendo de nuestra vida un proyecto magnífico ¿cómo? Cultivando las 12 áreas básicas de vida que son:
-                        </Text>  
-                       
-                    </View>  
-                    <View style={{alignItems:'center',justifyContent:'center',margin:10}}>
-                        <Image 
-                                source={require('./../assets/planlus.png')}s
-                                style={{ width: 340, height: 260}}
-                                resizeMode={'contain'}
-                        />    
-                        <Text style={{fontSize:20, textAlign:'center', color:'#fff',fontWeight:'bold'}}>
-                            Califica las 12 areas
-                        </Text>
-                        <Text style={{fontSize:20, textAlign:'center', color:'#fff'}}>
-                            Para cultivar las doce áreas te sugierio primero darles una calificaión:
-                        </Text>
-                        <View style= {styles.contcal}>
-                                <View style={styles.cal}><Text style={{color:'#fff'}}>1= Deficiente</Text></View>
-                                <View style={styles.cal}><Text style={{color:'#fff'}}>5= Regular</Text></View>
-                                <View style={styles.cal}><Text style={{color:'#fff'}}>10 = Excelente</Text></View>
-                        </View>
-                        <Text style={{fontSize:15, textAlign:'justify', color:'#fff'}}>
-                             También puedes incluir los matices de 2,3,4,6,7,8 y 9. Sí la calificación que pones en las áreas es menor a 5 por ejemplo , entonces te sugiero ponerte tres metas en el área que tenga esa calificación esto con el propósito de que esa área suba de calificación y que esté a tu entera satisfacción.
-                        </Text> 
-                    </View>                                     
-                    <View style={{alignItems:"center"}}>
-                       
+            <ImageBackground source={require('../assets/ifont2.png')} style={{flex:1,width:'100%',height:'100%'}}>
+                <ImageBackground style={{flex:1,width:'100%',height:'100%'}}>
+                    <View style={styles.container}>
+                    <Image source={require('../assets/Recurso6.png')} style={{width:64, height:70,position:'absolute',top:'0%',right:'0%'}}/>
+                        <StatusBar backgroundColor='transparent' barStyle="dark-content" animated/>
+                        <ScrollView style={styles.card}>
+                            <View style={styles.contenido}>
+                                <Text style={{fontSize:25, textAlign:'center', color:'#fff',fontWeight:'bold'}}>
+                                    Instrucciones
+                                </Text>
+                                <Text style={styles.p}>
+                                        Al cultivar una óptima relación con nosotros mismos encontramos interiormente lo que buscamos afuera, una manera de cultivar esa relación es haciendo de nuestra vida un proyecto magnífico ¿cómo? Cultivando las 12 áreas básicas de vida que son:
+                                </Text>  
+                            
+                            </View>  
+                            <View style={{alignItems:'center',justifyContent:'center',margin:10}}>
+                                <Image 
+                                        source={require('./../assets/planlus.png')}s
+                                        style={{ width: 340, height: 260}}
+                                        resizeMode={'contain'}
+                                />    
+                                <Text style={{fontSize:20, textAlign:'center', color:'#fff',fontWeight:'bold'}}>
+                                    Califica las 12 areas
+                                </Text>
+                                <Text style={{fontSize:20, textAlign:'center', color:'#fff'}}>
+                                    Para cultivar las doce áreas te sugierio primero darles una calificaión:
+                                </Text>
+                                <View style= {styles.contcal}>
+                                        <View style={styles.cal}><Text style={{color:'#fff'}}>1= Deficiente</Text></View>
+                                        <View style={styles.cal}><Text style={{color:'#fff'}}>5= Regular</Text></View>
+                                        <View style={styles.cal}><Text style={{color:'#fff'}}>10 = Excelente</Text></View>
+                                </View>
+                                <Text style={{fontSize:15, textAlign:'justify', color:'#fff'}}>
+                                    También puedes incluir los matices de 2,3,4,6,7,8 y 9. Sí la calificación que pones en las áreas es menor a 5 por ejemplo , entonces te sugiero ponerte tres metas en el área que tenga esa calificación esto con el propósito de que esa área suba de calificación y que esté a tu entera satisfacción.
+                                </Text> 
+                            </View>                                     
+                            <View style={{alignItems:"center"}}>
+                            
+                                
+                                <TouchableOpacity style={styles.boton} onPress={() => this.props.navigation.navigate("LifePlanner")}>
+                                    <Text style={{color: '#fff',textAlign:"center"}}>
+                                        Iniciar Prueba
+                                    </Text>
+                                </TouchableOpacity>
+                            </View>
                         
-                        <TouchableOpacity style={styles.boton} onPress={() => this.props.navigation.navigate("LifePlanner")}>
-                            <Text style={{color: '#fff',textAlign:"center"}}>
-                                Iniciar Prueba
-                            </Text>
-                        </TouchableOpacity>
+                        </ScrollView>                
                     </View>
-                   
-                </ScrollView>                
-            </View>
-            </ImageBackground>
+                </ImageBackground>
             </ImageBackground>
         )
     }
