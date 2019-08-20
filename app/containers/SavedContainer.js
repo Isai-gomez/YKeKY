@@ -5,7 +5,7 @@ export default class SavedContainer extends Component{
     render(){
         return(
             <View>
-                <Text>SavedContainer</Text>
+                <Text>CareerContainer</Text>
             </View>
         );
     }

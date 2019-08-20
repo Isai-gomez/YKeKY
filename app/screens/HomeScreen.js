@@ -1,13 +1,14 @@
 import React,{Component} from 'react';
-import {ImageBackground,View,Text,Image,TouchableOpacity,Alert,StyleSheet,ScrollView,Linking} from 'react-native';
+import {ImageBackground,View,Text,Image,TouchableOpacity,Alert,StyleSheet,ScrollView,Linking,StatusBar} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import AsyncStorage from '@react-native-community/async-storage';
+import InAppBrowser from 'react-native-inappbrowser-reborn';
 
 class Logo extends React.Component {
     render() {
         return (
             //Add your logo in the image tag
-            <View style={{ flex: 0.8 }}>
+            <View style={{ flex: 1 }}>
             <Image
                 source={require('../assets/logo2.png')}
                 resizeMode = "contain"
@@ -27,19 +28,19 @@ class MenuButton extends React.Component {
     }
 }
 
-// class LogoutButton extends React.Component{
-//     render(){
-//         return( 
-//             <TouchableOpacity onPress={() => {this.props.navigation.navigate("Initial")}} ><Text><Icon name="power-off" size={30} color="#fff" /></Text></TouchableOpacity>
-//         );
-//     }
-// }
+class LogoutButton extends React.Component{
+    render(){
+        return( 
+            <TouchableOpacity onPress={() => {this.props.navigation.navigate("Initial")}} ><Text><Icon name="search" size={30} color="#fff" /></Text></TouchableOpacity>
+        );
+    }
+}
 
 export default class HomeScreen extends Component {
     static navigationOptions = ({ navigation }) => {
         return {
-            // headerLeft: <MenuButton onPress={() => {}} />,
-            // headerRight: <LogoutButton />,
+            headerLeft: <MenuButton onPress={() => {}} />,
+            headerRight: <LogoutButton />,
             headerTitle: <Logo />,
             headerBackTitle: "Home",
             headerLayoutPreset: "center",
@@ -80,10 +81,50 @@ export default class HomeScreen extends Component {
         }
     }
       
+    async openLink() {
+        try {
+          const url = 'https://www.becas.sep.gob.mx/'
+          if (await InAppBrowser.isAvailable()) {
+            const result = await InAppBrowser.open(url, {
+              // iOS Properties
+              dismissButtonStyle: 'cancel',
+              preferredBarTintColor: '#020235',
+              preferredControlTintColor: 'white',
+              readerMode: false,
+              animated: true,
+              modalPresentationStyle: 'overFullScreen',
+              modalTransitionStyle: 'partialCurl',
+              modalEnabled: true,
+              // Android Properties
+              showTitle: true,
+              toolbarColor: '#020235',
+              secondaryToolbarColor: 'black',
+              enableUrlBarHiding: true,
+              enableDefaultShare: true,
+              forceCloseOnRedirection: false,
+              // Specify full animation resource identifier(package:anim/name)
+              // or only resource name(in case of animation bundled with app).
+              animations: {
+                startEnter: 'slide_in_right',
+                startExit: 'slide_out_left',
+                endEnter: 'slide_in_left',
+                endExit: 'slide_out_right'
+              },
+              headers: {
+                'my-custom-header': 'my custom header value'
+              }
+            })
+            // Alert.alert(JSON.stringify(result))
+          }
+          else Linking.openURL(url)
+        } catch (error) {
+          Alert.alert(error.message)
+        }
+      }
     render() {
         return (
             <View style={styles.container}>
-                
+                <StatusBar barStyle = "light-content" hidden = {false} backgroundColor = "rgba(2,2,52, 1.0)" translucent = {false}/>
                 <View style={styles.titulo}>
                         <Text style={styles.textT}>Bienvenido a YKEKY</Text>
                         <Text style={styles.textT}>{this.state.email}</Text>
@@ -118,13 +159,13 @@ export default class HomeScreen extends Component {
                                 Escolar
                             </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.cartita} onPress={ ()=> Linking.openURL('https://www.becas.sep.gob.mx/') } >
+                        <TouchableOpacity style={styles.cartita} onPress={ ()=> {this.openLink()}} >
                             <Text><Icon name='edit' size={50} color="black"/></Text>
                             <Text style={{fontSize:15}}>
                                Becas
                             </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.cartita} onPress={ ()=> Linking.openURL("https://www.16personalities.com/es") } >
+                        <TouchableOpacity style={styles.cartita} onPress={ ()=> Linking.openURL('https://www.16personalities.com/es') } >
                             <Text><Icon name='users' size={50} color="black"/></Text>
                             <Text style={{fontSize:15}}>
                                 16personalities

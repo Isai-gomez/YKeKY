@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
-import {View,Text,StyleSheet,Image,ImageBackground} from 'react-native';
+import {View,Text,StyleSheet,Image,ImageBackground,StatusBar} from 'react-native';
+import colors from '../styles/colors';
 
 import Onboarding from 'react-native-onboarding-swiper';
 
@@ -30,6 +31,7 @@ export default class SwiperScreen extends Component {
     render() {
         return (
             <ImageBackground source={require('../assets/screen1.png')} style={{width:'100%',height:'100%'}}>
+              <StatusBar barStyle = 'default' hidden = {false} backgroundColor = {colors.blue} translucent = {true}/>
             <Onboarding
                 DotComponent={Square}
                 onDone={() => this.props.navigation.navigate('Login')}

@@ -64,7 +64,18 @@
 		925136BA86F94DF0BF8A65AB /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8D56EA542F40C69821CEB9 /* libRNSVG.a */; };
 		B66C4B189343498893AD702B /* libRNSVG-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C8610EAFACB4F6DB5AA16B2 /* libRNSVG-tvOS.a */; };
 		89A889EEC8864F8EA59B047E /* libRNCAsyncStorage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5DB82A574046C28F0979D9 /* libRNCAsyncStorage.a */; };
-		692AB598EBFB48BC91210643 /* libRNInAppBrowser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 190706A7536540ADA584B58E /* libRNInAppBrowser.a */; };
+		90C913421FA94E4A80D67012 /* libRNInAppBrowser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4BE8AF910314BB987FC6DAB /* libRNInAppBrowser.a */; };
+		716FD57842394DCD803015BF /* Gotham-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3E11E9C0C13B4437A6AC616F /* Gotham-Black.otf */; };
+		6C169B4CED0A4FB89F00086B /* Gotham-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0ADF0CEDE8164C5DAAE23E60 /* Gotham-Thin.otf */; };
+		DA810239BFAB4767BE43F450 /* Gotham-ThinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 67B6BAB52A4C474B847DE6AF /* Gotham-ThinItalic.otf */; };
+		19E46B8D037C490E873E22A8 /* Gotham-UltraItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D9FF9E6CA23249CD8794E508 /* Gotham-UltraItalic.otf */; };
+		1517AC99F85748DC9F824EB6 /* GothamBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4637A4E6B3614953BBE908FC /* GothamBold.ttf */; };
+		8BFAA4C6DB0547C8A8BAD517 /* GothamBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F5A4B6B66F54767930CEE37 /* GothamBoldItalic.ttf */; };
+		8210C3D6AB3140739520D2EA /* GothamBook.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1310CD50A0964F509CBB8C49 /* GothamBook.ttf */; };
+		10DCBBA8A93D424485A76212 /* GothamBookItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F356C4B47CFC430580325212 /* GothamBookItalic.ttf */; };
+		A5310D3DB13A414D9328C163 /* GothamLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9005A05C031248EF8B1CB19F /* GothamLight.ttf */; };
+		FC39849A02CF4C3DB9224B08 /* GothamLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5ACC47AC9CF545B5BA81A1B6 /* GothamLightItalic.ttf */; };
+		9D381A8D597F43C09A5F9CCF /* GothamMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2515AA6CB61A4C34A276E4FD /* GothamMedium.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -402,8 +413,19 @@
 		9C8610EAFACB4F6DB5AA16B2 /* libRNSVG-tvOS.a */ = {isa = PBXFileReference; name = "libRNSVG-tvOS.a"; path = "libRNSVG-tvOS.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		A76826F291D24B90B1D52D1E /* RNCAsyncStorage.xcodeproj */ = {isa = PBXFileReference; name = "RNCAsyncStorage.xcodeproj"; path = "../node_modules/@react-native-community/async-storage/ios/RNCAsyncStorage.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		8D5DB82A574046C28F0979D9 /* libRNCAsyncStorage.a */ = {isa = PBXFileReference; name = "libRNCAsyncStorage.a"; path = "libRNCAsyncStorage.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
-		E6C87FFFB5944966A789EC10 /* RNInAppBrowser.xcodeproj */ = {isa = PBXFileReference; name = "RNInAppBrowser.xcodeproj"; path = "../node_modules/@matt-block/react-native-in-app-browser/ios/RNInAppBrowser.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		190706A7536540ADA584B58E /* libRNInAppBrowser.a */ = {isa = PBXFileReference; name = "libRNInAppBrowser.a"; path = "libRNInAppBrowser.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		24D5161DC361498DBEEFA9A2 /* RNInAppBrowser.xcodeproj */ = {isa = PBXFileReference; name = "RNInAppBrowser.xcodeproj"; path = "../node_modules/react-native-inappbrowser-reborn/ios/RNInAppBrowser.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		A4BE8AF910314BB987FC6DAB /* libRNInAppBrowser.a */ = {isa = PBXFileReference; name = "libRNInAppBrowser.a"; path = "libRNInAppBrowser.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		3E11E9C0C13B4437A6AC616F /* Gotham-Black.otf */ = {isa = PBXFileReference; name = "Gotham-Black.otf"; path = "../app/assets/fonts/Gotham-Black.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0ADF0CEDE8164C5DAAE23E60 /* Gotham-Thin.otf */ = {isa = PBXFileReference; name = "Gotham-Thin.otf"; path = "../app/assets/fonts/Gotham-Thin.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		67B6BAB52A4C474B847DE6AF /* Gotham-ThinItalic.otf */ = {isa = PBXFileReference; name = "Gotham-ThinItalic.otf"; path = "../app/assets/fonts/Gotham-ThinItalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D9FF9E6CA23249CD8794E508 /* Gotham-UltraItalic.otf */ = {isa = PBXFileReference; name = "Gotham-UltraItalic.otf"; path = "../app/assets/fonts/Gotham-UltraItalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4637A4E6B3614953BBE908FC /* GothamBold.ttf */ = {isa = PBXFileReference; name = "GothamBold.ttf"; path = "../app/assets/fonts/GothamBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0F5A4B6B66F54767930CEE37 /* GothamBoldItalic.ttf */ = {isa = PBXFileReference; name = "GothamBoldItalic.ttf"; path = "../app/assets/fonts/GothamBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1310CD50A0964F509CBB8C49 /* GothamBook.ttf */ = {isa = PBXFileReference; name = "GothamBook.ttf"; path = "../app/assets/fonts/GothamBook.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F356C4B47CFC430580325212 /* GothamBookItalic.ttf */ = {isa = PBXFileReference; name = "GothamBookItalic.ttf"; path = "../app/assets/fonts/GothamBookItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9005A05C031248EF8B1CB19F /* GothamLight.ttf */ = {isa = PBXFileReference; name = "GothamLight.ttf"; path = "../app/assets/fonts/GothamLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5ACC47AC9CF545B5BA81A1B6 /* GothamLightItalic.ttf */ = {isa = PBXFileReference; name = "GothamLightItalic.ttf"; path = "../app/assets/fonts/GothamLightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2515AA6CB61A4C34A276E4FD /* GothamMedium.ttf */ = {isa = PBXFileReference; name = "GothamMedium.ttf"; path = "../app/assets/fonts/GothamMedium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -437,7 +459,7 @@
 				E13B980FE00C4FDEBCFA5D8F /* libRNVectorIcons.a in Frameworks */,
 				925136BA86F94DF0BF8A65AB /* libRNSVG.a in Frameworks */,
 				89A889EEC8864F8EA59B047E /* libRNCAsyncStorage.a in Frameworks */,
-				692AB598EBFB48BC91210643 /* libRNInAppBrowser.a in Frameworks */,
+				90C913421FA94E4A80D67012 /* libRNInAppBrowser.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,7 +658,7 @@
 				C5599B2BE6E440BC8DDF12B4 /* RNVectorIcons.xcodeproj */,
 				0771E8FA626A4CFE95B54533 /* RNSVG.xcodeproj */,
 				A76826F291D24B90B1D52D1E /* RNCAsyncStorage.xcodeproj */,
-				E6C87FFFB5944966A789EC10 /* RNInAppBrowser.xcodeproj */,
+				24D5161DC361498DBEEFA9A2 /* RNInAppBrowser.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -704,6 +726,17 @@
 				D407C0AB3CE54CABAA7E447A /* Octicons.ttf */,
 				207D47697ADB499088849357 /* SimpleLineIcons.ttf */,
 				7FCEEA8769C4477E93AEB5E7 /* Zocial.ttf */,
+				3E11E9C0C13B4437A6AC616F /* Gotham-Black.otf */,
+				0ADF0CEDE8164C5DAAE23E60 /* Gotham-Thin.otf */,
+				67B6BAB52A4C474B847DE6AF /* Gotham-ThinItalic.otf */,
+				D9FF9E6CA23249CD8794E508 /* Gotham-UltraItalic.otf */,
+				4637A4E6B3614953BBE908FC /* GothamBold.ttf */,
+				0F5A4B6B66F54767930CEE37 /* GothamBoldItalic.ttf */,
+				1310CD50A0964F509CBB8C49 /* GothamBook.ttf */,
+				F356C4B47CFC430580325212 /* GothamBookItalic.ttf */,
+				9005A05C031248EF8B1CB19F /* GothamLight.ttf */,
+				5ACC47AC9CF545B5BA81A1B6 /* GothamLightItalic.ttf */,
+				2515AA6CB61A4C34A276E4FD /* GothamMedium.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1171,6 +1204,17 @@
 				D883C77DF4C4461B91E5C7C3 /* Octicons.ttf in Resources */,
 				7842D66CBFE540CFB9B32E37 /* SimpleLineIcons.ttf in Resources */,
 				66AAB503A8ED44B1A868D29E /* Zocial.ttf in Resources */,
+				716FD57842394DCD803015BF /* Gotham-Black.otf in Resources */,
+				6C169B4CED0A4FB89F00086B /* Gotham-Thin.otf in Resources */,
+				DA810239BFAB4767BE43F450 /* Gotham-ThinItalic.otf in Resources */,
+				19E46B8D037C490E873E22A8 /* Gotham-UltraItalic.otf in Resources */,
+				1517AC99F85748DC9F824EB6 /* GothamBold.ttf in Resources */,
+				8BFAA4C6DB0547C8A8BAD517 /* GothamBoldItalic.ttf in Resources */,
+				8210C3D6AB3140739520D2EA /* GothamBook.ttf in Resources */,
+				10DCBBA8A93D424485A76212 /* GothamBookItalic.ttf in Resources */,
+				A5310D3DB13A414D9328C163 /* GothamLight.ttf in Resources */,
+				FC39849A02CF4C3DB9224B08 /* GothamLightItalic.ttf in Resources */,
+				9D381A8D597F43C09A5F9CCF /* GothamMedium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1315,6 +1359,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
 					"$(SRCROOT)\..\node_modules\@react-native-community\async-storage\ios",
 					"$(SRCROOT)\..\node_modules\@matt-block\react-native-in-app-browser\ios\RNInAppBrowser",
+					"$(SRCROOT)\..\node_modules\react-native-inappbrowser-reborn\ios",
 				);
 			};
 			name = Debug;
@@ -1346,6 +1391,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
 					"$(SRCROOT)\..\node_modules\@react-native-community\async-storage\ios",
 					"$(SRCROOT)\..\node_modules\@matt-block\react-native-in-app-browser\ios\RNInAppBrowser",
+					"$(SRCROOT)\..\node_modules\react-native-inappbrowser-reborn\ios",
 				);
 			};
 			name = Release;
@@ -1374,6 +1420,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
 					"$(SRCROOT)\..\node_modules\@react-native-community\async-storage\ios",
 					"$(SRCROOT)\..\node_modules\@matt-block\react-native-in-app-browser\ios\RNInAppBrowser",
+					"$(SRCROOT)\..\node_modules\react-native-inappbrowser-reborn\ios",
 				);
 			};
 			name = Debug;
@@ -1401,6 +1448,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
 					"$(SRCROOT)\..\node_modules\@react-native-community\async-storage\ios",
 					"$(SRCROOT)\..\node_modules\@matt-block\react-native-in-app-browser\ios\RNInAppBrowser",
+					"$(SRCROOT)\..\node_modules\react-native-inappbrowser-reborn\ios",
 				);
 			};
 			name = Release;
@@ -1440,6 +1488,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
 					"$(SRCROOT)\..\node_modules\@react-native-community\async-storage\ios",
 					"$(SRCROOT)\..\node_modules\@matt-block\react-native-in-app-browser\ios\RNInAppBrowser",
+					"$(SRCROOT)\..\node_modules\react-native-inappbrowser-reborn\ios",
 				);
 			};
 			name = Debug;
@@ -1479,6 +1528,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
 					"$(SRCROOT)\..\node_modules\@react-native-community\async-storage\ios",
 					"$(SRCROOT)\..\node_modules\@matt-block\react-native-in-app-browser\ios\RNInAppBrowser",
+					"$(SRCROOT)\..\node_modules\react-native-inappbrowser-reborn\ios",
 				);
 			};
 			name = Release;
@@ -1517,6 +1567,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
 					"$(SRCROOT)\..\node_modules\@react-native-community\async-storage\ios",
 					"$(SRCROOT)\..\node_modules\@matt-block\react-native-in-app-browser\ios\RNInAppBrowser",
+					"$(SRCROOT)\..\node_modules\react-native-inappbrowser-reborn\ios",
 				);
 			};
 			name = Debug;
@@ -1555,6 +1606,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
 					"$(SRCROOT)\..\node_modules\@react-native-community\async-storage\ios",
 					"$(SRCROOT)\..\node_modules\@matt-block\react-native-in-app-browser\ios\RNInAppBrowser",
+					"$(SRCROOT)\..\node_modules\react-native-inappbrowser-reborn\ios",
 				);
 			};
 			name = Release;

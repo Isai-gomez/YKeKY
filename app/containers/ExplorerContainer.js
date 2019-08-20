@@ -11,7 +11,18 @@ export default class ExplorerContainer extends Component{
     static navigationOptions = {
         header: null
     }
+
+    constructor(){
+      super();
+      this.state = {
+        loading: false,      
+        data: [],      
+        error: null,    
+      };
+    }
+
     render(){
+        this.arrayholder = [];
         return(
             <View style={styles.wrapper}>
                 <SearchBar />
