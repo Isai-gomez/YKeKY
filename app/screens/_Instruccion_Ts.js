@@ -18,8 +18,9 @@ class Instruccion_Ts extends React.Component {
     render () {
         return (
             <ImageBackground source={require('../assets/ifont2.png')} style={{width:'100%',height:'100%'}}>
-                 <ImageBackground source={require('../assets/ifont1.png')} style={{width:'100%',height:'100%'}}>
+                 <ImageBackground style={{width:'100%',height:'100%'}}>
                     <View style={styles.container}>
+                    <Image source={require('../assets/Recurso6.png')} style={{width:64, height:70,position:'absolute',top:'0%',right:'0%'}}/>
                         <ScrollView style={styles.card}>                        
                             <View style={styles.contenido}>
                                 <Text style={{fontSize:30, textAlign:'center', color:'#fff',fontWeight:'bold'}}>
@@ -63,14 +64,7 @@ const styles = StyleSheet.create({
       flex:1,
       width:'100%',
       height:'97%',
-      margin: '2%',
-      borderWidth: .1,
-      borderRadius: 5,
-      shadowColor: '#757575',
-      shadowOpacity: .1,
-      shadowOffset: {width:-2 ,height: 7},
-      elevation: 4,
-      
+      margin: '2%',      
     },
     item: {
         color:'black',

@@ -130,12 +130,12 @@ const styles = StyleSheet.create({
       color: colors.gray04,
     },
     cardItems: {
-        backgroundColor: colors.gray03,
+        backgroundColor: 'rgba(206,208,206, 0.2)',
         flex: 1,
         marginBottom: 15
     },
     textItem: {
-        color: '#FFF',
+        color: '#000000',
         textAlign: 'justify'
     }
   });

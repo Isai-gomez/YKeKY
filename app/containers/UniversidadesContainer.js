@@ -43,10 +43,10 @@ export default class UniversidadesContainer extends Component{
     return (
       <View
         style={{
-          height: 1,
-          width: '86%',
-          backgroundColor: '#CED0CE',
-          marginLeft: '14%',
+          height: 3,
+          width: '100%',
+          backgroundColor: 'rgba(206,208,206, 0.2)',
+          marginLeft: '0%',
         }}
       />
     );
@@ -71,12 +71,13 @@ export default class UniversidadesContainer extends Component{
   renderHeader = () => {
     return (
       <SearchBar
-        placeholder="Type Here..."
+        placeholder="busca Aquí..."
         lightTheme
         round
         onChangeText={text => this.searchFilterFunction(text)}
         autoCorrect={false}
         value={this.state.value}
+        inputContainerStyle={{marginBottom: 20}}
       />
     );
   };
@@ -96,8 +97,10 @@ export default class UniversidadesContainer extends Component{
           renderItem={({ item }) => (
             <ListItem
               leftAvatar={{ source: { uri: item.logo } }}
-              title={`${item.nombreUniversidad} ${item.calle}`}
-              subtitle={item.clave_sep}
+              title={`${item.nombreUniversidad}`}
+              titleStyle={{fontWeight: 'bold'}}
+              subtitle={`${item.clave_sep}`}
+              subtitleStyle={{fontSize: 12}}
             />
           )}
           keyExtractor={item => item.nombreUniversidad}
