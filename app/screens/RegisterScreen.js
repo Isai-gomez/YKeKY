@@ -19,7 +19,7 @@ export default class RegisterScreen extends Component {
                             <Image source={require('../assets/inicio.png')} style={styles.logo} />
                             <View style={styles.tituloContainer}>
                                 <Text style={styles.titulo}>
-                                    Resgistrate
+                                    REGISTRO
                                 </Text>
                             </View>
                         </View>
@@ -54,8 +54,8 @@ export default class RegisterScreen extends Component {
                                 </TouchableOpacity>
                             </View>
                             <View style={styles.containerR}>
-                                <TouchableOpacity style={styles.botonesR}><Text style={{fontSize: 12,textAlign:'center'}}><Icon name='facebook-f' size={25} color="black"/>Iniciar sesión con Facebook</Text></TouchableOpacity>
-                                <TouchableOpacity style={styles.botonesR}><Text style={{fontSize: 12,textAlign:'center'}}><Icon name='google' size={25} color="black"/>Iniciar sesión con Google</Text></TouchableOpacity>
+                                <TouchableOpacity style={styles.botonesR}><Text style={{fontSize: 12,textAlign:'center',fontFamily: 'GothamBook',}}><Icon name='facebook-f' size={25} color="black"/>Regístrate con Facebook</Text></TouchableOpacity>
+                                <TouchableOpacity style={styles.botonesR}><Text style={{fontSize: 12,textAlign:'center',fontFamily: 'GothamBook',}}><Icon name='google' size={25} color="black"/>Regístrate con Google</Text></TouchableOpacity>
                             </View>
                         </View>                        
                     </View>
@@ -91,12 +91,13 @@ export default class RegisterScreen extends Component {
         justifyContent: 'flex-end',
     },
     titulo: {
-        // fontFamily: 'Roboto',
+        fontFamily: 'GothamBold',
         fontSize: 20,
         //fontWeight: 'bold',
         color: 'rgba(2,2,53, 1.0)'
     },
     textInput: {
+        fontFamily: 'GothamBook',
         width: '80%',
         borderBottomColor: 'rgba(2,2,53, 1.0)',
         borderBottomWidth: 2
@@ -114,9 +115,9 @@ export default class RegisterScreen extends Component {
         justifyContent: 'center'
     },
     textBoton:{
+        fontFamily: 'GothamBold',
         color: 'white',
         fontSize: 15,
-        fontWeight:'bold'
     },
     containerR: {
         marginTop:'3%',
@@ -145,9 +146,8 @@ export default class RegisterScreen extends Component {
         justifyContent: 'center'
     },
     textSesion:{
+        fontFamily: 'GothamBold',
         color: 'rgba(2,2,53, 1.0)',
-        fontSize: 15,
-        fontWeight: 'bold'
-
+        fontSize: 15
     }
  })
