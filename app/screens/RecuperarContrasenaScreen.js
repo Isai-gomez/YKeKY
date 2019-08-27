@@ -26,7 +26,7 @@ export default class RecuperarContrasenaScreen extends Component{
                             source={require('../assets/recuperar/logo.png')}
                             style={{flex: 1, resizeMode: 'cover'}}
                         >
-                            <StatusBar barStyle = 'default' hidden = {false} backgroundColor = {colors.blue} translucent = {true}/>    
+                            {/* <StatusBar barStyle = 'default' hidden = {false} backgroundColor = {colors.blue} translucent = {true}/>     */}
                             <View style={styles.container}>
                                 <Text style={styles.textTitle}>Forgot Your</Text>
                                 <Text style={styles.textTitle}>Password?</Text>

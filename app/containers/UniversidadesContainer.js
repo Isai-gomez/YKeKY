@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {View,Text,StyleSheet, FlatList, ActivityIndicator,TouchableOpacity,Image} from 'react-native';
+import {View,Text,StyleSheet, FlatList, ActivityIndicator,TouchableOpacity,Image,Alert} from 'react-native';
 import colors from '../styles/colors';
 import { ListItem, SearchBar } from 'react-native-elements';
 
@@ -20,8 +20,7 @@ export default class UniversidadesContainer extends Component{
     this.makeRemoteRequest();
   }
 
-  makeRemoteRequest = () => {
-    const url = `http://18.191.196.186:3001/api/universidades/`;
+  makeRemoteRequest = () => {    const url = `http://18.225.10.133:3001/api/universidades/`;
     this.setState({ loading: true });
 
     fetch(url)
@@ -58,7 +57,7 @@ export default class UniversidadesContainer extends Component{
     });
 
     const newData = this.arrayholder.filter(item => {
-      const itemData = `${item.nombreUniversidad.toUpperCase()} ${item.calle.toUpperCase()} ${item.clave_sep.toUpperCase()}`;
+      const itemData = `${item.nombre.toUpperCase()} ${item.calle.toUpperCase()} ${item.clave_sep.toUpperCase()}`;
       const textData = text.toUpperCase();
 
       return itemData.indexOf(textData) > -1;
@@ -97,13 +96,15 @@ export default class UniversidadesContainer extends Component{
           renderItem={({ item }) => (
             <ListItem
               leftAvatar={{ source: { uri: item.logo } }}
-              title={`${item.nombreUniversidad}`}
+              title={`${item.nombre}`}
               titleStyle={{fontWeight: 'bold'}}
               subtitle={`${item.clave_sep}`}
               subtitleStyle={{fontSize: 12}}
+              // onPress={() => {Alert.alert(`Haz presionado el item ${item.nombre}`)}}
+              onPress={() => {this.props.navigation.navigate("DetalleUniversidad", {universidad: item})}}
             />
           )}
-          keyExtractor={item => item.nombreUniversidad}
+          keyExtractor={item => item.nombre}
           ItemSeparatorComponent={this.renderSeparator}
           ListHeaderComponent={this.renderHeader}
         />

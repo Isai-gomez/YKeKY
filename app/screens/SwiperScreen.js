@@ -31,7 +31,7 @@ export default class SwiperScreen extends Component {
     render() {
         return (
             <ImageBackground source={require('../assets/screen1.png')} style={{width:'100%',height:'100%'}}>
-              <StatusBar barStyle = 'default' hidden = {false} backgroundColor = {colors.blue} translucent = {true}/>
+              {/* <StatusBar barStyle = 'default' hidden = {false} backgroundColor = {colors.blue} translucent = {true}/> */}
             <Onboarding
                 DotComponent={Square}
                 onDone={() => this.props.navigation.navigate('Login')}
@@ -41,6 +41,7 @@ export default class SwiperScreen extends Component {
                 transitionAnimationDuration={400}
                 pages={[
                 {
+                    containerstyles: {},
                     backgroundColor: '#fff',
                     image: <Image source={require('../assets/imagenSlider1.png')} style={{height:200, width: 200}} />,
                     title: 'ENCUENTRA LA CARRERA QUE BUSCAS',

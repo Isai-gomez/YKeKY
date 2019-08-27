@@ -12,7 +12,7 @@ export default class InitialScreen extends Component {
     render(){
         return(
             <ImageBackground source={require('../assets/images/appInicioFondo.png')} style={{width: '100%', height: '100%'}} >
-                <StatusBar barStyle = 'default' hidden = {false} backgroundColor = {colors.blue} translucent = {true}/>
+                {/* <StatusBar barStyle = 'default' hidden = {false} backgroundColor = {colors.blue} translucent = {true}/> */}
                 <View style={styles.container}>
                     <View style={styles.main}>
                         <View style={styles.logoContainer}>

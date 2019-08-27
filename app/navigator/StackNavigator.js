@@ -7,6 +7,8 @@ import Test from '../screens/TestScreen';
 import LifePlanner from '../screens/LifePlannerScreen';
 import Directorio from '../screens/DirectorioScreen';
 
+import DetalleUniversidad from '../components/universidadVistaDetalle';
+
 import ResultTS from '../screens/ResultTestScreen';
 import ResultLP from '../screens/ResultLifePlannerScreen';
 
@@ -16,6 +18,7 @@ import Instruccion_Ts from '../screens/_Instruccion_Ts';
 //Screens Auth
 import Initial from '../screens/InitialScreen';
 import Swiper from '../screens/SwiperScreen';
+import Swiper2 from '../screens/swiperScreen2';
 import Login from '../screens/LoginScreen';
 import Register from '../screens/RegisterScreen';
 import Recuperar from '../screens/RecuperarContrasenaScreen';
@@ -32,7 +35,8 @@ const AppNavigator = createStackNavigator(
       ResultLP,
       Directorio,
       Instruccion_Lp,
-      Instruccion_Ts
+      Instruccion_Ts,
+      DetalleUniversidad
     },
     {
       initialRouteName: "Home",

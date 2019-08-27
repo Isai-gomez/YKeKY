@@ -9,7 +9,7 @@ class Logo extends React.Component {
         return (
             //Add your logo in the image tag
             <View style={{ flex: 1 }}>
-             <StatusBar backgroundColor='transparent' barStyle="dark-content" animated/>
+             {/* <StatusBar backgroundColor='transparent' barStyle="dark-content" animated/> */}
             <Image
                 source={require('../assets/logo2.png')}
                 resizeMode = "contain"
