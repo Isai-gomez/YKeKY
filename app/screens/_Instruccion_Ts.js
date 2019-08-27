@@ -23,7 +23,7 @@ class Instruccion_Ts extends React.Component {
                     <Image source={require('../assets/Recurso6.png')} style={{width:64, height:70,position:'absolute',top:'0%',right:'0%'}}/>
                         <ScrollView style={styles.card}>                        
                             <View style={styles.contenido}>
-                                <Text style={{fontSize:30, textAlign:'center', color:'#fff',fontWeight:'bold'}}>
+                                <Text style={{fontSize:30, textAlign:'center', color:'#fff',fontFamily: 'GothamBold'}}>
                                     Instrucciones
                                 </Text>
                                 <Text style={styles.p}>
@@ -39,8 +39,8 @@ class Instruccion_Ts extends React.Component {
                             </View>                                     
                             <View style={{alignItems:"center"}}>
                                 <TouchableOpacity style={styles.boton} onPress={() => this.props.navigation.navigate("Test")}>
-                                    <Text style={{color: '#fff',textAlign:"center"}}>
-                                        Iniciar Prueba
+                                    <Text style={{color: '#fff',textAlign:"center",fontFamily:'GothamBook',fontSize:20,fontWeight:'bold'}}>
+                                        Empezar
                                     </Text>
                                 </TouchableOpacity>
                             </View>                            
@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
     },
     
     p : {
+        fontFamily:'GothamBook',
         textAlign:'center',
         fontSize:20,
         color: '#fff'

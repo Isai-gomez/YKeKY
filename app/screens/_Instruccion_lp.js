@@ -24,7 +24,7 @@ class Instruccion_lp extends React.Component {
                         <StatusBar backgroundColor='transparent' barStyle="dark-content" animated/>
                         <ScrollView style={styles.card}>
                             <View style={styles.contenido}>
-                                <Text style={{fontSize:25, textAlign:'center', color:'#fff',fontWeight:'bold'}}>
+                                <Text style={{ fontFamily: 'GothamBold',fontSize:25, textAlign:'center', color:'#fff'}}>
                                     Instrucciones
                                 </Text>
                                 <Text style={styles.p}>
@@ -38,18 +38,18 @@ class Instruccion_lp extends React.Component {
                                         style={{ width: 340, height: 260}}
                                         resizeMode={'contain'}
                                 />    
-                                <Text style={{fontSize:20, textAlign:'center', color:'#fff',fontWeight:'bold'}}>
+                                <Text style={{fontFamily: 'GothamBold',fontSize:20, textAlign:'center', color:'#fff'}}>
                                     Califica las 12 areas
                                 </Text>
-                                <Text style={{fontSize:20, textAlign:'center', color:'#fff'}}>
+                                <Text style={{fontSize:20, textAlign:'center', color:'#fff',fontFamily: 'Myriad Pro',}}>
                                     Para cultivar las doce áreas te sugierio primero darles una calificaión:
                                 </Text>
                                 <View style= {styles.contcal}>
-                                        <View style={styles.cal}><Text style={{color:'#fff'}}>1= Deficiente</Text></View>
-                                        <View style={styles.cal}><Text style={{color:'#fff'}}>5= Regular</Text></View>
-                                        <View style={styles.cal}><Text style={{color:'#fff'}}>10 = Excelente</Text></View>
+                                        <View style={styles.cal}><Text style={{color:'#fff',fontFamily: 'Myriad Pro',}}>1= Deficiente</Text></View>
+                                        <View style={styles.cal}><Text style={{color:'#fff',fontFamily: 'Myriad Pro',}}>5= Regular</Text></View>
+                                        <View style={styles.cal}><Text style={{color:'#fff',fontFamily: 'Myriad Pro',}}>10 = Excelente</Text></View>
                                 </View>
-                                <Text style={{fontSize:15, textAlign:'justify', color:'#fff'}}>
+                                <Text style={{fontSize:15, textAlign:'justify', color:'#fff',fontFamily: 'Myriad Pro',}}>
                                     También puedes incluir los matices de 2,3,4,6,7,8 y 9. Sí la calificación que pones en las áreas es menor a 5 por ejemplo , entonces te sugiero ponerte tres metas en el área que tenga esa calificación esto con el propósito de que esa área suba de calificación y que esté a tu entera satisfacción.
                                 </Text> 
                             </View>                                     
@@ -111,6 +111,7 @@ const styles = StyleSheet.create({
     },
     
     p : {
+        fontFamily: 'Myriad Pro',
         textAlign:'justify',
         fontSize:15,
         color: '#fff'

@@ -5,14 +5,18 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 
 export default class ResultLifePlannerScreen extends Component {
     static navigationOptions = {
-        title: "Resultados plan de vida",
-        headerStyle: {
-            backgroundColor: '#f4511e',
-          },
+        header:null
+        // title: "Resultados plan de vida",
+        // headerStyle: {
+        //     backgroundColor: '#f4511e',
+        //   },
       }
     render() {
         return (
             <View style={{flex:1}}>
+                <View >
+                    <Text>Resultados</Text>
+                </View>
                 <View style={{flex:0.5}}>
                     <Chart/>
                 </View>
@@ -133,6 +137,11 @@ const styles = StyleSheet.create({
         flex: 0.5,
         backgroundColor: "#BDBDBD",
     },
+    contitle:{
+        justifyContent:"center",
+        alignItems:"center"
+    },
+
     mincard:{
         backgroundColor: "#b7d6ec",
         borderRadius: 20,

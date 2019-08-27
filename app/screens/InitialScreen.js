@@ -27,7 +27,7 @@ export default class InitialScreen extends Component {
                                 style={styles.buton}
                                 onPress={() => this.props.navigation.navigate("Swiper")}
                             >
-                                <Text style={{color:'white'}}>Continuar</Text>
+                                <Text style={{color:'white',fontFamily: 'GothamBold',}}>Continuar</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -68,10 +68,10 @@ const styles = StyleSheet.create({
     titulo: {
         color: colors.blue,
         fontSize: 20,
-        fontFamily: 'GothamLight',
-        fontWeight: 'bold'
+        fontFamily: 'GothamBold',
     },
     texto: {
+        fontFamily: 'GothamBook',
         color: 'white',
         fontSize: 16,
     },

@@ -88,7 +88,7 @@ export default class LoginScreen extends Component {
                             style={styles.botonIzq}
                             onPress={()=>{this.props.navigation.navigate('Recuperar')}}
                             >
-                                <Text style={{color: 'rgba(2,2,53, 1.0)'}}>¿Olvido su contraseña?</Text>
+                                <Text style={{color: 'rgba(2,2,53, 1.0)',fontFamily:'GothamBook'}}>¿Olvido su contraseña?</Text>
                             </TouchableOpacity>
                             <TouchableOpacity 
                                 style={styles.botonIS}
@@ -102,7 +102,7 @@ export default class LoginScreen extends Component {
                                     style={styles.botonRS}
                                     onPress={() => {this.props.navigation.navigate("Register")}}
                                     >
-                                        <Text style={{color:'rgba(2,2,53, 1.0)',fontSize:15,fontWeight:'bold'}}>REGÍSTRATE</Text>
+                                        <Text style={{fontFamily: 'GothamBold',color:'rgba(2,2,53, 1.0)',fontSize:15}}>REGÍSTRATE</Text>
                                 </TouchableOpacity>
                             </View>
                             <Text style={{color: 'rgba(2,2,53, 1.0)',marginTop:'5%'}}>Inicia sesión con:</Text>
@@ -111,14 +111,14 @@ export default class LoginScreen extends Component {
                                     style={styles.botonR}
                                     onPress={() => {Alert.alert("Facebook aún no disponible")}}
                                 >
-                                    <Text style={{fontSize: 12, }}><Icon name='facebook' size={25} color="black"/>Regístrate con Facebook</Text>
+                                    <Text style={{fontSize: 12,fontFamily:'GothamBook'}}><Icon name='facebook' size={25} color="black"/>Regístrate con Facebook</Text>
                                 </TouchableOpacity>
 
                                 <TouchableOpacity 
                                     style={styles.botonR}
                                     onPress={() => {Alert.alert("Google aún no disponible")}}
                                 >
-                                    <Text style={{fontSize: 12,textAlign:'center'}}><Icon name='google' size={25} color="black"/>Regístrate con Google</Text>
+                                    <Text style={{fontSize: 12,textAlign:'center',fontFamily:'GothamBook'}}><Icon name='google' size={25} color="black"/>Regístrate con Google</Text>
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -157,13 +157,14 @@ const styles = StyleSheet.create({
         // backgroundColor: 'yellow'
     },
     titulo: {
-        // fontFamily: 'Roboto',
+        fontFamily: 'GothamBold',
         fontSize: 20,
         //fontWeight: 'bold',
         color: 'rgba(2,2,53, 1.0)',
         alignItems: 'flex-end'
     },
     textInput: {
+        fontFamily:'GothamBook',
         width: '80%',
         borderBottomColor: 'rgba(2,2,53, 1.0)',
         borderBottomWidth: 2
@@ -204,11 +205,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     textIS: {
+        fontFamily: 'GothamBold',
         fontSize: 15,
         color: 'rgba(255,255,255,1.0)',
         textAlign: 'center',
-        fontWeight:'bold'
-
     },
     redesContainer:{
         flexDirection: 'row',
