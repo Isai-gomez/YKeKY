@@ -2,6 +2,11 @@
   package="com.ykeky">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <application>  
+      <meta-data     
+       android:name="com.google.android.geo.API_KEY"     
+       android:value="AIzaSyA5_QCOcE6ZGIXjx8oAlcBfcF5L1OKJPdA"/>
+    </application>
 
     <application
       android:name=".MainApplication"
