@@ -1,13 +1,9 @@
-/**
- * Airbnb Clone App
- * @author: Andy
- * @Url: https://www.cubui.com
- */
+
 
 const categoriesList = [
   {
   	name: 'Universidades',
-  	photo: require('./photos/universidades.png'),
+  	photo: require('./photos/top-lista.png'),
   },
   {
   	name: 'Carreras',

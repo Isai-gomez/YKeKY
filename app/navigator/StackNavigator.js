@@ -6,6 +6,7 @@ import Home from '../screens/HomeScreen';
 import Test from '../screens/TestScreen';
 import LifePlanner from '../screens/LifePlannerScreen';
 import Directorio from '../screens/DirectorioScreen';
+import ModalComponent from '../components/ModalComponent';
 
 import DetalleUniversidad from '../components/universidadVistaDetalle';
 
@@ -36,7 +37,8 @@ const AppNavigator = createStackNavigator(
       Directorio,
       Instruccion_Lp,
       Instruccion_Ts,
-      DetalleUniversidad
+      DetalleUniversidad,
+      ModalComponent
     },
     {
       initialRouteName: "Home",

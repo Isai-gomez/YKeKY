@@ -28,24 +28,24 @@ const TabNavigator = createBottomTabNavigator({
             )
         }
     },
-    Carreras: {
-        screen: SavedContainer,
-        navigationOptions : {
-            tabBarLabel:'Carreras',
-            tabBarIcon:({tintColor}) => (
-                <Icon name="award" color={tintColor} size={25} />
-            )
-        }
-    },
-    Profile: {
-        screen: ProfileContainer,
-        navigationOptions : {
-            tabBarLabel:'Perfil',
-            tabBarIcon:({tintColor}) => (
-                <Icon name="user" color={tintColor} size={25} />
-            )
-        }
-    },
+    // Carreras: {
+    //     screen: SavedContainer,
+    //     navigationOptions : {
+    //         tabBarLabel:'Carreras',
+    //         tabBarIcon:({tintColor}) => (
+    //             <Icon name="award" color={tintColor} size={25} />
+    //         )
+    //     }
+    // },
+    // Profile: {
+    //     screen: ProfileContainer,
+    //     navigationOptions : {
+    //         tabBarLabel:'Perfil',
+    //         tabBarIcon:({tintColor}) => (
+    //             <Icon name="user" color={tintColor} size={25} />
+    //         )
+    //     }
+    // },
 });
 
 // TabNavigator.navigationOptions = {

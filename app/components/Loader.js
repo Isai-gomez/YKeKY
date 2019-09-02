@@ -1,11 +1,4 @@
-/**
- * Airbnb Clone App
- * @author: Andy
- * @Url: https://www.cubui.com
- */
-
 import React, { Component } from 'react';
-import { PropTypes } from 'prop-types';
 import {
   View,
   Image,
@@ -15,31 +8,18 @@ import {
 import colors from '../styles/colors';
 
 export default class Loader extends Component {
-  render() {
-    const { animationType, modalVisible } = this.props;
+  render () {
     return (
-      <Modal
-        animationType={animationType}
-        transparent
-        visible={modalVisible}
-      >
-        <View style={styles.wrapper}>
-          <View style={styles.loaderContainer}>
-            <Image
-              style={styles.loaderImage}
-              source={require('../img/greenLoader.gif')}
-            />
+      <View>
+        <Modal isVisible={modalVisible}>
+          <View style={{ flex: 1 }}>
+            <Text>I am the modal content!</Text>
           </View>
-        </View>
-      </Modal>
-    );
+        </Modal>
+      </View>
+    )
   }
 }
-
-Loader.propTypes = {
-  animationType: PropTypes.string.isRequired,
-  modalVisible: PropTypes.bool.isRequired,
-};
 
 const styles = StyleSheet.create({
   wrapper: {

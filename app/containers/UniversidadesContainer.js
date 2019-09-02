@@ -98,7 +98,7 @@ export default class UniversidadesContainer extends Component{
               leftAvatar={{ source: { uri: item.logo } }}
               title={`${item.nombre}`}
               titleStyle={{fontWeight: 'bold'}}
-              subtitle={`${item.clave_sep}`}
+              subtitle={`Clave: ${item.clave_sep}`}
               subtitleStyle={{fontSize: 12}}
               // onPress={() => {Alert.alert(`Haz presionado el item ${item.nombre}`)}}
               onPress={() => {this.props.navigation.navigate("DetalleUniversidad", {universidad: item})}}

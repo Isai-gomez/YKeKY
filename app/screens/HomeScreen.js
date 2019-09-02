@@ -40,7 +40,7 @@ class LogoutButton extends React.Component{
 export default class HomeScreen extends Component {
     static navigationOptions = ({ navigation }) => {
         return {
-            headerLeft: <MenuButton onPress={() => {}} />,
+            // headerLeft: <MenuButton onPress={() => {}} />,
             // headerRight: <LogoutButton />,
             headerTitle: <Logo />,
             headerTitleStyle: {

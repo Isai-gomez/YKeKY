@@ -1,9 +1,3 @@
-/**
- * Airbnb Clone App
- * @author: Andy
- * @Url: https://www.cubui.com
- */
-
 import React, { Component } from 'react';
 import {
   ScrollView,
@@ -15,6 +9,7 @@ import {
 } from 'react-native';
 import colors from '../../styles/colors';
 import iPhoneSize from '../../helpers/utils';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 const size = iPhoneSize();
 let cardSize = 100;

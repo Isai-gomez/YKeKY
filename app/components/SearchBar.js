@@ -4,8 +4,10 @@ import {
   View,
   Text,
   StyleSheet,
-  TextInput
+  TextInput,
+  TouchableOpacity
 } from 'react-native';
+import {Button} from 'react-native-elements';
 import colors from '../styles/colors';
 
 export default class SearchBar extends Component {
@@ -22,7 +24,13 @@ export default class SearchBar extends Component {
         />
         <TextInput style={styles.textInput} placeholder={'Escriba algo...'} >
         </TextInput>
+        
       </View>
+      <TouchableOpacity style={{left: 280, marginRight: 20, borderColor: 'lightgray', borderWidth: 2, width: 60, borderRadius: 50}}
+        onPress={this.props.onPressFilter}
+      >
+          <Text>+filtros</Text>
+        </TouchableOpacity>
     </View>
   	);
   }
