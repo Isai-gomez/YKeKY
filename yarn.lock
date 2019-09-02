@@ -5233,6 +5233,7 @@ react-native-inappbrowser-reborn@^3.0.0:
     invariant "^2.2.4"
     opencollective-postinstall "^2.0.2"
 
+<<<<<<< HEAD
 react-native-modal@^11.3.1:
   version "11.3.1"
   resolved "https://registry.yarnpkg.com/react-native-modal/-/react-native-modal-11.3.1.tgz#9f67728b36fdc299f97d3da1d131190a0337b89b"
@@ -5240,6 +5241,12 @@ react-native-modal@^11.3.1:
   dependencies:
     prop-types "^15.6.2"
     react-native-animatable "^1.3.1"
+=======
+react-native-maps@0.25.0:
+  version "0.25.0"
+  resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.25.0.tgz#81bc51eb50e33811a9e1c345cc48869413ead67d"
+  integrity sha512-PFJuW1pt+HnnnN0m0OGk29RSvICFVkK/DScX6cUk0SuCSN2DAHx0y6y57lZyYXcYqU4J4usNpfxgp/ccjASDiw==
+>>>>>>> 10351df0d41e4fec1f24dfd74ec2f4bd44e0f7ae
 
 react-native-onboarding-swiper@^1.1.0:
   version "1.1.0"
