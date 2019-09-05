@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
-import {View,Text,Image,StyleSheet,ScrollView,ImageBackground} from 'react-native';
+import {View,Text,Image,StyleSheet,ScrollView,ImageBackground,Button} from 'react-native';
 import MapView,{Marker} from 'react-native-maps';
+import ModalExample from '../components/Modal';
+
 
 
 export default class universidadVistaDetalle extends Component {
@@ -10,14 +12,33 @@ export default class universidadVistaDetalle extends Component {
         headerStyle: {
             backgroundColor: 'transparent',
           },
-        headerTransparent: true
+        headerTitleStyle: {
+            color:'#fff',
+            fontWeight: 'bold',
+            textShadowColor: 'rgba(0, 0, 0, 0.75)',
+            textShadowOffset: {width: -1, height: 1},
+            textShadowRadius: 10
+        },
+        headerTintColor:'#fff',
+        tintStyle:{
+            textShadowColor: 'rgba(0, 0, 0, 0.75)',
+            textShadowOffset: {width: -1, height: 1},
+            textShadowRadius: 10
+        },
+        headerTransparent: true,
+        visible: false
     }
 
     constructor(props){
         super(props);
         this.state = {
-            titulo : 'NombreUniveridad'
+            titulo : 'NombreUniveridad',
+            visible: false
         }
+    }
+    
+    toggleModal = () => {
+        this.setState({visible: !this.state.visible});
     }
 
     render() {
@@ -29,6 +50,7 @@ export default class universidadVistaDetalle extends Component {
             longitudeDelta: 0.0421,
         };
 
+        
         return (
             <ScrollView style={styles.container}>
                 <View style={styles.containerimg}>
@@ -36,12 +58,14 @@ export default class universidadVistaDetalle extends Component {
                         source={{uri:fachada}}
                         style={{width:'100%',height:'100%'}}
                     />
-                        <Image
-                        source={{uri:logo}}
-                        style={{width:75,height:75,position:'absolute',bottom:0, left:0,borderRadius:100,borderWidth:5, borderColor:'#fff'}}
-                        />
                 </View>
                 <View style={styles.contenido}>
+                    <View style={styles.logocontainer}>
+                        <Image
+                            source={{uri:logo}}
+                            style={{width:140,height:140,bottom:0,borderRadius:100,borderWidth:5, borderColor:'#ccc',marginTop:-80,position:'absolute'}}
+                        />
+                    </View>
                     <Text style={{fontFamily: 'GothamBold'}}>Clave de la SEP:</Text>
                     <Text style={{fontFamily: 'GothamBook'}}>{clave_sep}</Text>
                     <Text style={{fontFamily: 'GothamBold'}}>Nombre de la univesidad:</Text>
@@ -52,6 +76,20 @@ export default class universidadVistaDetalle extends Component {
                     <Text style={{fontFamily: 'GothamBook'}}>{colonia}</Text>
                     <Text style={{fontFamily: 'GothamBold'}}>Vision:</Text>
                     <Text style={{fontFamily: 'GothamBook'}}>{vision}</Text>
+                    <View style={{flexDirection:"row"}}>
+                        <Button
+                            title="Carreras"
+                            color="#841584"
+                            accessibilityLabel="Learn more about this purple button"
+                        />
+                        <ModalExample visible={this.state.visible} close={this.toggleModal}/>
+                        <Button
+                            onPress={this.toggleModal}
+                            title="Contacto"
+                            color="#841584"
+                            accessibilityLabel="Learn more about this purple button"
+                        />
+                    </View>
                 </View> 
          		<View style={styles.containermap}>
                     <MapView
@@ -63,7 +101,9 @@ export default class universidadVistaDetalle extends Component {
                         coordinate={{latitude:parseFloat(altitud),
                             longitude: parseFloat(longitud)}}
                         title={nombre}
-                     />
+                        >
+                            <Image source={{uri:logo}} style={{height: 28, width:28,borderRadius:100, borderWidth:2,borderColor:'red' }}/>
+                        </Marker>
                 </MapView>
                 </View>
             </ScrollView>
@@ -94,10 +134,19 @@ const styles = StyleSheet.create({
         flex:1,
         backgroundColor:'#ccc'
     },
+    logocontainer:{
+        height: 50,
+        backgroundColor:'#fff',
+        justifyContent:'center',
+        alignItems:'center',
+    },
     contenido:{
+        padding:8,
+        marginLeft:8,
+        marginRight:8,
         flex:2,
         backgroundColor:"#fff",
-        marginTop:7,
+        marginTop:'-20%',
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -108,6 +157,8 @@ const styles = StyleSheet.create({
         elevation: 4,
     },
     containermap:{
+        marginLeft:8,
+        marginRight:8,
         height:300,
         backgroundColor:'#fff',
         marginTop:7,
