@@ -3,6 +3,7 @@ import {Platform, StyleSheet, Text, View} from 'react-native';
 import SplashScreen from 'react-native-splash-screen'
 
 import AppNavigator from './navigator/StackNavigator';
+import TabNavigator from './screens/Dashboard';
 
 export default class App extends Component {
   componentDidMount() {

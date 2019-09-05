@@ -182,6 +182,14 @@ export default class HomeScreen extends Component {
                                Salir
                             </Text>
                         </TouchableOpacity>
+                        <TouchableOpacity style={styles.cartita}
+                            onPress={() => {this.props.navigation.navigate("Dashboard")}}
+                            >
+                            <Text><Icon name='tachometer-alt' size={50} color="black"/></Text>
+                            <Text style={{fontSize:15}}>
+                                Dashboard
+                            </Text>
+                        </TouchableOpacity>
                     </View>
                 </ScrollView>
             </View>

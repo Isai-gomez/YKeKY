@@ -2,6 +2,8 @@ import React,{Component} from 'react';
 import {View,Text,Animated,TouchableOpacity,Dimensions,StyleSheet,Alert,Image} from 'react-native';
 import Slide from '../components/Slider';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import SwipeComponent from '../components/SwipeComponent';
+import SwiperComponent from '../components/SwipeComponent';
 
 const matchAreaByQuestionNumber = require('../lib/questions/MachAreaVida');
 
@@ -126,6 +128,7 @@ export default class LifeScreen extends Component {
         }
         return (
             <View style={styles.container}>
+                <SwiperComponent />
                 <View style={styles.card}>
                     <View style={[StyleSheet.absoluteFill, styles.overlay]}>
                         <Animated.Text style={[styles.questionText, mainStyle]}>

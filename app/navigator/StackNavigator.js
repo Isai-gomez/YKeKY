@@ -16,6 +16,8 @@ import ResultLP from '../screens/ResultLifePlannerScreen';
 import Instruccion_Lp from '../screens/_Instruccion_lp';
 import Instruccion_Ts from '../screens/_Instruccion_Ts';
 
+import Dashboard from '../screens/Dashboard';
+
 //Screens Auth
 import Initial from '../screens/InitialScreen';
 import Swiper from '../screens/SwiperScreen';
@@ -38,7 +40,8 @@ const AppNavigator = createStackNavigator(
       Instruccion_Lp,
       Instruccion_Ts,
       DetalleUniversidad,
-      ModalComponent
+      ModalComponent,
+      Dashboard
     },
     {
       initialRouteName: "Home",

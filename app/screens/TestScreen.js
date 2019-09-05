@@ -263,7 +263,7 @@ const styles = StyleSheet.create({
         backgroundColor: "rgba(255,255,255, .1)"
     },
     optionText: {
-        fontSize: 25,
+        fontSize: 22,
         color: "black",
         marginBottom: 50
     },

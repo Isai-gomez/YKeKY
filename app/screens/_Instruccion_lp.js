@@ -39,7 +39,7 @@ class Instruccion_lp extends React.Component {
                                         resizeMode={'contain'}
                                 />    
                                 <Text style={{fontFamily: 'GothamBold',fontSize:20, textAlign:'center', color:'#fff'}}>
-                                    Califica las 12 areas
+                                    Califica las 12 áreas
                                 </Text>
                                 <Text style={{fontSize:20, textAlign:'center', color:'#fff',fontFamily: 'Myriad Pro',}}>
                                     Para cultivar las doce áreas te sugierio primero darles una calificaión:

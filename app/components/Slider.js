@@ -14,6 +14,7 @@ export default class Slide extends Component {
                 minimumValue= {0}
                 maximumValue= {10}
                 step={1}
+                thumbTouchSize={{width: 500, height: 200}}
                 value={this.state.value}
                 onValueChange={value => this.setState({ value })}
                 minimumTrackTintColor='#FFA500'  
