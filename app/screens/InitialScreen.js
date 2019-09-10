@@ -11,9 +11,13 @@ export default class InitialScreen extends Component {
 
     render(){
         return(
-            <ImageBackground source={require('../assets/images/appInicioFondo.png')} style={{width: '100%', height: '100%'}} >
+            <ImageBackground source={require('../assets/Initial/Recurso6.png')} style={{width: '100%', height: '100%'}} >
                 {/* <StatusBar barStyle = 'default' hidden = {false} backgroundColor = {colors.blue} translucent = {true}/> */}
                 <View style={styles.container}>
+                    <Image source={require('../assets/Initial/Recurso1.png')} style={{width:120, height:120,position:'absolute',top:'-6%',left:'-11%'}}/>
+                    <Image source={require('../assets/Initial/Recurso2.png')} style={{width:150, height:150,position:'absolute',top:'5%',right:'-17%'}}/>
+                    <Image source={require('../assets/Initial/Recurso3.png')} style={{width:100, height:110,position:'absolute',bottom:'35%',left:'-5%'}}/>
+                    <Image source={require('../assets/Initial/Recurso4.png')} style={{width:150, height:150,position:'absolute',bottom:'32%',right:'-17%'}}/>
                     <View style={styles.main}>
                         <View style={styles.logoContainer}>
                             <Image source={require('../assets/inicio.png')} style={styles.logo}/>
@@ -63,7 +67,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         position: 'relative',
-        top: -70
+        top: -40
     },
     titulo: {
         color: colors.blue,
@@ -78,8 +82,8 @@ const styles = StyleSheet.create({
     buton: {
         backgroundColor: colors.blue,
         paddingHorizontal: 80,
-        paddingVertical: 15,
-        borderRadius: 30,
+        paddingVertical: 20,
+        borderRadius: 5,
         marginTop: 20,
         top: 25
     }

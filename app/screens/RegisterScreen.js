@@ -1,11 +1,52 @@
 import React,{Component} from 'react';
-import {View,ImageBackground,TextInput,TouchableOpacity,StyleSheet,Text,Image} from 'react-native';
+import {View,ImageBackground,TextInput,TouchableOpacity,StyleSheet,Text,Image,Alert} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import axios from 'axios';
+
+const url = 'http://18.225.10.133:3001/api/users/'
 
 export default class RegisterScreen extends Component {
     static navigationOptions = {
         header: null
     }
+
+    constructor(){
+        super();
+        this.state = {
+            first_name: '',
+            last_name: '',
+            username: '',
+            email: '',
+            password: '',
+            error: []
+        }
+    }
+    
+
+
+    async onRegisterPressed(){
+        axios.post(url,{
+            first_name: this.state.first_name,
+            last_name: this.state.last_name,
+            username: this.state.email,
+            email: this.state.email,
+            password: this.state.password,
+        }).then((response) => {
+            let res = response;
+            if(response.status >= 200 && response.status < 300){
+                this.setState({error: ""});
+                Alert.alert("Intrucciones", "Verifique su bandeja de correo")
+            }else{
+                let error = res;
+                throw error
+            }
+        }).catch(error => {
+            console.warn("Error: " + error);
+            this.setState({error:error})
+            Alert.alert("Error", "Error con el registro")
+        })
+    }
+
     render() {
         return (
             <ImageBackground source={require('../assets/fondo1.png')} style={{width:'100%', height:'100%',resizeMode: 'cover'}}>
@@ -25,26 +66,35 @@ export default class RegisterScreen extends Component {
                         </View>
                         <View style={styles.form}>
                             <TextInput
-                                placeholder='Nombre'
-                                placeholderTextColor= 'rgba(2,2,53, 0.5)'
+                                placeholder='Nombre del usuario'
+                                placeholderTextColor='rgba(29,58,108, 1.0)'
                                 style={styles.textInput}
+                                onChangeText={(first_name) => {this.setState({first_name})}}
                             />
                             <TextInput
-                                placeholder='Apellido'
-                                placeholderTextColor= 'rgba(2,2,53, 0.5)'
+                                placeholder='Apellido del usuario'
+                                placeholderTextColor='rgba(29,58,108, 1.0)'
                                 style={styles.textInput}
+                                onChangeText={(last_name) => {this.setState({last_name})}}
                             />                                
                             <TextInput
-                                 placeholder='Correo de Email'
-                                 placeholderTextColor= 'rgba(2,2,53, 0.5)'
-                                 style={styles.textInput}
+                                placeholder='Correo de Email'
+                                placeholderTextColor='rgba(29,58,108, 1.0)'
+                                style={styles.textInput}
+                                onChangeText={(email) => {this.setState({email})}}
                             />
                             <TextInput
-                                 placeholder='Contraseña'
-                                 placeholderTextColor= 'rgba(2,2,53, 0.5)'
-                                 style={styles.textInput}
+                                placeholder='Contraseña'
+                                placeholderTextColor='rgba(29,58,108, 1.0)'
+                                style={styles.textInput}
+                                onChangeText={(password) => {this.setState({password})}} 
                             />
-                            <TouchableOpacity style={styles.botonI}><Text style={styles.textBoton}>REGÍSTRATE</Text></TouchableOpacity>
+                            <TouchableOpacity 
+                                style={styles.botonI}
+                                onPress={() => {this.onRegisterPressed()}}
+                                >
+                                <Text style={styles.textBoton}>REGÍSTRATE</Text>
+                            </TouchableOpacity>
                             <View style={styles.containerR}> 
                                 <TouchableOpacity 
                                     style={styles.boton}
@@ -53,10 +103,11 @@ export default class RegisterScreen extends Component {
                                     <Text style={styles.textSesion}>INICIA SESIÓN</Text>
                                 </TouchableOpacity>
                             </View>
-                            <View style={styles.containerR}>
-                                <TouchableOpacity style={styles.botonesR}><Text style={{fontSize: 12,textAlign:'center',fontFamily: 'GothamBook',}}><Icon name='facebook-f' size={25} color="black"/>Regístrate con Facebook</Text></TouchableOpacity>
+                                <TouchableOpacity style={styles.botonesR}><Text style={{fontSize: 12,textAlign:'center',fontFamily: 'GothamBook',}}><Icon name='facebook' size={25} color="black"/>Regístrate con Facebook</Text></TouchableOpacity>
                                 <TouchableOpacity style={styles.botonesR}><Text style={{fontSize: 12,textAlign:'center',fontFamily: 'GothamBook',}}><Icon name='google' size={25} color="black"/>Regístrate con Google</Text></TouchableOpacity>
-                            </View>
+                            {/* <View style={styles.containerR}>
+                                
+                            </View> */}
                         </View>                        
                     </View>
                 </ImageBackground> 
@@ -71,7 +122,7 @@ export default class RegisterScreen extends Component {
     
     logoContainer: {
         margin:0,
-        flex: 1,
+        flex: 0.7,
         alignItems: 'center',
         justifyContent: 'center',
         //backgroundColor: 'red'
@@ -83,36 +134,38 @@ export default class RegisterScreen extends Component {
     },
     form: {
         flex:2,
-        alignItems: 'center'
+        alignItems: 'center',
+        // backgroundColor: 'red'
     },
     tituloContainer:{
         flex: 0.4,
         alignItems: 'center',
-        justifyContent: 'flex-end',
+        justifyContent: 'center',
     },
     titulo: {
         fontFamily: 'GothamBold',
         fontSize: 20,
         //fontWeight: 'bold',
-        color: 'rgba(2,2,53, 1.0)'
+        color: 'rgba(29,58,108, 1.0)'
     },
     textInput: {
         fontFamily: 'GothamBook',
         width: '80%',
-        borderBottomColor: 'rgba(2,2,53, 1.0)',
+        borderBottomColor: 'rgba(29,58,108, 1.0)',
         borderBottomWidth: 2
     },
     botonI: {
-        backgroundColor:'rgba(2,2,53, 1.0)',
+        backgroundColor:'rgba(29,58,108, 1.0)',
         borderRadius: 5,
         borderWidth: 2,
         padding: 0,
-        borderColor: 'rgba(2,2,53, 1.0)',
+        borderColor: 'rgba(29,58,108, 1.0)',
         marginHorizontal: 1,
         width: '80%',
         height: 35,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginTop: '7%'
     },
     textBoton:{
         fontFamily: 'GothamBold',
@@ -121,7 +174,7 @@ export default class RegisterScreen extends Component {
     },
     containerR: {
         marginTop:'3%',
-        flexDirection: 'row',
+        flexDirection: 'column',
         width:'100%',
         alignItems:"center",
         justifyContent:'center'
@@ -129,9 +182,10 @@ export default class RegisterScreen extends Component {
     botonesR: {
         borderRadius: 5,
         borderWidth: 2 ,
-        width:'49.5%',
-        borderColor: 'rgba(2,2,53, 1.0)',
-        marginHorizontal: 1
+        width:'80%',
+        borderColor: 'rgba(29,58,108, 1.0)',
+        marginHorizontal: 1,
+        marginTop: '3%'
     },
     boton:{
         backgroundColor:'#ffcf24',
@@ -147,7 +201,7 @@ export default class RegisterScreen extends Component {
     },
     textSesion:{
         fontFamily: 'GothamBold',
-        color: 'rgba(2,2,53, 1.0)',
+        color: 'rgba(29,58,108, 1.0)',
         fontSize: 15
     }
  })
