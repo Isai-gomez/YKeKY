@@ -2,7 +2,6 @@ import React,{Component} from 'react';
 import {View,Text,Animated,TouchableOpacity,Dimensions,StyleSheet,Alert,Image} from 'react-native';
 import Slide from '../components/Slider';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import SwipeComponent from '../components/SwipeComponent';
 import SwiperComponent from '../components/SwipeComponent';
 
 const matchAreaByQuestionNumber = require('../lib/questions/MachAreaVida');
@@ -38,6 +37,7 @@ export default class LifeScreen extends Component {
             answers : ["Muy mal","Mal","Bien","Muy Bien"],
             animation: new Animated.Value(0),
             progress: new Animated.Value(0),
+            value:5,
         }
         saveResponse = ( response, questionIndex ) => {
             console.log( 'estado sin act: ', this.state.respuestas );
@@ -143,7 +143,7 @@ export default class LifeScreen extends Component {
                         }}>
                             <Animated.View>
                                 <Slide
-                                
+                                    value={this.state.value}
                                 />
                             </Animated.View>
                         </View>                        

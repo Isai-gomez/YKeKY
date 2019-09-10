@@ -46,9 +46,5 @@ const styles =StyleSheet.create({
     borderColor:'#ccc',
     borderWidth:2,
     width:'80%'
-
   }
-
-
-
 })
