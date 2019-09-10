@@ -2,7 +2,9 @@ import React,{Component} from 'react';
 import {View,Image,Text,TextInput,ImageBackground,StyleSheet,TouchableOpacity,Alert} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import AsyncStorage from '@react-native-community/async-storage';
+import { CheckBox } from 'react-native-elements';
 import axios from 'axios';
+import LinearGradient from 'react-native-linear-gradient';
 
 const url = 'http://18.225.10.133:3001/api/users/auth/';
 
@@ -21,7 +23,8 @@ export default class LoginScreen extends Component {
         this.state = {
             email: '',
             password: '',
-            error: ''
+            error: '',
+            checked:true,
         }
     }
 
@@ -81,6 +84,9 @@ export default class LoginScreen extends Component {
             Alert.alert("Error", "Error de conexión con el servidor" + error);
         })
     }
+    oncheked = () => {
+        this.setState({checked:!this.state.checked});
+    }
 
     render() {
         return (
@@ -89,8 +95,8 @@ export default class LoginScreen extends Component {
                     <View style={styles.container}>
                         <Image source={require('../assets/Recurso1.1.png')} style={{width:135, height:70,position:'absolute',top:'0%',left:'0%'}}/>
                         <Image source={require('../assets/Recurso2.2.png')} style={{width:176, height:60,position:'absolute',top:'0%',right:'0%'}}/>
-                        <Image source={require('../assets/Recurso4.4.png')} style={{width:130, height:70,position:'absolute',bottom:'0%',left:'0%'}}/>
-                        <Image source={require('../assets/Recurso3.3.png')} style={{width:130, height:70,position:'absolute',bottom:'0%',right:'0%'}}/>
+                        <Image source={require('../assets/Recurso4.4.png')} style={{width:180, height:100,position:'absolute',bottom:'-3%',left:'0%'}}/>
+                        <Image source={require('../assets/Recurso3.3.png')} style={{width:137, height:80,position:'absolute',bottom:'-1%',right:'0%'}}/>
                         <View style={styles.logoContainer}>
                             <Image source={require('../assets/inicio.png')} style={styles.logo} />
                             <View style={styles.title}>
@@ -98,27 +104,47 @@ export default class LoginScreen extends Component {
                             </View>
                         </View>                       
                         <View style={styles.form}> 
-                            <TextInput
-                                style={styles.textInput} 
-                                value={this.state.email}
-                                placeholder={'Nombre de Usuario'}
-                                placeholderTextColor={'rgba(2,2,53, 1.0)'}
-                                onChangeText={(email) => {this.setState({email: email})}}
-                            />
-                            {/* <Icon name="contact" size={30} color="#900" />; */}
-                            <TextInput
-                                style={styles.textInput} 
-                                placeholder={'Contraseña'}
-                                placeholderTextColor={'rgba(2,2,53, 1.0)'}
-                                secureTextEntry={true}
-                                onChangeText={(password) => {this.setState({password: password})}}
-                            />
-                            <TouchableOpacity 
-                            style={styles.botonIzq}
-                            onPress={()=>{this.props.navigation.navigate('Recuperar')}}
-                            >
-                                <Text style={{color: 'rgba(2,2,53, 1.0)',fontFamily:'GothamBook'}}>¿Olvido su contraseña?</Text>
-                            </TouchableOpacity>
+                            <View style={{flexDirection:'row', width:'100%',alignItems:'flex-end',justifyContent:'center'}}>
+                                <View style={{borderBottomWidth:2,borderBottomColor: 'rgba(29,58,108, 1.0)',marginBottom:-2,paddingBottom:5}}>
+                                        <Image source={require('../assets/icolog.png')} style={{width:20, height:26,}}/>
+                                </View>
+                                <TextInput
+                                    style={styles.textInput} 
+                                    value={this.state.email}
+                                    placeholder={'Nombre de Usuario'}
+                                    placeholderTextColor={'rgba(29,58,108, 1.0)'}
+                                    onChangeText={(email) => {this.setState({email: email})}}
+                                />
+                            </View>
+                            <View style={{flexDirection:'row', width:'100%',alignItems:'flex-end',justifyContent:'center'}}>
+                                <View style={{borderBottomWidth:2,borderBottomColor: 'rgba(29,58,108, 1.0)',marginBottom:-2,paddingBottom:5}}>
+                                    <Image source={require('../assets/icocontra.png')} style={{width:20, height:28,}}/>
+                                </View>
+                                <TextInput
+                                    style={styles.textInput} 
+                                    placeholder={'Contraseña'}
+                                    placeholderTextColor={'rgba(29,58,108, 1.0)'}
+                                    secureTextEntry={true}
+                                    onChangeText={(password) => {this.setState({password: password})}}
+                                /> 
+                            </View>
+                            <View style={styles.extra}>                          
+                                <TouchableOpacity 
+                                style={styles.botonIzq}
+                                onPress={()=>{this.props.navigation.navigate('Recuperar')}}
+                                >
+                                    <Text style={{color: 'rgba(29,58,108, 1.0)',fontFamily:'GothamBold', fontSize:10}}>RECUPERAR CONTRASEÑA</Text>
+                                </TouchableOpacity>   
+                                <CheckBox
+                                    title='RECORDARME'
+                                    checked={this.state.checked}
+                                    onPress={this.oncheked}
+                                    checkedIcon={<Image style={{width:25,height:25}} source={require('../assets/checklog1.png')} />}
+                                    uncheckedIcon={<Image style={{width:25,height:25}} source={require('../assets/checklog.png')} />}
+                                    containerStyle={styles.CheckBox}
+                                    textStyle={styles.checktext}
+                                />
+                            </View>                      
                             <TouchableOpacity 
                                 style={styles.botonIS}
                                 // onPress={() => {this.props.navigation.navigate('Home', {email: this.state.email})}}
@@ -126,28 +152,33 @@ export default class LoginScreen extends Component {
                                 >
                                     <Text style={styles.textIS}>INICIA SESIÓN</Text>
                             </TouchableOpacity>
-                            <View style={[styles.redesContainer,{marginTop: '5%'}]}>
+                            <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={['#FFD549', '#E88F4F']}  style={styles.gradient}>
                                 <TouchableOpacity 
                                     style={styles.botonRS}
                                     onPress={() => {this.props.navigation.navigate("Register")}}
-                                    >
-                                        <Text style={{fontFamily: 'GothamBold',color:'rgba(2,2,53, 1.0)',fontSize:15}}>REGÍSTRATE</Text>
+                                    >   
+                                        <Text style={{fontFamily: 'GothamBold',color:'rgba(29,58,108, 1.0)',fontSize:15}}>REGÍSTRATE</Text>
                                 </TouchableOpacity>
-                            </View>
-                            <Text style={{color: 'rgba(2,2,53, 1.0)',marginTop:'5%'}}>Inicia sesión con:</Text>
+                            </LinearGradient>
                             <View style={styles.redesContainer}>
                                 <TouchableOpacity 
                                     style={styles.botonR}
                                     onPress={() => {Alert.alert("Facebook aún no disponible")}}
-                                >
-                                    <Text style={{fontSize: 12,fontFamily:'GothamBook'}}><Icon name='facebook' size={25} color="black"/>Regístrate con Facebook</Text>
+                                >  
+                                    <View style={{flexDirection:'row',alignItems:'center'}}>
+                                        <Image style={{width:25,height:25}} source={require('../assets/icoface.png')}/>
+                                        <Text style={{fontSize: 12,fontFamily:'GothamBook',color:'rgba(29,58,108, 1.0)'}}> Regístrate con Facebook</Text>
+                                    </View> 
                                 </TouchableOpacity>
 
                                 <TouchableOpacity 
                                     style={styles.botonR}
                                     onPress={() => {Alert.alert("Google aún no disponible")}}
-                                >
-                                    <Text style={{fontSize: 12,textAlign:'center',fontFamily:'GothamBook'}}><Icon name='google' size={25} color="black"/>Regístrate con Google</Text>
+                                >  
+                                    <View style={{flexDirection:'row',alignItems:'center'}}>
+                                        <Image style={{width:25,height:25}} source={require('../assets/icogoogle.png')}/>
+                                        <Text style={{fontSize: 12,textAlign:'center',fontFamily:'GothamBook',color:'rgba(29,58,108, 1.0)'}}> Regístrate con Google</Text>
+                                    </View>
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -189,32 +220,40 @@ const styles = StyleSheet.create({
         fontFamily: 'GothamBold',
         fontSize: 20,
         //fontWeight: 'bold',
-        color: 'rgba(2,2,53, 1.0)',
+        color: 'rgba(29,58,108, 1.0)',
         alignItems: 'flex-end'
     },
     textInput: {
         fontFamily:'GothamBook',
-        width: '80%',
-        borderBottomColor: 'rgba(2,2,53, 1.0)',
-        borderBottomWidth: 2
+        width: '70%',
+        borderBottomColor: 'rgba(29,58,108, 1.0)',
+        borderBottomWidth: 2,
+        marginBottom:-2
     },
     botonR: {
         borderRadius: 5,
         borderWidth: 2,
         padding: 0,
-        borderColor: 'rgba(2,2,53, 1.0)',
+        marginBottom:5,
+        borderColor: 'rgba(29,58,108, 1.0)',
         marginHorizontal: 1,
-        width: '49.5%',
+        width: '80%',
         height: 40,
         alignItems: 'center',
         justifyContent: 'center'
     },
     botonIzq: {
-        right: '20%'
+        height:'60%',
+        width:'52%',
+        marginTop:7,
+        borderRadius: 5,
+        borderWidth: 1,
+        borderColor: 'rgba(29,58,108, 0.5)',
+        padding:2,
     },
     botonIS: {
-        marginTop: '5%',
-        backgroundColor: 'rgba(2,2,53, 1.0)',
+        margin:5,
+        backgroundColor: 'rgba(29,58,108, 1.0)',
         width: '80%',
         borderRadius: 5,
         height: 35,
@@ -222,13 +261,13 @@ const styles = StyleSheet.create({
         alignItems:'center'
     },
     botonRS : {
-        backgroundColor:'#ffcf24',
-        borderRadius: 5,
-        borderWidth: 2,
+        backgroundColor:'transparent',
+        // borderRadius: 5,
+        // borderWidth: 2,
         padding: 0,
-        borderColor: '#ffcf24',
+        // borderColor: '#ffcf24',
         marginHorizontal: 1,
-        width: '80%',
+        width: '100%',
         height: 35,
         alignItems: 'center',
         justifyContent: 'center'
@@ -240,9 +279,30 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     redesContainer:{
+        marginTop:'5%',
         flexDirection: 'row',
+        flexWrap:'wrap',
         width: '100%',
         justifyContent:'center',
         alignItems: 'center',
+    },
+    extra:{
+        display:'flex',width:'80%', flexDirection:'row',
+    },
+    CheckBox:{
+        backgroundColor:'transparent',
+        width:'42%',
+        height:10
+      
+        
+    },
+    checktext:{
+        color: 'rgba(29,58,108, 1.0)',
+        fontFamily:'GothamBold', 
+        fontSize:10
+    },
+    gradient:{
+        borderRadius: 5,
+        width: '80%',
     }
 })

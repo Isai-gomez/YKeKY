@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import {View,ImageBackground,TextInput,TouchableOpacity,StyleSheet,Text,Image,Alert} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import axios from 'axios';
 
@@ -65,49 +66,80 @@ export default class RegisterScreen extends Component {
                             </View>
                         </View>
                         <View style={styles.form}>
+                            <View style={{flexDirection:'row', width:'100%',alignItems:'flex-end',justifyContent:'center'}}>
+                                <View style={{borderBottomWidth:2,borderBottomColor: 'rgba(29,58,108, 1.0)',marginBottom:0,paddingBottom:5}}>
+                                        <Image source={require('../assets/icolog.png')} style={{width:20, height:25,}}/>
+                                </View>
                             <TextInput
                                 placeholder='Nombre del usuario'
                                 placeholderTextColor='rgba(29,58,108, 1.0)'
                                 style={styles.textInput}
                                 onChangeText={(first_name) => {this.setState({first_name})}}
                             />
-                            <TextInput
-                                placeholder='Apellido del usuario'
-                                placeholderTextColor='rgba(29,58,108, 1.0)'
-                                style={styles.textInput}
-                                onChangeText={(last_name) => {this.setState({last_name})}}
-                            />                                
-                            <TextInput
-                                placeholder='Correo de Email'
-                                placeholderTextColor='rgba(29,58,108, 1.0)'
-                                style={styles.textInput}
-                                onChangeText={(email) => {this.setState({email})}}
-                            />
-                            <TextInput
-                                placeholder='Contraseña'
-                                placeholderTextColor='rgba(29,58,108, 1.0)'
-                                style={styles.textInput}
-                                onChangeText={(password) => {this.setState({password})}} 
-                            />
+                            </View>
+                            <View style={{flexDirection:'row', width:'100%',alignItems:'flex-end',justifyContent:'center'}}>
+                                <View style={{borderBottomWidth:2,borderBottomColor: 'rgba(29,58,108, 1.0)',marginBottom:0,paddingBottom:5}}>
+                                    <Image source={require('../assets/icocontra.png')} style={{width:20, height:28,}}/>
+                                </View>  
+                                <TextInput
+                                    placeholder='Apellido'
+                                    placeholderTextColor= 'rgba(29,58,108, 1.0)'
+                                    style={styles.textInput}
+                                    onChangeText={(last_name) => {this.setState({last_name})}}
+                                />
+                            </View>   
+                            <View style={{flexDirection:'row', width:'100%',alignItems:'flex-end',justifyContent:'center'}}> 
+                                <View style={{borderBottomWidth:2,borderBottomColor: 'rgba(29,58,108, 1.0)',marginBottom:0,paddingBottom:5}}>
+                                    <Image source={require('../assets/icocorr.png')} style={{width:20, height:16,}}/>
+                                </View>                          
+                                <TextInput
+                                    placeholder='Correo de Email'
+                                    placeholderTextColor= 'rgba(29,58,108, 1.0)'
+                                    style={styles.textInput}
+                                    onChangeText={(email) => {this.setState({email})}}
+                                />
+                            </View>  
+                            <View  style={{flexDirection:'row', width:'100%',alignItems:'flex-end',justifyContent:'center'}}>
+                                <View style={{borderBottomWidth:2,borderBottomColor: 'rgba(29,58,108, 1.0)',marginBottom:0,paddingBottom:5}}>
+                                    <Image source={require('../assets/icocontra.png')} style={{width:20, height:28,}}/>
+                                </View>
+                                <TextInput
+                                    placeholder='Contraseña'
+                                    placeholderTextColor= 'rgba(29,58,108, 1.0)'
+                                    style={styles.textInput}
+                                    onChangeText={(password) => {this.setState({password})}}
+                                />
+                            </View>
                             <TouchableOpacity 
                                 style={styles.botonI}
-                                onPress={() => {this.onRegisterPressed()}}
-                                >
+                                onPress={()=>{this.onRegisterPressed()}}
+                            >
                                 <Text style={styles.textBoton}>REGÍSTRATE</Text>
-                            </TouchableOpacity>
+                                </TouchableOpacity>
                             <View style={styles.containerR}> 
-                                <TouchableOpacity 
-                                    style={styles.boton}
-                                    onPress={() => {this.props.navigation.navigate("Login")}}
-                                >
-                                    <Text style={styles.textSesion}>INICIA SESIÓN</Text>
+                                <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={['#FFD549', '#E88F4F']}  style={styles.gradient}>
+                                    <TouchableOpacity 
+                                        style={styles.boton}
+                                        onPress={() => {this.props.navigation.navigate("Login")}}
+                                    >
+                                        <Text style={styles.textSesion}>INICIA SESIÓN</Text>
+                                    </TouchableOpacity>
+                                </LinearGradient>
+                            </View>
+                            <View style={styles.containerR}>
+                                <TouchableOpacity style={styles.botonesR}>
+                                    <View style={{flexDirection:'row',alignItems:'center'}}>
+                                        <Image style={{width:25,height:25}} source={require('../assets/icoface.png')}/>
+                                        <Text style={{fontSize: 12,textAlign:'center',fontFamily: 'GothamBook',color:'rgba(29,58,108, 1.0)'}}>Regístrate con Facebook</Text>
+                                    </View>
+                                </TouchableOpacity>
+                                <TouchableOpacity style={styles.botonesR}>
+                                    <View style={{flexDirection:'row',alignItems:'center'}}>
+                                        <Image style={{width:25,height:25}} source={require('../assets/icogoogle.png')}/>
+                                        <Text style={{fontSize: 12,textAlign:'center',fontFamily: 'GothamBook',color:'rgba(29,58,108, 1.0)'}}>Regístrate con Google</Text>
+                                    </View>
                                 </TouchableOpacity>
                             </View>
-                                <TouchableOpacity style={styles.botonesR}><Text style={{fontSize: 12,textAlign:'center',fontFamily: 'GothamBook',}}><Icon name='facebook' size={25} color="black"/>Regístrate con Facebook</Text></TouchableOpacity>
-                                <TouchableOpacity style={styles.botonesR}><Text style={{fontSize: 12,textAlign:'center',fontFamily: 'GothamBook',}}><Icon name='google' size={25} color="black"/>Regístrate con Google</Text></TouchableOpacity>
-                            {/* <View style={styles.containerR}>
-                                
-                            </View> */}
                         </View>                        
                     </View>
                 </ImageBackground> 
@@ -130,17 +162,19 @@ export default class RegisterScreen extends Component {
     logo: {
         width: 200,
         height: 100,
-        resizeMode: 'contain'
+        resizeMode: 'contain',
+        margin:0
     },
     form: {
         flex:2,
         alignItems: 'center',
-        // backgroundColor: 'red'
+        marginTop:-40
     },
     tituloContainer:{
         flex: 0.4,
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'flex-end',
+        marginTop:-30
     },
     titulo: {
         fontFamily: 'GothamBold',
@@ -155,6 +189,7 @@ export default class RegisterScreen extends Component {
         borderBottomWidth: 2
     },
     botonI: {
+        marginTop:3,
         backgroundColor:'rgba(29,58,108, 1.0)',
         borderRadius: 5,
         borderWidth: 2,
@@ -173,28 +208,31 @@ export default class RegisterScreen extends Component {
         fontSize: 15,
     },
     containerR: {
-        marginTop:'3%',
-        flexDirection: 'column',
+        flexWrap:'wrap',
+        marginTop:3,
+        flexDirection: 'row',
         width:'100%',
         alignItems:"center",
         justifyContent:'center'
     },
     botonesR: {
+        alignItems:'center',
+        height:35,
         borderRadius: 5,
         borderWidth: 2 ,
         width:'80%',
         borderColor: 'rgba(29,58,108, 1.0)',
-        marginHorizontal: 1,
-        marginTop: '3%'
+        marginBottom:2
+
     },
     boton:{
-        backgroundColor:'#ffcf24',
+        backgroundColor:'transparent',
         borderRadius: 5,
-        borderWidth: 2,
+        // borderWidth: 2,
         padding: 0,
-        borderColor: '#ffcf24',
+        // borderColor: '#ffcf24',
         marginHorizontal: 1,
-        width: '80%',
+        width: '100%',
         height: 35,
         alignItems: 'center',
         justifyContent: 'center'
@@ -203,5 +241,9 @@ export default class RegisterScreen extends Component {
         fontFamily: 'GothamBold',
         color: 'rgba(29,58,108, 1.0)',
         fontSize: 15
+    },
+    gradient:{
+        borderRadius: 5,
+        width: '80%',
     }
  })
