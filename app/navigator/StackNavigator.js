@@ -17,6 +17,11 @@ import Instruccion_Lp from '../screens/_Instruccion_lp';
 import Instruccion_Ts from '../screens/_Instruccion_Ts';
 
 import Dashboard from '../screens/Dashboard';
+import DashboardScreen from '../screens/DashboardScreen';
+
+import DirectorioP1 from '../screens/directorio/Pantalla1';
+
+import Becas from '../screens/BecasScreen';
 
 //Screens Auth
 import Initial from '../screens/InitialScreen';
@@ -41,10 +46,13 @@ const AppNavigator = createStackNavigator(
       Instruccion_Ts,
       DetalleUniversidad,
       ModalComponent,
-      Dashboard
+      Dashboard,
+      DirectorioP1,
+      DashboardScreen,
+      Becas
     },
     {
-      initialRouteName: "Home",
+      initialRouteName: "DashboardScreen",
       defaultNavigationOptions: {
         headerStyle: {
             backgroundColor: '#F3CE12',

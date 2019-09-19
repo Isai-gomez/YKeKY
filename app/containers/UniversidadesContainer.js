@@ -20,7 +20,7 @@ export default class UniversidadesContainer extends Component{
     this.makeRemoteRequest();
   }
 
-  makeRemoteRequest = () => {    const url = `http://18.225.10.133:3001/api/universidades/`;
+  makeRemoteRequest = () => {    const url = `http://3.15.183.131:3001/api/instituciones/`;
     this.setState({ loading: true });
 
     fetch(url)

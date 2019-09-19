@@ -7,6 +7,7 @@ import axios from 'axios';
 import LinearGradient from 'react-native-linear-gradient';
 
 const url = 'http://18.225.10.133:3001/api/users/auth/';
+const urlLocal = 'http://192.168.1.65:3001/api/users/auth/';
 
 export default class LoginScreen extends Component {
     static navigationOptions = {
@@ -48,42 +49,43 @@ export default class LoginScreen extends Component {
         }
       }
 
-    // onLoginPressed = async() => {
-    //     if(this.state.email !== '' && this.state.password !== ''){
-    //         const firstPair = ["isLoggedIn", "1"]
-    //         const secondPair = ["usuario", this.state.email]
-    //         await AsyncStorage.multiSet([firstPair, secondPair])
-    //         console.log('email: ' + this.state.email);
-    //         this.props.navigation.navigate('Home');
-    //     } else {
-    //         Alert.alert("Email y/o Password son requeridos")
-    //     }
+    onLoginPressed = async() => {
+        if(this.state.email !== '' && this.state.password !== ''){
+            const firstPair = ["isLoggedIn", "1"]
+            const secondPair = ["usuario", this.state.email]
+            await AsyncStorage.multiSet([firstPair, secondPair])
+            console.log('email: ' + this.state.email);
+            this.props.navigation.navigate('DashboardScreen');
+        } else {
+            Alert.alert("Email y/o Password son requeridos")
+        }
+    }
+
+    // async onLoginPressed(){
+    //     axios.post(url,{
+    //         username: this.state.email,
+    //         password: this.state.password
+    //     }).then(response =>{
+    //         let res = response;
+    //         if (response.status >= 200 && response.status < 300){
+    //             console.warn('Token is: ', res.data.id);
+    //             this.setState({error: ""});
+    //             const firstPair = ["isLoggedIn", "1"]
+    //             const secondPair = ["usuario", this.state.email]
+    //             AsyncStorage.multiSet([firstPair, secondPair])
+    //             console.log('email: ' + this.state.email);
+    //             this.props.navigation.navigate('Home');
+    //         }else{
+    //             let error = res;
+    //             throw error
+    //         }
+    //     }).catch(error => {
+    //         //console.warn("error: " + error);
+    //         this.setState({error});s
+    //         Alert.alert("Advertencia!", error.response.data.error.message);
+    //     })
     // }
 
-    async onLoginPressed(){
-        axios.post(url,{
-            username: this.state.email,
-            password: this.state.password
-        }).then(response =>{
-            let res = response;
-            if (response.status >= 200 && response.status < 300){
-                this.setState({error: ""});
-                const firstPair = ["isLoggedIn", "1"]
-                const secondPair = ["usuario", this.state.email]
-                AsyncStorage.multiSet([firstPair, secondPair])
-                console.log('email: ' + this.state.email);
-                this.props.navigation.navigate('Home');
-            } else{
-                let error = res;
-                throw error
-            }
-        }).catch(error => {
-            console.warn("error: " + error);
-            this.setState({error: error});
-            console.log("error: " + error);
-            Alert.alert("Error", "Error de conexión con el servidor" + error);
-        })
-    }
     oncheked = () => {
         this.setState({checked:!this.state.checked});
     }
