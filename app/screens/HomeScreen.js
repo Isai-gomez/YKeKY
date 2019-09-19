@@ -37,6 +37,8 @@ class LogoutButton extends React.Component{
     }
 }
 
+const url1 = 'https://www.becas.sep.gob.mx/'
+
 export default class HomeScreen extends Component {
     static navigationOptions = ({ navigation }) => {
         return {
@@ -86,9 +88,9 @@ export default class HomeScreen extends Component {
         }
     }
       
-    async openLink() {
+    async openLink(link) {
         try {
-          const url = 'https://www.becas.sep.gob.mx/'
+          const url = link
           if (await InAppBrowser.isAvailable()) {
             const result = await InAppBrowser.open(url, {
               // iOS Properties
@@ -164,13 +166,13 @@ export default class HomeScreen extends Component {
                                 Escolar
                             </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.cartita} onPress={ ()=> {this.openLink()}} >
+                        <TouchableOpacity style={styles.cartita} onPress={ ()=> {this.openLink('https://www.becas.sep.gob.mx/')}} >
                             <Text><Icon name='edit' size={50} color="black"/></Text>
                             <Text style={{fontSize:15}}>
                                Becas
                             </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.cartita} onPress={ ()=> Linking.openURL('https://www.16personalities.com/es') } >
+                        <TouchableOpacity style={styles.cartita} onPress={ ()=> {this.openLink('https://www.16personalities.com/es')}} >
                             <Text><Icon name='users' size={50} color="black"/></Text>
                             <Text style={{fontSize:15}}>
                                 16personalities

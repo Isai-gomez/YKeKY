@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import AsyncStorage from '@react-native-community/async-storage';
 import { CheckBox } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
+import  {LoginManager} from 'react-native-fbsdk'
 
 export default class LoginScreen extends Component {
     static navigationOptions = {
@@ -13,6 +14,19 @@ export default class LoginScreen extends Component {
     componentDidMount(){
         // this.storeData();
         // this.getData();
+    }
+
+    async loginFacebook() {
+        try {
+            let result = await LoginManager.logInWithPermissions(['public_profile'])
+            if (result.isCancelled){
+                alert('Login was cancelled');
+            } else {
+                alert('Login was successful with permissions:' + result.grantedPermissions.toString());
+            }
+        } catch(error){
+            alert('login failed with error:'+ error)
+        }
     }
 
     constructor(){
@@ -134,7 +148,7 @@ export default class LoginScreen extends Component {
                             <View style={styles.redesContainer}>
                                 <TouchableOpacity 
                                     style={styles.botonR}
-                                    onPress={() => {Alert.alert("Facebook aún no disponible")}}
+                                    onPress={this.loginFacebook}
                                 >  
                                     <View style={{flexDirection:'row',alignItems:'center'}}>
                                         <Image style={{width:25,height:25}} source={require('../assets/icoface.png')}/>

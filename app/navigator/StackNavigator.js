@@ -28,6 +28,12 @@ import Recuperar from '../screens/RecuperarContrasenaScreen';
 
 //Screens AuthLoading
 import AuthLoading from '../screens/AuthLoadingScreen';
+// Directorio
+import pantalla2 from '../screens/directorio/Pantalla2';
+import pantalla3 from '../screens/directorio/Pantalla3';
+import pantalla4 from '../screens/directorio/Pantalla4';
+import pantalla5 from '../screens/directorio/Pantalla5';
+
   
 const AppNavigator = createStackNavigator(
     {
@@ -41,10 +47,15 @@ const AppNavigator = createStackNavigator(
       Instruccion_Ts,
       DetalleUniversidad,
       ModalComponent,
-      Dashboard
+      Dashboard,
+      pantalla2,
+      pantalla3,
+      pantalla4,
+      pantalla5,
+     
     },
     {
-      initialRouteName: "Home",
+      initialRouteName: "pantalla5",
       defaultNavigationOptions: {
         headerStyle: {
             backgroundColor: '#F3CE12',
