@@ -42,9 +42,9 @@ export default class universidadVistaDetalle extends Component {
     }
 
     render() {
-        const {clave_sep, nombre, logo, calle, colonia, altitud, longitud,fachada,vision} = this.props.navigation.state.params.universidad
+        const {clave_sep, nombre, logo, calle, colonia, latitud, longitud,fachada,vision} = this.props.navigation.state.params.universidad
         var region = {
-            latitude: parseFloat(altitud),
+            latitude: parseFloat(latitud),
             longitude: parseFloat(longitud),
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421,
@@ -91,21 +91,21 @@ export default class universidadVistaDetalle extends Component {
                         />
                     </View>
                 </View> 
-         		<View style={styles.containermap}>
+         		{/* <View style={styles.containermap}>
                     <MapView
                         style={styles.map}
                         initialRegion={region}
                         maxZoomLevel= {20}
                 >
                      <Marker
-                        coordinate={{latitude:parseFloat(altitud),
+                        coordinate={{latitude:parseFloat(latitud),
                             longitude: parseFloat(longitud)}}
                         title={nombre}
                         >
                             <Image source={{uri:logo}} style={{height: 28, width:28,borderRadius:100, borderWidth:2,borderColor:'red' }}/>
                         </Marker>
                 </MapView>
-                </View>
+                </View> */}
             </ScrollView>
         );
     }

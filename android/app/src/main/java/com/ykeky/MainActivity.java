@@ -7,6 +7,7 @@ import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
 
 import android.os.Bundle;
 import org.devio.rn.splashscreen.SplashScreen;
+import android.content.Intent;
 
 public class MainActivity extends ReactActivity {
 
@@ -18,6 +19,12 @@ public class MainActivity extends ReactActivity {
     protected void onCreate(Bundle savedInstanceState) {
         SplashScreen.show(this);  // here
         super.onCreate(savedInstanceState);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        MainApplication.getCallbackManager()
+            .onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
