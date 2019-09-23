@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import {ImageBackground,Image,View,StyleSheet,Text,Picker,TouchableOpacity} from 'react-native';
+import {ImageBackground,Image,View,StyleSheet,Text,Picker,TouchableOpacity,Alert} from 'react-native';
 
 export default class Pantalla1 extends Component {
     static navigationOptions = {
         header: null
     }
 
-    state = {
-        estados: "Seleccione"
+    constructor(){
+        super();
+        this.state = {
+            estados: "Seleccione"
+        }
     }
 
     render() {
@@ -27,8 +30,9 @@ export default class Pantalla1 extends Component {
                         itemStyle={{height: 44, right: 50}}
                         selectedValue={this.state.estados}
                         onValueChange={(itemValue, itemIndex) =>
-                            this.setState({estados: itemValue})
+                            this.setState({estados: (itemValue !== 'TAB'? Alert.alert("Información","Estado no disponible"): itemValue )})
                         }>
+                        <Picker.Item label="Seleccione un estado" value="TAB" />
                         <Picker.Item label="Tabasco" value="TAB" />
                         <Picker.Item label="Veracruz" value="VER" />
                         <Picker.Item label="Campeche" value="CAM" />
@@ -36,7 +40,7 @@ export default class Pantalla1 extends Component {
                         
                         <TouchableOpacity 
                             style={styles.boton}
-                            onPress={()=>{alert("Hola humanoooooooooooooooooooooooooooooooooooooooooooo")}}
+                            onPress={()=>{this.props.navigation.navigate('Pantalla2')}}
                         >
                             <Text style={styles.textBoton}>ENVIAR</Text>
                         </TouchableOpacity>

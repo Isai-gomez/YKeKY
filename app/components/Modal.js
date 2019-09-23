@@ -6,7 +6,7 @@ export default class ModalExample extends Component {
 render () {
   return (
       <View>
-        <Modal isVisible={this.props.visible} >
+        <Modal isVisible={this.props.visible} onBackButtonPress={this.props.close} >
           <View style={styles.container}>
             <TouchableOpacity style={styles.cerrar} onPress={this.props.close} >
                 <Text>X</Text>

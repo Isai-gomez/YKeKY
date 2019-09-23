@@ -29,7 +29,7 @@ export default class InitialScreen extends Component {
                             <Text style={styles.texto}>nuestro próposito de vida.</Text>
                             <TouchableOpacity
                                 style={styles.buton}
-                                onPress={() => this.props.navigation.navigate("Swiper")}
+                                onPress={() => this.props.navigation.navigate("Login")}
                             >
                                 <Text style={{color:'white',fontFamily: 'GothamBold',}}>Continuar</Text>
                             </TouchableOpacity>

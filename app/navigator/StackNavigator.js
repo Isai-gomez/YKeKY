@@ -19,8 +19,6 @@ import Instruccion_Ts from '../screens/_Instruccion_Ts';
 import Dashboard from '../screens/Dashboard';
 import DashboardScreen from '../screens/DashboardScreen';
 
-import DirectorioP1 from '../screens/directorio/Pantalla1';
-
 import Becas from '../screens/BecasScreen';
 
 //Screens Auth
@@ -33,6 +31,13 @@ import Recuperar from '../screens/RecuperarContrasenaScreen';
 
 //Screens AuthLoading
 import AuthLoading from '../screens/AuthLoadingScreen';
+// Directorio
+import DirectorioP1 from '../screens/directorio/Pantalla1';
+import Pantalla2 from '../screens/directorio/Pantalla2';
+import Pantalla3 from '../screens/directorio/Pantalla3';
+import Pantalla4 from '../screens/directorio/Pantalla4';
+import Pantalla5 from '../screens/directorio/Pantalla5';
+
   
 const AppNavigator = createStackNavigator(
     {
@@ -49,7 +54,11 @@ const AppNavigator = createStackNavigator(
       Dashboard,
       DirectorioP1,
       DashboardScreen,
-      Becas
+      Becas,
+      Pantalla2,
+      Pantalla3,
+      Pantalla4,
+      Pantalla5,
     },
     {
       initialRouteName: "DashboardScreen",

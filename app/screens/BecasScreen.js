@@ -13,10 +13,10 @@ function obtenerColor(colores) {
 }
 
 const BecasBox = (props) => {
-    const {onPress} = props;
+    const {onPress, nombreBeca} = props;
     return(
         <TouchableOpacity style={[styles.becasBox, {backgroundColor: obtenerColor(colores)}]} onPress={onPress} >
-            <Text style={styles.textBecasBox}>Becas SEP</Text>
+            <Text style={styles.textBecasBox}>{nombreBeca}</Text>
         </TouchableOpacity>
     );
 }
@@ -119,8 +119,14 @@ export default class BecasScreen extends Component {
                     renderItem={({item}) => <Cajita colorFondo={obtenerColor(colores)} nombre={item}/>}
                     // keyExtractor={}
                 /> */}
-                <BecasBox onPress={()=>{this.openLink("https://www.google.com.mx/")}} />
-                <BecasBox onPress={()=>{this.openLink("https://www.becas.sep.gob.mx/")}} />
+                <BecasBox 
+                    nombreBeca={'Becas Educación Superior'}
+                    onPress={()=>{this.openLink("https://www.becaseducacionsuperior.sep.gob.mx/")}} 
+                />
+                <BecasBox 
+                    nombreBeca={'Becas SEP'}
+                    onPress={()=>{this.openLink("https://www.becas.sep.gob.mx/")}} 
+                />
 
                 </View>
                 </ScrollView>

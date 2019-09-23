@@ -1,12 +1,14 @@
 import React,{Component} from 'react';
-import {View,Image,Text,TextInput,ImageBackground,StyleSheet,TouchableOpacity,Alert} from 'react-native';
+import {View,Image,Text,TextInput,ImageBackground,StyleSheet,TouchableOpacity,Alert, Dimensions} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import AsyncStorage from '@react-native-community/async-storage';
 import { CheckBox } from 'react-native-elements';
 import axios from 'axios';
 import LinearGradient from 'react-native-linear-gradient';
+import  {LoginManager} from 'react-native-fbsdk'
+var {height, width} = Dimensions.get('window');
 
-const url = 'http://18.225.10.133:3001/api/users/auth/';
+const url = 'http://3.15.183.131:3001/api/users/auth/';
 const urlLocal = 'http://192.168.1.65:3001/api/users/auth/';
 
 export default class LoginScreen extends Component {
@@ -17,6 +19,20 @@ export default class LoginScreen extends Component {
     componentDidMount(){
         // this.storeData();
         // this.getData();
+    }
+
+    async loginFacebook() {
+        try {
+            let result = await LoginManager.logInWithPermissions(['public_profile'])
+            if (result.isCancelled){
+                alert('Login was cancelled');
+            } else {
+                alert('Login was successful with permissions:' + JSON.stringify(result));
+                console.warn("Result",result)
+            }
+        } catch(error){
+            alert('login failed with error:'+ error)
+        }
     }
 
     constructor(){
@@ -49,42 +65,42 @@ export default class LoginScreen extends Component {
         }
       }
 
-    onLoginPressed = async() => {
-        if(this.state.email !== '' && this.state.password !== ''){
-            const firstPair = ["isLoggedIn", "1"]
-            const secondPair = ["usuario", this.state.email]
-            await AsyncStorage.multiSet([firstPair, secondPair])
-            console.log('email: ' + this.state.email);
-            this.props.navigation.navigate('DashboardScreen');
-        } else {
-            Alert.alert("Email y/o Password son requeridos")
-        }
-    }
-
-    // async onLoginPressed(){
-    //     axios.post(url,{
-    //         username: this.state.email,
-    //         password: this.state.password
-    //     }).then(response =>{
-    //         let res = response;
-    //         if (response.status >= 200 && response.status < 300){
-    //             console.warn('Token is: ', res.data.id);
-    //             this.setState({error: ""});
-    //             const firstPair = ["isLoggedIn", "1"]
-    //             const secondPair = ["usuario", this.state.email]
-    //             AsyncStorage.multiSet([firstPair, secondPair])
-    //             console.log('email: ' + this.state.email);
-    //             this.props.navigation.navigate('Home');
-    //         }else{
-    //             let error = res;
-    //             throw error
-    //         }
-    //     }).catch(error => {
-    //         //console.warn("error: " + error);
-    //         this.setState({error});s
-    //         Alert.alert("Advertencia!", error.response.data.error.message);
-    //     })
+    // onLoginPressed = async() => {
+    //     if(this.state.email !== '' && this.state.password !== ''){
+    //         const firstPair = ["isLoggedIn", "1"]
+    //         const secondPair = ["usuario", this.state.email]
+    //         await AsyncStorage.multiSet([firstPair, secondPair])
+    //         console.log('email: ' + this.state.email);
+    //         this.props.navigation.navigate('DashboardScreen');
+    //     } else {
+    //         Alert.alert("Email y/o Password son requeridos")
+    //     }
     // }
+
+    async onLoginPressed(){
+        axios.post(url,{
+            username: this.state.email,
+            password: this.state.password
+        }).then(response =>{
+            let res = response;
+            if (response.status >= 200 && response.status < 300){
+                console.warn('Token is: ', res.data.id);
+                this.setState({error: ""});
+                const firstPair = ["isLoggedIn", "1"]
+                const secondPair = ["usuario", this.state.email]
+                AsyncStorage.multiSet([firstPair, secondPair])
+                console.log('email: ' + this.state.email);
+                this.props.navigation.navigate('DashboardScreen');
+            }else{
+                let error = res;
+                throw error
+            }
+        }).catch(error => {
+            //console.warn("error: " + error);
+            this.setState({error});
+            Alert.alert("Advertencia!", error.response.data.error.message);
+        })
+    }
 
     oncheked = () => {
         this.setState({checked:!this.state.checked});
@@ -92,8 +108,12 @@ export default class LoginScreen extends Component {
 
     render() {
         return (
-            <ImageBackground source={require('../assets/fondo1.png')} style={{flex:1}} resizeMode={'cover'} >
+            <ImageBackground source={require('../assets/fondo1.png')} style={{width: width, height: height}} resizeMode={'cover'} >
                 <ImageBackground  style={{flex:1}} resizeMode={'cover'}>
+                <Image source={require('../assets/Recurso1.1.png')} style={{width:135, height:70,position:'absolute',top:'0%',left:'0%'}}/>
+                        <Image source={require('../assets/Recurso2.2.png')} style={{width:176, height:60,position:'absolute',top:'0%',right:'0%'}}/>
+                        <Image source={require('../assets/Recurso4.4.png')} style={{width:180, height:100,position:'absolute',bottom:'-3%',left:'0%'}}/>
+                        <Image source={require('../assets/Recurso3.3.png')} style={{width:137, height:80,position:'absolute',bottom:'-1%',right:'0%'}}/>
                     <View style={styles.container}>
                         <Image source={require('../assets/Recurso1.1.png')} style={{width:135, height:70,position:'absolute',top:'0%',left:'0%'}}/>
                         <Image source={require('../assets/Recurso2.2.png')} style={{width:176, height:60,position:'absolute',top:'0%',right:'0%'}}/>
@@ -165,7 +185,7 @@ export default class LoginScreen extends Component {
                             <View style={styles.redesContainer}>
                                 <TouchableOpacity 
                                     style={styles.botonR}
-                                    onPress={() => {Alert.alert("Facebook aún no disponible")}}
+                                    onPress={this.loginFacebook}
                                 >  
                                     <View style={{flexDirection:'row',alignItems:'center'}}>
                                         <Image style={{width:25,height:25}} source={require('../assets/icoface.png')}/>
@@ -193,7 +213,8 @@ export default class LoginScreen extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        width: width,
+        height: height
     },
     title:{
         flex: 0.3,

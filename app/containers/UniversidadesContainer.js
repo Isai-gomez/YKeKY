@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {View,Text,StyleSheet, FlatList, ActivityIndicator,TouchableOpacity,Image,Alert} from 'react-native';
 import colors from '../styles/colors';
-import { ListItem, SearchBar } from 'react-native-elements';
+import { ListItem, SearchBar,ButtonGroup} from 'react-native-elements';
 
 export default class UniversidadesContainer extends Component{
   constructor(props) {
@@ -67,19 +67,19 @@ export default class UniversidadesContainer extends Component{
     });
   };
 
-  renderHeader = () => {
-    return (
-      <SearchBar
-        placeholder="busca Aquí..."
-        lightTheme
-        round
-        onChangeText={text => this.searchFilterFunction(text)}
-        autoCorrect={false}
-        value={this.state.value}
-        inputContainerStyle={{marginBottom: 20}}
-      />
-    );
-  };
+  // renderHeader = () => {
+  //   return (
+  //     <SearchBar
+  //       placeholder="busca Aquí..."
+  //       lightTheme
+  //       round
+  //       onChangeText={text => this.searchFilterFunction(text)}
+  //       autoCorrect={false}
+  //       value={this.state.value}
+  //       inputContainerStyle={{marginBottom: 20}}
+  //     />
+  //   );
+  // };
 
   render() {
     if (this.state.loading) {
@@ -89,8 +89,9 @@ export default class UniversidadesContainer extends Component{
         </View>
       );
     }
+    const buttons = ['hola']
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{flex:1}} >
         <FlatList
           data={this.state.data}
           renderItem={({ item }) => (
@@ -99,9 +100,16 @@ export default class UniversidadesContainer extends Component{
               title={`${item.nombre}`}
               titleStyle={{fontWeight: 'bold'}}
               subtitle={`Clave: ${item.clave_sep}`}
-              subtitleStyle={{fontSize: 12}}
+              subtitleStyle={styles.suptitulo}
               // onPress={() => {Alert.alert(`Haz presionado el item ${item.nombre}`)}}
-              onPress={() => {this.props.navigation.navigate("DetalleUniversidad", {universidad: item})}}
+              onPress={() => {this.props.navigation.navigate('DetalleUniversidad', {universidad: item})}}
+              containerStyle={styles.list}
+              titleStyle={styles.titulo}              
+              rightComponent={
+                <ButtonGroup 
+                  buttons={buttons}
+                />
+              }
             />
           )}
           keyExtractor={item => item.nombre}
@@ -114,12 +122,22 @@ export default class UniversidadesContainer extends Component{
 }
 
 const styles = StyleSheet.create({
-    card: {
-        height: 100,
-        backgroundColor: colors.blue,
-        marginBottom: 20,
-        flexWrap: 'wrap',
-        marginHorizontal: 10,
-        borderRadius: 5
+    list:{
+      backgroundColor:'transparent'
+    },
+    titulo:{
+      color:'#ffff',
+      fontSize: 12,
+      backgroundColor:'#16A086',
+      borderRadius:5,
+      fontWeight:'bold'
+    },
+    suptitulo:{
+      fontSize: 19,
+      color:'rgba(29,58,108, 1.0)',
+      textAlign:'center',
+      fontFamily:'GothamBold'
+
+
     }
 })

@@ -1,10 +1,11 @@
 import React,{Component} from 'react';
-import {View,ImageBackground,TextInput,TouchableOpacity,StyleSheet,Text,Image,Alert} from 'react-native';
+import {View,ImageBackground,TextInput,TouchableOpacity,StyleSheet,Text,Image,Alert,Dimensions} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import axios from 'axios';
 
-const url = 'http://18.225.10.133:3001/api/users/'
+var {width,height} = Dimensions.get('window');
+const url = 'http://3.15.183.131:3001/api/users'
 
 export default class RegisterScreen extends Component {
     static navigationOptions = {
@@ -50,7 +51,7 @@ export default class RegisterScreen extends Component {
 
     render() {
         return (
-            <ImageBackground source={require('../assets/fondo1.png')} style={{width:'100%', height:'100%',resizeMode: 'cover'}}>
+            <ImageBackground source={require('../assets/fondo1.png')} style={{width:width, height:height}} resizeMode={'cover'} >
                 <ImageBackground style={{width:'100%', height:'100%',resizeMode: 'cover'}}>
                     <Image source={require('../assets/Recurso1.1.png')} style={{width:135, height:70,position:'absolute',top:'0%',left:'0%'}}/>
                     <Image source={require('../assets/Recurso2.2.png')} style={{width:176, height:60,position:'absolute',top:'0%',right:'0%'}}/>

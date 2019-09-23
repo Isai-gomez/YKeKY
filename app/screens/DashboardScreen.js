@@ -1,11 +1,23 @@
 import React, { Component } from 'react';
 import {ImageBackground, View, ScrollView, Image, StyleSheet, Text,TouchableOpacity,Alert} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+import AsyncStorage from '@react-native-community/async-storage';
 
 export default class DashboardScreen extends Component {
     static navigationOptions = {
         header: null
     }
+
+    _logout = async() => {
+        try {
+            await AsyncStorage.clear();
+            this.props.navigation.navigate("Login");
+          } catch(e) {
+            console.log("Error" + e)
+          }
+        
+          console.log('Done.')
+    }
+
     render() {
         return (
             <ImageBackground source={require('../assets/dashboard/fondo.png')} style={{flex:1}} resizeMode={'cover'} >
@@ -43,9 +55,8 @@ export default class DashboardScreen extends Component {
                             <Text style={styles.menuText}>Becas</Text>
                         </TouchableOpacity>
                         <TouchableOpacity 
-                            style={styles.cartita} 
-                            onPress={()=>{this.props.navigation.navigate('Home')}} >
-                            <Image source={require('../assets/dashboard/IconoGuiaYKeKY.png')} style={styles.imagen} resizeMode={'contain'} />
+                            style={styles.cartitaCerrarSesión} 
+                            onPress={ ()=> {this._logout()} } >
                             <Text style={styles.menuText}>Cerrar {"\n"} Sesión</Text>
                         </TouchableOpacity>
                     </View>
@@ -78,6 +89,20 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         width: 155,
         height: 170,
+        backgroundColor: '#FFF',
+        margin: 10,
+        borderRadius: 10,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 5,
+        }
+    },
+    cartitaCerrarSesión: {
+        alignItems:"center",
+        justifyContent: 'center',
+        width: 70,
+        height: 70,
         backgroundColor: '#FFF',
         margin: 10,
         borderRadius: 10,

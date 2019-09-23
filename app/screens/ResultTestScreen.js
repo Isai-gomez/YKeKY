@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {View,Text,StyleSheet} from 'react-native';
+import {ImageBackground,View,Text,StyleSheet, Image} from 'react-native';
 import { VictoryPie, VictoryContainer, VictoryLabel } from "victory-native";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -10,6 +10,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 export default class ResultTestScreen extends Component {
     static navigationOptions = {
         title: "Resultados TV",
+        header: null
         
     }
 
@@ -47,9 +48,16 @@ export default class ResultTestScreen extends Component {
         
 
         return (
+            <ImageBackground source={require('../assets/testVocacional/fondo.png')} style={{flex: 1}} resizeMode={'cover'} >
             <View style={StyleSheet.container}>
+                <View>
+                    <Image source={require('../assets/testVocacional/logo.png')} style={{width: 50, height: 30}} resizeMode={'contain'} />
+                </View>
                 <Text style={{fontSize:20, color: 'black', textAlign: 'center'}}>Hola {this.state.usuario}</Text>
-                <Text style={{fontSize:16, color: 'black', textAlign: 'justify'}}>Como resultados de tu prueba de Test Vocacional:</Text>
+                <Text 
+                    style={{fontSize:20, color: 'rgba(29,58,108, 1.0)', textAlign: 'center', fontFamily: 'GothamMedium'}}>
+                        RESULTADOS
+                </Text>
                 <View style={styles.chart}>    
                     <VictoryPie 
                     data={[
@@ -60,8 +68,7 @@ export default class ResultTestScreen extends Component {
                         { x: "Ciencias Soc", y: this.state.e},
                         { x: "Ciencias Salud", y: this.state.f}
                       ]}
-                    colorScale={["rgba(173,185,202,1)", "rgba(189,214,238,1)", "rgba(247,202,172,1)", 
-                        "rgba(255,229,152,1)", "rgba(200,200,200,1)", "rgba(197,224,179,1)"]}
+                    colorScale={['#8F44AD','#2A80B9','#16A086','#26AD60','#F29B10', '#C30052']}
                     containerComponent={<VictoryContainer responsive={false}/>}
                     labelComponent={<VictoryLabel angle={320}/>}
                     labelRadius={90}
@@ -78,6 +85,7 @@ export default class ResultTestScreen extends Component {
                     <Text><Icon name="check" size={35} color="#000000" /></Text>
                 </TouchableOpacity>
             </View>
+            </ImageBackground>
         );
     }
 }
