@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {View,Text,TouchableOpacity,StyleSheet,ScrollView} from 'react-native';
+import {View,Text,TouchableOpacity,StyleSheet,ScrollView,ImageBackground} from 'react-native';
 import Chart from '../components/chart';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
@@ -13,12 +13,12 @@ export default class ResultLifePlannerScreen extends Component {
       }
     render() {
         return (
+            <ImageBackground source={require('../assets/planVida/Resultados/fondo.png')} style={{flex:1}}>
             <View style={{flex:1}}>
-                <View >
-                    <Text>Resultados</Text>
-                </View>
                 <View style={{flex:0.5}}>
+                    <ImageBackground source={require('../assets/planVida/Resultados/fonfoGrafica.png')} style={{flex:1}}>
                     <Chart/>
+                    </ImageBackground>
                 </View>
                 <View style={styles.container}>
                     <View  style={styles.scroll}>
@@ -122,20 +122,21 @@ export default class ResultLifePlannerScreen extends Component {
                     <View>               
                         <TouchableOpacity 
                             style={{alignItems: 'flex-end'}}
-                            onPress={() => {this.props.navigation.navigate("Home")}}
+                            onPress={() => {this.props.navigation.navigate("DashboardScreen")}}
                         >
                             <Text><Icon name="arrow-circle-right" size={35} color="#000000" /></Text>
                         </TouchableOpacity>
                     </View>
                 </View>
             </View>
+            </ImageBackground>
         );
     }
 }
 const styles = StyleSheet.create({
     container: {
         flex: 0.5,
-        backgroundColor: "#BDBDBD",
+        
     },
     contitle:{
         justifyContent:"center",

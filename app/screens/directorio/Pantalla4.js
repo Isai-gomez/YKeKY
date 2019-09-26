@@ -19,6 +19,13 @@ export default class pantalla4 extends Component {
                         <Image source={require('../../assets/directorio/pantalla4/logop4.png')} style={styles.logo}/>
                     </View>
                     <View style={styles.clasificaciones}>
+                    <TouchableOpacity 
+                            style={[styles.boton,{backgroundColor:'#16A086'}]}
+                            onPress={()=>{this.props.navigation.navigate('Pantalla5',{tipoUniversidad: 2})}}
+                            >
+                            <Text style={styles.textboton}>PRIVADAS</Text>
+                            <Image source={require('../../assets/directorio/pantalla2/icono3.png')} style={{width:15,height:15,right:'10%',position:'absolute'}} resizeMode={'contain'}/>
+                        </TouchableOpacity>
                         <TouchableOpacity 
                             style={[styles.boton,{backgroundColor:'#C30052'}]}
                             onPress={()=>{this.props.navigation.navigate('Pantalla5', {tipoUniversidad: 1})}}
@@ -26,13 +33,7 @@ export default class pantalla4 extends Component {
                             <Text style={styles.textboton}>PÚBLICAS</Text>
                             <Image source={require('../../assets/directorio/pantalla2/icono3.png')} style={{width:15,height:15,right:'10%',position:'absolute'}} resizeMode={'contain'}/>
                         </TouchableOpacity>
-                        <TouchableOpacity 
-                            style={[styles.boton,{backgroundColor:'#16A086'}]}
-                            onPress={()=>{this.props.navigation.navigate('Pantalla5',{tipoUniversidad: 2})}}
-                            >
-                            <Text style={styles.textboton}>PRIVADAS</Text>
-                            <Image source={require('../../assets/directorio/pantalla2/icono3.png')} style={{width:15,height:15,right:'10%',position:'absolute'}} resizeMode={'contain'}/>
-                        </TouchableOpacity>
+                        
                     </View>                 
                 </View>
             </ImageBackground>

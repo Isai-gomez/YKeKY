@@ -61,7 +61,7 @@ const AppNavigator = createStackNavigator(
       Pantalla5,
     },
     {
-      initialRouteName: "DashboardScreen",
+      initialRouteName: "LifePlanner",
       defaultNavigationOptions: {
         headerStyle: {
             backgroundColor: '#F3CE12',
@@ -80,10 +80,11 @@ const AuthNavigator = createStackNavigator(
     Swiper,
     Login,
     Register,
-    Recuperar
+    Recuperar,
+    LifePlanner
 },
 {
-  initialRouteName: "Initial",
+  initialRouteName: "LifePlanner",
   defaultNavigationOptions: {
     headerStyle: {
         backgroundColor: '#F3CE12',

@@ -47,11 +47,11 @@ export default class Pantalla3 extends Component {
                             <Text style={styles.textboton}>PREESCOLAR</Text>
                             <Image source={require('../../assets/directorio/pantalla2/icono3.png')} style={{width:15,height:15,right:'10%',position:'absolute'}} resizeMode={'contain'}/>
                         </TouchableOpacity>
-                        <TouchableOpacity style={[styles.boton,{backgroundColor:'#C30052'}]}>
+                        {/* <TouchableOpacity style={[styles.boton,{backgroundColor:'#C30052'}]}>
                             <Image source={require('../../assets/directorio/pantalla3/icono6p3.png')} style={styles.icono} resizeMode={'contain'}/>
                             <Text style={styles.textboton}>MARTERNAL</Text>
                             <Image source={require('../../assets/directorio/pantalla2/icono3.png')} style={{width:15,height:15,right:'10%',position:'absolute'}} resizeMode={'contain'}/>
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
                     </View>                 
                 </View>
             </ImageBackground>

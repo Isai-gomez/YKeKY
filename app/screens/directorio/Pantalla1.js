@@ -42,7 +42,7 @@ export default class Pantalla1 extends Component {
                             style={styles.boton}
                             onPress={()=>{this.props.navigation.navigate('Pantalla2')}}
                         >
-                            <Text style={styles.textBoton}>ENVIAR</Text>
+                            <Text style={styles.textBoton}>ENTRAR</Text>
                         </TouchableOpacity>
                 </View>                
             </ImageBackground>
