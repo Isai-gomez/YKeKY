@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {View, ImageBackground,StyleSheet,Image,Text,TouchableOpacity,FlatList} from 'react-native';
-import ListUnivesidades from '../../components/ListUniversidad'
+import ListUnivesidades from '../../components/ListUniversidad';
+import Orientation from 'react-native-orientation';
 
 export default class pantalla5 extends Component {
     static navigationOptions = {
@@ -14,6 +15,7 @@ export default class pantalla5 extends Component {
 
     componentDidMount() {
         this.makeRemoteRequest();
+        Orientation.lockToPortrait();
     }
 
     makeRemoteRequest = () => {

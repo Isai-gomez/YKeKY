@@ -1,19 +1,25 @@
-import React,{Component} from 'react';
-import {View, Animated, StyleSheet, TouchableOpacity, Dimensions, Image, Alert, Text} from 'react-native';
-import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
+import React, { Component } from 'react';
+import {View,Text,Image,ImageBackground,Dimensions,StyleSheet,Animated,TouchableOpacity} from 'react-native';
+import Orientation from 'react-native-orientation';
+
+let {width,height} = Dimensions.get('window');
 
 const matchAreaByQuestionNumber = require('../lib/questions/matchAreaByQuestionNumber');
 
 const responseQuestionsMap = {
-    Nada:  0,
-    Poco:  1,
-    Algo:  2,
+    Nada: 0,
+    Poco: 1,
+    Algo: 2,
     Mucho: 3
-};
+}
 
-export default class TestScreen extends Component{
+export default class TestVocacionalScreen extends Component {
     static navigationOptions = {
-        title: "Test Vocacional"
+        header: null
+    }
+
+    componentDidMount(){
+        Orientation.lockToPortrait();
     }
 
     state = {
@@ -83,7 +89,6 @@ export default class TestScreen extends Component{
 
     render() {
         const { questions, index } = this.state;
-        const { width } = Dimensions.get("window");
 
         const progressInterpolate = this.state.progress.interpolate({
             inputRange: [0, questions.length - 1],
@@ -166,58 +171,63 @@ export default class TestScreen extends Component{
           this.handleAnswer();
           this.sendRespuestas(answerIndex, questionIndex);
         }
-
-        return(
-            <View style={styles.container}>
-            <View style={styles.card}>
-                <View style={[StyleSheet.absoluteFill, styles.overlay]}>
-                    <Animated.Text style={[styles.questionText, mainStyle]}>
-                    {index + 1}.- {question}
-                    </Animated.Text>
-                    <Animated.Text style={[styles.questionText, nextStyle]}>
-                        {index}.- {nextQuestion}
-                    </Animated.Text>
+        return (
+            <ImageBackground source={require('../assets/testVocacional/preguntas/fondo.png')} style={{width: width, height: height}} resizeMode={'cover'} >
+                <Image source={require('../assets/testVocacional/preguntas/Recurso1Test.png')} style={{width: 100, height: 100, position: 'absolute', left: '-9%', top:'-5%'}} />
+                <Image source={require('../assets/testVocacional/preguntas/Recurso2Test.png')} style={{width: 200, height: 200, position: 'absolute', right: '-2%', top:'-10%'}} />
+                <Image source={require('../assets/testVocacional/preguntas/Recurso3Test.png')} style={{width: 350, height: 250, position: 'absolute', right: '0%', bottom:'-10%'}} />
+                <View style={styles.container}>
+                    <View style={styles.numberContainer}>
+                        <ImageBackground source={require('../assets/testVocacional/preguntas/Recurso4Test.png')} style={{width: 100, height: 100, alignItems: 'center', justifyContent: 'center'}} >
+                            <Text style={styles.numberText} >{index + 1}</Text>
+                        </ImageBackground>
+                    </View>
+                    <View style={[styles.preguntaContainer]}>
+                        <ImageBackground source={require('../assets/testVocacional/preguntas/areaPregunta.png')} style={{width: '100%', height: '100%', justifyContent: 'center'}}>
+                            <Animated.Text style={[styles.questionText, mainStyle]}>
+                                {question}
+                            </Animated.Text>
+                            <Animated.Text style={[styles.questionText, nextStyle]}>
+                                {nextQuestion}
+                            </Animated.Text>
+                        </ImageBackground>
+                    </View>
+                    <View style={styles.respuestaContainer}>
+                    <TouchableOpacity 
+                        onPress={() => {this.functionCombinada( responseQuestionsMap.Nada , index)}}
+                        // activeOpacity={.5}
+                        style={styles.option}
+                    >
+                        <Image source={require('../assets/testVocacional/preguntas/Nada.png')} style={styles.imageBoton} />
+                        <Text style={styles.optionText}>Nada</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity 
+                        onPress={() => {this.functionCombinada(responseQuestionsMap.Poco , index)}}
+                        // activeOpacity={.5}
+                        style={styles.option}
+                    >
+                        <Image source={require('../assets/testVocacional/preguntas/Poco.png')} style={styles.imageBoton} />
+                        <Text style={styles.optionText}>Poco</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity 
+                        onPress={() => {this.functionCombinada(responseQuestionsMap.Algo, index)}}
+                        // activeOpacity={.5}
+                        style={styles.option}
+                    >
+                        <Image source={require('../assets/testVocacional/preguntas/Algo.png')} style={styles.imageBoton} />
+                        <Text style={styles.optionText}>Algo</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity 
+                        onPress={() => {this.functionCombinada(responseQuestionsMap.Mucho, index)}}
+                        // activeOpacity={.5}
+                        style={styles.option}
+                    >
+                        <Image source={require('../assets/testVocacional/preguntas/Mucho.png')} style={styles.imageBoton} />
+                        <Text style={styles.optionText}>Mucho</Text>
+                    </TouchableOpacity>
+                    </View>
                 </View>
-
-                <View style={styles.progress}>
-                    <Animated.View style={[styles.bar, progressStyle]} />
-                </View>
-                
-                <TouchableOpacity 
-                    onPress={() => {this.functionCombinada( responseQuestionsMap.Nada , index)}}
-                    activeOpacity={.5}
-                    style={styles.option}
-                >
-                    <Image source={require('../assets/emojis/emoji1.png')} />
-                    <Text style={styles.optionText}>Nada</Text>
-                </TouchableOpacity>
-                <TouchableOpacity 
-                    onPress={() => {this.functionCombinada(responseQuestionsMap.Poco , index)}}
-                    activeOpacity={.5}
-                    style={styles.option}
-                >
-                    <Image source={require('../assets/emojis/emoji2.png')} />
-                    <Text style={styles.optionText}>Poco</Text>
-                </TouchableOpacity>
-                <TouchableOpacity 
-                    onPress={() => {this.functionCombinada(responseQuestionsMap.Algo, index)}}
-                    activeOpacity={.5}
-                    style={styles.option}
-                >
-                    <Image source={require('../assets/emojis/emoji3.png')} />
-                    <Text style={styles.optionText}>Algo</Text>
-                </TouchableOpacity>
-                <TouchableOpacity 
-                    onPress={() => {this.functionCombinada(responseQuestionsMap.Mucho, index)}}
-                    activeOpacity={.5}
-                    style={styles.option}
-                >
-                    <Image source={require('../assets/emojis/emoji4.png')} />
-                    <Text style={styles.optionText}>Mucho</Text>
-                </TouchableOpacity>
-                
-            </View>
-        </View>
+            </ImageBackground>
         );
     }
 }
@@ -225,22 +235,60 @@ export default class TestScreen extends Component{
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#7986CB',
+        width: width,
+        height: height
+        // backgroundColor: 'transparent',
         // flexDirection: "row",
-        justifyContent:'center',
-        alignItems:'center',
+        // justifyContent:'center',
+        // alignItems:'center',
+    },
+    numberContainer: {
+        flex: 2.5,
+        // backgroundColor: 'green',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        bottom: 30
+    },
+    preguntaContainer: {
+        flex: 1,
+        width: '90%',
+        marginHorizontal: '5%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        // backgroundColor: 'yellow',
+    },
+    respuestaContainer: {
+        flex: 2.5,
+        // backgroundColor: 'pink',
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        top: 30
+    },
+    numberText: {
+        fontFamily: 'GothamBold', 
+        fontSize: 32,
+        fontWeight: 'bold',
+        color: 'rgba(29,58,108, 1)',
     },
     card : {
         display:'flex',
-        backgroundColor: '#fff',
+        backgroundColor: 'transparent',
         flexDirection: 'row',
         height:'90%',
         width: '90%',
         borderRadius: 5,
-        shadowColor: '#757575',
-        shadowOpacity: .1,
-        shadowOffset: {width:-2 ,height: 4},
-        elevation: 2,
+        // shadowColor: '#757575',
+        // shadowOpacity: .1,
+        // shadowOffset: {width:-2 ,height: 4},
+        // elevation: 2,
+    },
+    respuestasContainer:{
+        flexDirection: 'row',
+        display: 'flex',
+        width: '100%',
+        alignItems: 'flex-end',
+        bottom: '15%',
+        // backgroundColor: 'red'
     },
     progress:{
         position: "absolute",
@@ -255,27 +303,36 @@ const styles = StyleSheet.create({
     },
     option: {
         flex: 1,
-        justifyContent: "flex-end",
-        alignItems: "center",
-        // backgroundColor: 'red'
+        width: 50,
+        height: 130,
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 5,
+        // backgroundColor: 'blue',
     },
     yes: {
         backgroundColor: "rgba(255,255,255, .1)"
     },
     optionText: {
+        fontFamily: 'GothamMedium',
         fontSize: 18,
-        color: "black",
-        marginBottom: 50
+        color: 'rgba(29,58,108, 1)',
+        marginBottom: 50,
     },
     overlay: {
        alignItems: "center",
        justifyContent: "center"
     },
     questionText: {
+        fontFamily: 'GothamBook',
         backgroundColor: "transparent",
         position: "absolute",
-        fontSize: 20,
-        color: "black",
-        textAlign: "center"
+        fontSize: 16,
+        color: "#FFF",
+        textAlign: "justify"
+    },
+    imageBoton:{
+        width: 50,
+        height: 50
     }
 })

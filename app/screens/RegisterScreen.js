@@ -3,6 +3,7 @@ import {View,ImageBackground,TextInput,TouchableOpacity,StyleSheet,Text,Image,Al
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import axios from 'axios';
+import Orientation from 'react-native-orientation';
 
 var {width,height} = Dimensions.get('window');
 const url = 'http://3.15.183.131:3001/api/users'
@@ -11,6 +12,10 @@ export default class RegisterScreen extends Component {
     static navigationOptions = {
         header: null
     }
+
+    componentDidMount(){
+        Orientation.lockToPortrait();
+      }
 
     constructor(){
         super();

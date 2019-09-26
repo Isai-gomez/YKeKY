@@ -3,7 +3,8 @@ import { createStackNavigator, createAppContainer,createSwitchNavigator, createD
 
 //screens App
 import Home from '../screens/HomeScreen';
-import Test from '../screens/TestScreen';
+import Test from '../screens/TestVocacionalScreen';
+import TestVocacionalScreen from '../screens/TestVocacionalScreen'
 import LifePlanner from '../screens/LifePlannerScreen';
 import Directorio from '../screens/DirectorioScreen';
 import ModalComponent from '../components/ModalComponent';
@@ -59,6 +60,7 @@ const AppNavigator = createStackNavigator(
       Pantalla3,
       Pantalla4,
       Pantalla5,
+      TestVocacionalScreen
     },
     {
       initialRouteName: "DashboardScreen",

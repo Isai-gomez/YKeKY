@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import {View,Text,Image,StyleSheet,ScrollView,TouchableOpacity,ImageBackground,Button,Alert} from 'react-native';
 import MapView,{Marker} from 'react-native-maps';
 import ModalExample from '../components/Modal';
+import Orientation from 'react-native-orientation';
 
 export default class universidadVistaDetalle extends Component {
     static navigationOptions =
@@ -25,6 +26,10 @@ export default class universidadVistaDetalle extends Component {
         },
         headerTransparent: true,
         visible: false
+    }
+
+    componentDidMount(){
+        Orientation.lockToPortrait();
     }
 
     constructor(props){

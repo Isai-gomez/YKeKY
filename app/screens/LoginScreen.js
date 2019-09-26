@@ -6,7 +6,11 @@ import { CheckBox } from 'react-native-elements';
 import axios from 'axios';
 import LinearGradient from 'react-native-linear-gradient';
 import  {LoginManager} from 'react-native-fbsdk'
+import Orientation from 'react-native-orientation';
+
+
 var {height, width} = Dimensions.get('window');
+
 
 const url = 'http://3.15.183.131:3001/api/users/auth/';
 const urlLocal = 'http://192.168.1.65:3001/api/users/auth/';
@@ -19,6 +23,7 @@ export default class LoginScreen extends Component {
     componentDidMount(){
         // this.storeData();
         // this.getData();
+        Orientation.lockToPortrait();
     }
 
     async loginFacebook() {
@@ -65,42 +70,42 @@ export default class LoginScreen extends Component {
         }
       }
 
-    // onLoginPressed = async() => {
-    //     if(this.state.email !== '' && this.state.password !== ''){
-    //         const firstPair = ["isLoggedIn", "1"]
-    //         const secondPair = ["usuario", this.state.email]
-    //         await AsyncStorage.multiSet([firstPair, secondPair])
-    //         console.log('email: ' + this.state.email);
-    //         this.props.navigation.navigate('DashboardScreen');
-    //     } else {
-    //         Alert.alert("Email y/o Password son requeridos")
-    //     }
-    // }
-
-    async onLoginPressed(){
-        axios.post(url,{
-            username: this.state.email,
-            password: this.state.password
-        }).then(response =>{
-            let res = response;
-            if (response.status >= 200 && response.status < 300){
-                console.warn('Token is: ', res.data.id);
-                this.setState({error: ""});
-                const firstPair = ["isLoggedIn", "1"]
-                const secondPair = ["usuario", this.state.email]
-                AsyncStorage.multiSet([firstPair, secondPair])
-                console.log('email: ' + this.state.email);
-                this.props.navigation.navigate('DashboardScreen');
-            }else{
-                let error = res;
-                throw error
-            }
-        }).catch(error => {
-            //console.warn("error: " + error);
-            this.setState({error});
-            Alert.alert("Advertencia!", error.response.data.error.message);
-        })
+    onLoginPressed = async() => {
+        if(this.state.email !== '' && this.state.password !== ''){
+            const firstPair = ["isLoggedIn", "1"]
+            const secondPair = ["usuario", this.state.email]
+            await AsyncStorage.multiSet([firstPair, secondPair])
+            console.log('email: ' + this.state.email);
+            this.props.navigation.navigate('DashboardScreen');
+        } else {
+            Alert.alert("Email y/o Password son requeridos")
+        }
     }
+
+    // async onLoginPressed(){
+    //     axios.post(url,{
+    //         username: this.state.email,
+    //         password: this.state.password
+    //     }).then(response =>{
+    //         let res = response;
+    //         if (response.status >= 200 && response.status < 300){
+    //             console.warn('Token is: ', res.data.id);
+    //             this.setState({error: ""});
+    //             const firstPair = ["isLoggedIn", "1"]
+    //             const secondPair = ["usuario", this.state.email]
+    //             AsyncStorage.multiSet([firstPair, secondPair])
+    //             console.log('email: ' + this.state.email);
+    //             this.props.navigation.navigate('DashboardScreen');
+    //         }else{
+    //             let error = res;
+    //             throw error
+    //         }
+    //     }).catch(error => {
+    //         //console.warn("error: " + error);
+    //         this.setState({error});
+    //         Alert.alert("Advertencia!", error.response.data.error.message);
+    //     })
+    // }
 
     oncheked = () => {
         this.setState({checked:!this.state.checked});
@@ -155,7 +160,7 @@ export default class LoginScreen extends Component {
                                 style={styles.botonIzq}
                                 onPress={()=>{this.props.navigation.navigate('Recuperar')}}
                                 >
-                                    <Text style={{color: 'rgba(29,58,108, 1.0)',fontFamily:'GothamBold', fontSize:10}}>RECUPERAR CONTRASEÑA</Text>
+                                    <Text style={{color: 'rgba(29,58,108, 1.0)',fontFamily:'GothamBold', fontSize:8}}>RECUPERAR CONTRASEÑA</Text>
                                 </TouchableOpacity>   
                                 <CheckBox
                                     title='RECORDARME'
@@ -322,7 +327,7 @@ const styles = StyleSheet.create({
     checktext:{
         color: 'rgba(29,58,108, 1.0)',
         fontFamily:'GothamBold', 
-        fontSize:10
+        fontSize:8
     },
     gradient:{
         borderRadius: 5,

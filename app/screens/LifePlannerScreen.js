@@ -3,6 +3,7 @@ import {View,Text,Animated,TouchableOpacity,Dimensions,StyleSheet,Alert,Image} f
 import Slide from '../components/Slider';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import SwiperComponent from '../components/SwipeComponent';
+import Orientation from 'react-native-orientation';
 
 const matchAreaByQuestionNumber = require('../lib/questions/MachAreaVida');
 
@@ -39,6 +40,11 @@ export default class LifeScreen extends Component {
             progress: new Animated.Value(0),
             value:5,
         }
+    
+        componentDidMount(){
+            Orientation.lockToPortrait();
+        }
+
         saveResponse = ( response, questionIndex ) => {
             console.log( 'estado sin act: ', this.state.respuestas );
             
@@ -153,7 +159,7 @@ export default class LifeScreen extends Component {
                     </View>
                     <TouchableOpacity 
                             onPress={this.handleAnswer}
-                            activeOpacity={.7}
+                            // activeOpacity={1}
                             style={styles.option}
                         >
                             <Text style={styles.optionText}><Icon name="arrow-circle-right" size={45} color="#000000"/></Text>
@@ -200,7 +206,7 @@ const styles = StyleSheet.create({
         backgroundColor: "darkorange"
     },
     option: {
-        height:'10%',
+        height:'12%',
         justifyContent: "center",
         alignItems: "center",
         alignContent: 'stretch'

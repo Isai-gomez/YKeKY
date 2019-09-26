@@ -1,11 +1,14 @@
 import React,{Component} from 'react';
-import {View,Text,StyleSheet,Image,ImageBackground,StatusBar,TouchableHighlight} from 'react-native';
+import {View,Text,StyleSheet,Image,ImageBackground,StatusBar,TouchableHighlight,TextInput} from 'react-native';
 import colors from '../styles/colors';
-import { TextInput } from 'react-native-gesture-handler';
 
 export default class RecuperarContrasenaScreen extends Component{
     static navigationOptions = {
         header: null,
+    }
+
+    componentDidMount(){
+        Orientation.lockToPortrait();
     }
 
     render(){

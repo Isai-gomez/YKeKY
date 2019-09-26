@@ -87,8 +87,8 @@ const styles = StyleSheet.create({
     cartita: {
         alignItems:"center",
         justifyContent: 'center',
-        width: 155,
-        height: 170,
+        width: 140,
+        height: 150,
         backgroundColor: '#FFF',
         margin: 10,
         borderRadius: 10,
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     },
     imagen: {
         width: 100,
-        height: 140
+        height: 120
     },
     titulo: {
         color: '#FFF',

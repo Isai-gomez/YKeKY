@@ -1,7 +1,6 @@
 import React from 'react';
 import {ScrollView, View , Text ,TouchableOpacity,StyleSheet,Image,ImageBackground} from 'react-native';
-
-
+import Orientation from 'react-native-orientation';
 
 class Instruccion_Ts extends React.Component {
     static navigationOptions = {
@@ -15,6 +14,11 @@ class Instruccion_Ts extends React.Component {
         //   fontWeight: 'bold',
         // },
       };
+
+      componentDidMount(){
+        Orientation.lockToPortrait();
+      }
+
     render () {
         return (
             <ImageBackground source={require('../assets/ifont2.png')} style={{width:'100%',height:'100%'}}>

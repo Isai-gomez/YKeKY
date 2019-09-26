@@ -2,12 +2,17 @@ import React,{Component} from 'react';
 import {View, Text, StyleSheet,Image,ImageBackground,StatusBar} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import colors from '../styles/colors';
+import Orientation from 'react-native-orientation';
 
 export default class InitialScreen extends Component {
     static navigationOptions = {
         header: null,
         title: 'InitialScreen'
     }
+
+    componentDidMount(){
+        Orientation.lockToPortrait()
+      }
 
     render(){
         return(

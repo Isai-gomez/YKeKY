@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {ImageBackground,View,Text,StyleSheet,TouchableOpacity,ScrollView,FlatList,Linking,Alert} from 'react-native';
 import InAppBrowser from 'react-native-inappbrowser-reborn';
+import Orientation from 'react-native-orientation';
 
 colores = ['#8F44AD', '#2A80B9', '#16A086', '#26AD60', '#F29B10', '#C30052', '#18BC9A'];
 
@@ -46,6 +47,10 @@ export default class BecasScreen extends Component {
         this.state = {
             colorRandom: '',
         }
+    }
+
+    componentDidMount(){
+        Orientation.lockToPortrait();
     }
 
     makeRemoteRequest = () =>{

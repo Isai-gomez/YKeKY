@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import {View,Text,TouchableOpacity,StyleSheet,ScrollView} from 'react-native';
 import Chart from '../components/chart';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import Orientation from 'react-native-orientation';
 
 export default class ResultLifePlannerScreen extends Component {
     static navigationOptions = {
@@ -10,6 +11,10 @@ export default class ResultLifePlannerScreen extends Component {
         // headerStyle: {
         //     backgroundColor: '#f4511e',
         //   },
+      }
+
+      componentDidMount(){
+        Orientation.lockToPortrait();
       }
     render() {
         return (
@@ -122,7 +127,7 @@ export default class ResultLifePlannerScreen extends Component {
                     <View>               
                         <TouchableOpacity 
                             style={{alignItems: 'flex-end'}}
-                            onPress={() => {this.props.navigation.navigate("Home")}}
+                            onPress={() => {this.props.navigation.navigate("DashboardScreen")}}
                         >
                             <Text><Icon name="arrow-circle-right" size={35} color="#000000" /></Text>
                         </TouchableOpacity>

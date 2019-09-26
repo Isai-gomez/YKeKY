@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import {View, ImageBackground,StyleSheet,Image,Text,TouchableOpacity} from 'react-native';
+import Orientation from 'react-native-orientation';
 
 export default class pantalla4 extends Component {
     static navigationOptions = {
         header: null
+    }
+
+    componentDidMount(){
+        Orientation.lockToPortrait();
     }
 
     render(){
@@ -20,17 +25,17 @@ export default class pantalla4 extends Component {
                     </View>
                     <View style={styles.clasificaciones}>
                         <TouchableOpacity 
-                            style={[styles.boton,{backgroundColor:'#C30052'}]}
-                            onPress={()=>{this.props.navigation.navigate('Pantalla5', {tipoUniversidad: 1})}}
-                            >
-                            <Text style={styles.textboton}>PÚBLICAS</Text>
-                            <Image source={require('../../assets/directorio/pantalla2/icono3.png')} style={{width:15,height:15,right:'10%',position:'absolute'}} resizeMode={'contain'}/>
-                        </TouchableOpacity>
-                        <TouchableOpacity 
                             style={[styles.boton,{backgroundColor:'#16A086'}]}
                             onPress={()=>{this.props.navigation.navigate('Pantalla5',{tipoUniversidad: 2})}}
                             >
                             <Text style={styles.textboton}>PRIVADAS</Text>
+                            <Image source={require('../../assets/directorio/pantalla2/icono3.png')} style={{width:15,height:15,right:'10%',position:'absolute'}} resizeMode={'contain'}/>
+                        </TouchableOpacity>
+                        <TouchableOpacity 
+                            style={[styles.boton,{backgroundColor:'#C30052'}]}
+                            onPress={()=>{this.props.navigation.navigate('Pantalla5', {tipoUniversidad: 1})}}
+                            >
+                            <Text style={styles.textboton}>PÚBLICAS</Text>
                             <Image source={require('../../assets/directorio/pantalla2/icono3.png')} style={{width:15,height:15,right:'10%',position:'absolute'}} resizeMode={'contain'}/>
                         </TouchableOpacity>
                     </View>                 

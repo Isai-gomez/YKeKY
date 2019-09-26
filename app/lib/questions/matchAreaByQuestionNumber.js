@@ -7,14 +7,14 @@ const QuestionsByArea = [
     { CienciasDeLaSalud: new Array(1, 15, 30, 33, 34, 35, 36) }
 ];
 
-count = {
-    Ing: 0,
-    EAd: 0,
-    CBE: 0,
-    Hum: 0,
-    CSo: 0,
-    CDS: 0
-}
+// count = {
+//     Ing: 0,
+//     EAd: 0,
+//     CBE: 0,
+//     Hum: 0,
+//     CSo: 0,
+//     CDS: 0
+// }
 
 function matchAreaByQuestionNumber( index ) {
    

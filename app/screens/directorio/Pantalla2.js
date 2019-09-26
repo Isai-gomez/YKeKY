@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import {View, ImageBackground,StyleSheet,Image,Text,TouchableOpacity} from 'react-native';
+import Orientation from 'react-native-orientation';
 
 export default class pantalla2 extends Component {
     static navigationOptions = {
         header: null
+    }
+
+    componentDidMount(){
+        Orientation.lockToPortrait();
     }
 
     render(){

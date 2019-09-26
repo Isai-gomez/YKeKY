@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import {View,Text,StyleSheet,Image,ImageBackground,StatusBar} from 'react-native';
 import colors from '../styles/colors';
+import Orientation from 'react-native-orientation';
 
 import Onboarding from 'react-native-onboarding-swiper';
 
@@ -26,6 +27,10 @@ const Square = ({ isLight, selected }) => {
 export default class SwiperScreen extends Component {
     static navigationOptions = {
         header: null
+    }
+
+    componentDidMount(){
+      Orientation.lockToPortrait();
     }
 
     render() {

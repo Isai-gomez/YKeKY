@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {ImageBackground,Image,View,StyleSheet,Text,Picker,TouchableOpacity,Alert} from 'react-native';
+import Orientation from 'react-native-orientation';
 
 export default class Pantalla1 extends Component {
     static navigationOptions = {
@@ -13,6 +14,10 @@ export default class Pantalla1 extends Component {
         }
     }
 
+    componentDidMount(){
+        Orientation.lockToPortrait();
+    }
+
     render() {
         return (
             <ImageBackground source={require('../../assets/directorio/pantalla1Fondo.png')} style={{flex:1}} resizeMode={'cover'}>
@@ -22,7 +27,7 @@ export default class Pantalla1 extends Component {
                 <Image source={require('../../assets/directorio/Recurso4Pantalla1.png')} style={{width:100, height:100,position:'absolute',bottom:'-10%',left:'0%'}} />
                 <Image source={require('../../assets/directorio/Recurso5Pantalla1.png')} style={{width:110, height:120,position:'absolute',bottom:'-10%',right:'35%'}} />
                 <Image source={require('../../assets/directorio/Recurso6Pantalla1.png')} style={{width:110, height:120,position:'absolute',bottom:'-10%',right:'0%'}} />
-                <Image source={require('../../assets/directorio/Recurso7Pantalla1.png')} style={{width:300, height:165,position:'absolute',top:'20%',left:'8%'}} />
+                <Image source={require('../../assets/directorio/Recurso7Pantalla1.png')} style={{width:300, height:165,position:'absolute',top:'20%',left:'4%'}} />
                 <View style={styles.container}>
                     <Picker
                         style={{width: 200, height: 50, backgroundColor: 'rgba(24,56,103, 1.0)', 
@@ -42,7 +47,7 @@ export default class Pantalla1 extends Component {
                             style={styles.boton}
                             onPress={()=>{this.props.navigation.navigate('Pantalla2')}}
                         >
-                            <Text style={styles.textBoton}>ENVIAR</Text>
+                            <Text style={styles.textBoton}>ENTRAR</Text>
                         </TouchableOpacity>
                 </View>                
             </ImageBackground>
