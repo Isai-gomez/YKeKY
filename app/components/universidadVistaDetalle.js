@@ -4,10 +4,22 @@ import MapView,{Marker} from 'react-native-maps';
 import ModalExample from '../components/Modal';
 import Orientation from 'react-native-orientation';
 
+class LogoTitle extends React.Component {
+    render() {
+      return (
+        <Image
+          source={require('../assets/directorio/pantalla6/logopantalla6.png')}
+          style={{ width: 90, height: 30 }}
+          resizeMode={'contain'}
+        />
+      );
+    }
+  }
+
 export default class universidadVistaDetalle extends Component {
     static navigationOptions =
     {    
-        title:'',
+        headerTitle:<LogoTitle/>,
         headerStyle: {
             backgroundColor: 'transparent',
           },
@@ -56,7 +68,10 @@ export default class universidadVistaDetalle extends Component {
         
         return (
             <ImageBackground source={require('../assets/directorio/pantalla2/fondop2.png')} style={{flex:1}}>
+            <Image source={require('../assets/directorio/pantalla6/pantalla6r9.png')} style={{width:80, height:150,position:'absolute',bottom:'5%',left:'-12%'}} />            
+            <Image source={require('../assets/directorio/pantalla6/pantalla6r10.png')} style={{width:100, height:100,position:'absolute',bottom:'15%',right:'-15%'}} />
             <ScrollView style={styles.container}>
+            <Image source={require('../assets/directorio/pantalla6/pantalla6r11.png')} style={{width:100, height:100,position:'absolute',top:'0%',right:'0%'}} />
                 <View style={styles.containerimg}>
                     <ImageBackground
                         source={{uri:fachada}}
@@ -65,10 +80,10 @@ export default class universidadVistaDetalle extends Component {
                 </View>
                 <View style={styles.contenido}>
                     <View style={styles.logocontainer}>
-                        <Text style={{fontFamily: 'GothamBold',width:'70%'}}>{nombre}</Text>
+                        <Text style={{fontFamily: 'GothamBold',width:'70%',color:'rgba(29,58,108, 1.0)'}}>{nombre}</Text>
                         <Image
                             source={{uri:logo}}
-                            style={{width:100,height:100,bottom:0,borderRadius:100,borderWidth:5, borderColor:'#ccc',position:'absolute',right:0}}
+                            style={{width:100,height:100,bottom:0,borderRadius:100,borderWidth:2, borderColor:'#ccc',position:'absolute',right:0}}
                         />
                     </View>
                     <View style={styles.contherramientas}>
@@ -78,49 +93,34 @@ export default class universidadVistaDetalle extends Component {
                         <TouchableOpacity style={styles.herramienta} onPress={()=>{Alert.alert("Información", "Aún no disponibles")}}><Image source={require('../assets/directorio/pantalla6/pantalla6r4.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
                         <TouchableOpacity style={styles.herramienta} onPress={()=>{Alert.alert("Información", "Aún no disponibles")}}><Image source={require('../assets/directorio/pantalla6/pantalla6r5.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
                         <TouchableOpacity style={styles.herramienta} onPress={()=>{Alert.alert("Información", "Aún no disponibles")}}><Image source={require('../assets/directorio/pantalla6/pantalla6r6.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
-                        <TouchableOpacity style={styles.herramienta} onPress={()=>{Alert.alert("Información", "Aún no disponibles")}}><Image source={require('../assets/directorio/pantalla6/pantalla6r6.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
+                        <TouchableOpacity style={styles.herramienta} onPress={()=>{Alert.alert("Información", "Aún no disponibles")}}><Image source={require('../assets/directorio/pantalla6/pantalla6r7.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
                         <TouchableOpacity style={styles.herramienta} onPress={()=>{Alert.alert("Información", "Aún no disponibles")}}><Image source={require('../assets/directorio/pantalla6/pantalla6r8.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
                     </View> 
                     <View style={{borderColor:'rgba(29,58,108, 1.0)', borderWidth:2}}>               
-                        <Text style={{fontFamily: 'GothamBold'}}>Clave de la SEP:</Text>
+                        <Text style={styles.textSub}>Clave de la SEP:</Text>
                         <Text style={{fontFamily: 'GothamBook'}}>{clave_sep}</Text>
-                        <Text style={{fontFamily: 'GothamBold'}}>Calle:</Text>
+                        <Text style={styles.textSub}>Calle:</Text>
                         <Text style={{fontFamily: 'GothamBook'}}>{calle}</Text>
-                        <Text style={{fontFamily: 'GothamBold'}}>Colonia:</Text>
+                        <Text style={styles.textSub}>Colonia:</Text>
                         <Text style={{fontFamily: 'GothamBook'}}>{colonia}</Text>
-                        <Text style={{fontFamily: 'GothamBold'}}>Vision:</Text>
+                        <Text style={styles.textSub}>Vision:</Text>
                         <Text style={{fontFamily: 'GothamBook'}}>{vision}</Text>
-                        <View style={{flexDirection:"row"}}>
-                            <Button
+                        <View style={{flexDirection:"row",margin:3}}>
+                            {/* <Button
                                 title="Carreras"
                                 color="#841584"
                                 accessibilityLabel="Learn more about this purple button"
-                            />
+                            /> */}
                             <ModalExample visible={this.state.visible} close={this.toggleModal}/>
-                            <Button
+                            {/* <Button
                                 onPress={this.toggleModal}
                                 title="Contacto"
-                                color="#841584"
-                                accessibilityLabel="Learn more about this purple button"
-                            />
+                                color="#FFD549"
+                                style={{margin:3}}
+                            /> */}
                             </View> 
                     </View>
                 </View> 
-         		{/* <View style={styles.containermap}>
-                    <MapView
-                        style={styles.map}
-                        initialRegion={region}
-                        maxZoomLevel= {20}
-                >
-                     <Marker
-                        coordinate={{latitude:parseFloat(latitud),
-                            longitude: parseFloat(longitud)}}
-                        title={nombre}
-                        >
-                            <Image source={{uri:logo}} style={{height: 28, width:28,borderRadius:100, borderWidth:2,borderColor:'red' }}/>
-                        </Marker>
-                </MapView>
-                </View> */}
             </ScrollView>
             </ImageBackground>
         );
@@ -189,13 +189,22 @@ const styles = StyleSheet.create({
     contherramientas:{
         flexDirection:'row',
         flexWrap:'wrap',
-        height:100,
+        height:110,
         width:'80%',
         justifyContent:'center',
         alignItems:'center',
-        margin: 25
+        margin: 25,
+       
     },
     herramienta:{
-        borderColor:'rgba(29,58,108, 1.0)',
+        // borderColor:'rgba(29,58,108, 1.0)',
+        // backgroundColor:'#FFD549',
+        margin:2,
+        borderRadius:8
+       
+    },
+    textSub:{
+        fontFamily: 'GothamBold',
+        color:'rgba(29,58,108, 1.0)'
     }
   });

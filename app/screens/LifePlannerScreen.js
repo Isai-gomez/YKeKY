@@ -1,22 +1,17 @@
 import React,{Component} from 'react';
-import {View,Text,Animated,TouchableOpacity,Dimensions,StyleSheet,Alert,Image} from 'react-native';
+import {View,Text,Animated,TouchableOpacity,StyleSheet,Alert,ImageBackground,Dimensions,ScrollView,Image} from 'react-native';
 import Slide from '../components/Slider';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import SwiperComponent from '../components/SwipeComponent';
 import Orientation from 'react-native-orientation';
 
+var {width, height} = Dimensions.get('window')
+
 const matchAreaByQuestionNumber = require('../lib/questions/MachAreaVida');
 
 export default class LifeScreen extends Component {
         static navigationOptions = {
-            title: 'Plan de vida',
-            headerStyle: {
-            backgroundColor: '#f4511e',
-            },
-            headerTintColor: '#fff',
-            headerTitleStyle: {
-            fontWeight: 'bold',
-            },
+            header:null
         };
         state = {
             index : 0,
@@ -63,7 +58,6 @@ export default class LifeScreen extends Component {
 
     render() {
         const { questions, index } = this.state;
-        const { width } = Dimensions.get("window");
 
         const progressInterpolate = this.state.progress.interpolate({
             inputRange: [0, questions.length - 1],
@@ -133,41 +127,94 @@ export default class LifeScreen extends Component {
             
         }
         return (
-            <View style={styles.container}>
-                <SwiperComponent />
-                <View style={styles.card}>
-                    <View style={[StyleSheet.absoluteFill, styles.overlay]}>
-                        <Animated.Text style={[styles.questionText, mainStyle]}>
-                            {index+1}.- {question}                        
-                        </Animated.Text>
-                        <View style={{
-                            position: "absolute",
-                            left: 0,
-                            bottom: 90,
-                            right: 0,
-                            height: 10,
-                        }}>
-                            <Animated.View>
-                                <Slide
-                                    value={this.state.value}
-                                />
-                            </Animated.View>
-                        </View>                        
-                    </View> 
-                    <View style={styles.progress}>
-                        <Animated.View style={[styles.bar, progressStyle]} />
+            <ImageBackground source={require('../assets/planVida/fondoPlan.png')} style={{width:width,height:height}} resizeMode={'cover'}>
+                  <Image source={require('../assets/planVida/cosa.png')} style={{width:300,height:300, position:'absolute',bottom:'-22%',right:'-2%'}}/>
+                  <Image source={require('../assets/planVida/superiorR1.png')} style={{width:200, height:200,position:'absolute',top:'-20%',right:0}}/>
+                  <Image source={require('../assets/planVida/superiorR2.png')} style={{width:150, height:150,position:'absolute',top:'-18%',left:'-23%'}}/>
+                  <View style={styles.container}>
+                    <View style={{flex:2,alignItems:'center',justifyContent:'center',width:'90%',marginTop:20}}> 
+                        <ImageBackground source={require('../assets/planVida/planR3.png')} style={{width:'100%',height:'70%'}}>
+                        <View style={{flex:1,alignItems:'center',marginTop:20}}>    
+                                <Animated.Text style={[styles.questionText, mainStyle]}>
+                                    {index+1}.- {question}                        
+                                </Animated.Text>  
+                        </View>   
+                        </ImageBackground>                          
                     </View>
-                    <TouchableOpacity 
+                    <View style={{flex:4,flexDirection:'row',alignItems:'center',justifyContent:'center',flexWrap:'wrap',width:'80%',marginTop:-30}}>
+                        <TouchableOpacity 
                             onPress={this.handleAnswer}
-                            // activeOpacity={1}
                             style={styles.option}
-                        >
-                            <Text style={styles.optionText}><Icon name="arrow-circle-right" size={45} color="#000000"/></Text>
-                    </TouchableOpacity>
-                    
-                </View>                  
-                    
-            </View>
+                            >
+                            <Image source={require('../assets/planVida/emojis/emoji1.png')} style={{width:50,height:50}}  resizeMode={'contain'}/>
+                            <Text style={styles.optionText}>10</Text>
+                            </TouchableOpacity>
+                        <TouchableOpacity 
+                            onPress={this.handleAnswer}
+                            style={styles.option}
+                            >
+                            <Image source={require('../assets/planVida/emojis/emoji2.png')} style={{width:50,height:50}}  resizeMode={'contain'}/>
+                            <Text style={styles.optionText}>9</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity 
+                            onPress={this.handleAnswer}
+                            style={styles.option}
+                            >
+                            <Image source={require('../assets/planVida/emojis/emoji3.png')} style={{width:50,height:50}}  resizeMode={'contain'}/>
+                            <Text style={styles.optionText}>8</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity 
+                            onPress={this.handleAnswer}
+                            style={styles.option}
+                            >
+                            <Image source={require('../assets/planVida/emojis/emoji4.png')} style={{width:50,height:50}}  resizeMode={'contain'}/>
+                            <Text style={styles.optionText}>7</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity 
+                            onPress={this.handleAnswer}
+                            style={styles.option}
+                            >
+                            <Image source={require('../assets/planVida/emojis/emoji5.png')} style={{width:50,height:50}} resizeMode={'contain'}/>
+                            <Text style={styles.optionText}>6</Text>
+                            </TouchableOpacity>
+                        <TouchableOpacity 
+                            onPress={this.handleAnswer}
+                            style={styles.option}
+                            >
+                            <Image source={require('../assets/planVida/emojis/emoji6.png')} style={{width:50,height:50}}  resizeMode={'contain'}/>
+                            <Text style={styles.optionText}>5</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity 
+                            onPress={this.handleAnswer}
+                            style={styles.option}
+                            >
+                            <Image source={require('../assets/planVida/emojis/emoji7.png')} style={{width:50,height:50}}  resizeMode={'contain'}/>
+                            <Text style={styles.optionText}>4</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity 
+                            onPress={this.handleAnswer}
+                            style={styles.option}
+                            >
+                            <Image source={require('../assets/planVida/emojis/emoji8.png')} style={{width:50,height:50}}  resizeMode={'contain'}/>
+                            <Text style={styles.optionText}>3</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity 
+                            onPress={this.handleAnswer}
+                            style={styles.option}
+                            >
+                            <Image source={require('../assets/planVida/emojis/emoji9.png')} style={{width:50,height:50}}  resizeMode={'contain'}/>
+                            <Text style={styles.optionText}>2</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity 
+                            onPress={this.handleAnswer}
+                            style={styles.option}
+                            >
+                            <Image source={require('../assets/planVida/emojis/emoji10.png')} style={{width:50,height:50}} resizeMode={'contain'}/>
+                            <Text style={styles.optionText}>1</Text>
+                        </TouchableOpacity>
+                        </View>
+                  </View>
+            </ImageBackground>
         );
     }
 }
@@ -175,14 +222,11 @@ export default class LifeScreen extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#FAFAFA',
-        // flexDirection: "row",
         justifyContent:'center',
-        alignItems:'center',
+        alignItems:'center'
     },
     card : {
         display:'flex',
-        backgroundColor: '#fff',
         flexDirection: 'column',
         justifyContent: "flex-end",
         alignItems: "flex-end",
@@ -206,17 +250,19 @@ const styles = StyleSheet.create({
         backgroundColor: "darkorange"
     },
     option: {
-        height:'12%',
+        height:80,
+        width:50,
         justifyContent: "center",
         alignItems: "center",
-        alignContent: 'stretch'
+        alignContent: 'stretch',
+        margin:12,
     },
     yes: {
         backgroundColor: "rgba(255,255,255, .1)"
     },
     optionText: {
         fontSize: 18,
-        color: "#BDBDBD",
+        color: 'rgba(29,58,108, 1.0)',
         marginBottom: 50
     },
     overlay: {
@@ -224,10 +270,10 @@ const styles = StyleSheet.create({
        justifyContent: "center"
     },
     questionText: {
-        backgroundColor: "transparent",
         position: "absolute",
-        fontSize: 20,
-        color: "black",
-        textAlign: "center"
+        fontSize: 17,
+        color: "#fff",
+        textAlign: "center",
+        fontFamily:'GothamBook'
     }
 })

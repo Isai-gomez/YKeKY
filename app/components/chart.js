@@ -44,7 +44,7 @@ export default class Chart extends Component {
                   <VictoryLine
                     interpolation="natural"
                     data={data}
-                    style={{ data: { stroke: "#c43a31", strokeWidth: 5, strokeLinecap: "round" } }}
+                    style={{ data: { stroke: "#fff", strokeWidth: 2, strokeLinecap: "round" } }}
                   />
                   <VictoryScatter
                     style={{
@@ -70,7 +70,6 @@ const styles = StyleSheet.create({
       flex:1,
       justifyContent: "center",
       alignItems: "center",
-      backgroundColor: "#f5fcff"
     }
   });
 

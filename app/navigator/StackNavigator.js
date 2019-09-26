@@ -82,7 +82,8 @@ const AuthNavigator = createStackNavigator(
     Swiper,
     Login,
     Register,
-    Recuperar
+    Recuperar,
+  
 },
 {
   initialRouteName: "Initial",
