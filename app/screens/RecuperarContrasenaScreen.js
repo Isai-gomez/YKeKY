@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import {View,Text,StyleSheet,Image,ImageBackground,StatusBar,TouchableHighlight,TextInput} from 'react-native';
 import colors from '../styles/colors';
+import Orientation from 'react-native-orientation';
 
 export default class RecuperarContrasenaScreen extends Component{
     static navigationOptions = {

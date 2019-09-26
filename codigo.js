@@ -1,6 +1,3 @@
-import AsyncStorage from '@react-native-community/async-storage';
-import { count } from '../../../codigo';
-
 const QuestionsByArea = [
     { Ingenieria: new Array( 10, 12, 18, 29, 38, 40) },
     { EconomicoAdministrativo: new Array(2, 4, 8, 9, 14, 17, 20, 24, 26, 32) },
@@ -18,7 +15,6 @@ count = {
     CienciasSociales: 0,
     CienciasDeLaSalud: 0
 }
-
 
 function matchAreaByQuestionNumber( index ) {
    
@@ -68,3 +64,5 @@ function matchAreaByQuestionNumber( index ) {
 }
 
 module.exports = matchAreaByQuestionNumber;
+
+export {count}

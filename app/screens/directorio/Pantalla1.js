@@ -37,7 +37,7 @@ export default class Pantalla1 extends Component {
                         onValueChange={(itemValue, itemIndex) =>
                             this.setState({estados: (itemValue !== 'TAB'? Alert.alert("Información","Estado no disponible"): itemValue )})
                         }>
-                        <Picker.Item label="Seleccione un estado" value="TAB" />
+                        {/* <Picker.Item label="Seleccione un estado" value="TAB" /> */}
                         <Picker.Item label="Tabasco" value="TAB" />
                         <Picker.Item label="Veracruz" value="VER" />
                         <Picker.Item label="Campeche" value="CAM" />

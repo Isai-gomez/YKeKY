@@ -18,7 +18,8 @@ export default class ResultLifePlannerScreen extends Component {
       }
     render() {
         return (
-            <ImageBackground source={require('../assets/planVida/Resultados/fondo.png')} style={{flex:1}}>
+            // <ImageBackground source={require('../assets/planVida/Resultados/fondo.png')} style={{flex:1}}>
+            <ScrollView style={{flex: 1}}>
             <View style={{flex:1}}>
                 <View style={{flex:0.5}}>
                     <ImageBackground source={require('../assets/planVida/Resultados/fonfoGrafica.png')} style={{flex:1}}>
@@ -126,7 +127,7 @@ export default class ResultLifePlannerScreen extends Component {
                     </View>
                     <View>               
                         <TouchableOpacity 
-                            style={{alignItems: 'flex-end'}}
+                            style={{alignItems: 'flex-end', bottom: 20, right: 20}}
                             onPress={() => {this.props.navigation.navigate("DashboardScreen")}}
                         >
                             <Text><Icon name="arrow-circle-right" size={35} color="#000000" /></Text>
@@ -134,7 +135,8 @@ export default class ResultLifePlannerScreen extends Component {
                     </View>
                 </View>
             </View>
-            </ImageBackground>
+            </ScrollView>
+            // </ImageBackground>
         );
     }
 }
