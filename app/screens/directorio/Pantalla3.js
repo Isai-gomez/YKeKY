@@ -13,7 +13,7 @@ export default class Pantalla3 extends Component {
                 <Image source={require('../../assets/directorio/pantalla3/pantalla3r3.png')} style={{position:'absolute', width:100, height:100, top:'-10%',left:'-20%'}}/>
                 <Image source={require('../../assets/directorio/pantalla3/pantalla3r4.png')} style={{position:'absolute', width:98, height:115, bottom:'-10%',left:'-9%'}}/>
                 <Image source={require('../../assets/directorio/pantalla3/pantalla3r1.png')} style={{position:'absolute', width:108, height:110, bottom:'-9%',right:'-12%'}}/>
-                <Image source={require('../../assets/inicio.png')} style={{width:90,height:30,position:'absolute',top:'3%',left:'5%'}}/>
+                <Image source={require('../../assets/inicio.png')} style={{width:90,height:30,position:'absolute',top:'6%',left:'5%'}}/>
                 <View style={styles.container}>
                     <View style={styles.containertitulo}>
                         <Text style={styles.texttitulo}>NIVELES{"\n"}ESCOLARES</Text>

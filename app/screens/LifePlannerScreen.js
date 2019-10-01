@@ -135,7 +135,7 @@ export default class LifeScreen extends Component {
                         </View>   
                         </ImageBackground>                          
                     </View>
-                    <View style={{flex:4,flexDirection:'row',alignItems:'center',justifyContent:'center',flexWrap:'wrap',width:'80%',marginTop:-30}}>
+                    <View style={{flex:4,flexDirection:'row',alignItems:'center',justifyContent:'center',flexWrap:'wrap',width:'75%',marginTop:-30}}>
                         <TouchableOpacity 
                             onPress={this.handleAnswer}
                             style={styles.option}
@@ -249,7 +249,8 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         alignContent: 'stretch',
-        margin:12,
+        marginTop:5,
+        marginLeft:18
     },
     yes: {
         backgroundColor: "rgba(255,255,255, .1)"

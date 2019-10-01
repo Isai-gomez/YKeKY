@@ -185,7 +185,7 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         flexWrap:'wrap',
         height:110,
-        width:'80%',
+        width:'90%',
         justifyContent:'center',
         alignItems:'center',
         margin: 25,
