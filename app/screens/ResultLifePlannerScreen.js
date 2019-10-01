@@ -18,8 +18,7 @@ export default class ResultLifePlannerScreen extends Component {
       }
     render() {
         return (
-            // <ImageBackground source={require('../assets/planVida/Resultados/fondo.png')} style={{flex:1}}>
-            <ScrollView style={{flex: 1}}>
+            <ImageBackground source={require('../assets/planVida/Resultados/fondoRl.png')} style={{flex:1}}>
             <View style={{flex:1}}>
                 <View style={{flex:0.5}}>
                     <ImageBackground source={require('../assets/planVida/Resultados/fonfoGrafica.png')} style={{flex:1}}>
@@ -27,6 +26,7 @@ export default class ResultLifePlannerScreen extends Component {
                     </ImageBackground>
                 </View>
                 <View style={styles.container}>
+                <ScrollView>
                     <View  style={styles.scroll}>
                         <View style={styles.mincard}>
                             <View style={styles.resu}>
@@ -125,6 +125,7 @@ export default class ResultLifePlannerScreen extends Component {
                             </View>
                         </View>
                     </View>
+                    </ScrollView>
                     <View>               
                         <TouchableOpacity 
                             style={{alignItems: 'flex-end', bottom: 20, right: 20}}
@@ -135,11 +136,13 @@ export default class ResultLifePlannerScreen extends Component {
                     </View>
                 </View>
             </View>
-            </ScrollView>
-            // </ImageBackground>
+            </ImageBackground>
         );
     }
 }
+
+let colors = []
+
 const styles = StyleSheet.create({
     container: {
         flex: 0.5,

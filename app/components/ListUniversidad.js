@@ -61,7 +61,7 @@ const styles = StyleSheet.create(
             borderRadius:5
         },
         subtitulo:{
-            fontSize: 20,
+            fontSize: 16,
             color:'rgba(29,58,108, 1.0)',
             textAlign:'center',
             fontFamily:'GothamBold'

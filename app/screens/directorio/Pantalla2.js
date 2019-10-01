@@ -14,7 +14,7 @@ export default class pantalla2 extends Component {
     render(){
         return (
             <ImageBackground source={require('../../assets/directorio/pantalla2/fondop2.png')} style={styles.fondoimage} resizeMode={'cover'}>
-                <Image source={require('../../assets/directorio/pantalla2/pantalla2r1.png')} style={{position:'absolute', width:105, height:100,left:'40%',top:'-9%'}}/>
+                <Image source={require('../../assets/directorio/pantalla2/pantalla2r1.png')} style={{position:'absolute', width:105, height:100,left:'40%',top:'-11%'}}/>
                 <Image source={require('../../assets/directorio/pantalla2/pantalla2r2.png')} style={{position:'absolute', width:100, height:100, bottom:'30%',left:'-26%'}}/>
                 <Image source={require('../../assets/directorio/pantalla2/pantalla2r3.png')} style={{position:'absolute', width:115, height:124, bottom:'-14%',left:'-11%'}}/>
                 <Image source={require('../../assets/directorio/pantalla2/pantalla2r4.png')} style={{position:'absolute', width:120, height:120, bottom:'-12%',right:'-15%'}}/>
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     },
     containertitulo:{
         marginTop:30,
-        marginBottom:30
+        marginBottom:8
     },
     texttitulo:{
         color:'rgba(29,58,108, 1.0)',
