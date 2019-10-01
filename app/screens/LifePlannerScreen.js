@@ -103,11 +103,11 @@ export default class LifeScreen extends Component {
             Animated.parallel([
                 Animated.timing(this.state.progress, {
                    toValue: this.state.index + 1,
-                   duration: 400,
+                   duration: 500,
                 }),
                 Animated.timing(this.state.animation, {
                 toValue: 1,
-                duration: 400
+                duration: 500
             })
         ]).start(() => {
                 this.setState((state) => {
@@ -131,7 +131,10 @@ export default class LifeScreen extends Component {
                         <View style={{flex:1,alignItems:'center',marginTop:20}}>    
                                 <Animated.Text style={[styles.questionText, mainStyle]}>
                                     {index+1}.- {question}                        
-                                </Animated.Text>  
+                                </Animated.Text> 
+                                <Animated.Text style={[styles.questionText, nextStyle]}>
+                                    {index}.- {nextQuestion}
+                                </Animated.Text> 
                         </View>   
                         </ImageBackground>                          
                     </View>
