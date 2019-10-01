@@ -1,8 +1,7 @@
 import React,{Component} from 'react';
 import {View,Text,Animated,TouchableOpacity,StyleSheet,Alert,ImageBackground,Dimensions,ScrollView,Image} from 'react-native';
-import Slide from '../components/Slider';
+// import Slide from '../components/Slider';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import SwiperComponent from '../components/SwipeComponent';
 import Orientation from 'react-native-orientation';
 
 var {width, height} = Dimensions.get('window')

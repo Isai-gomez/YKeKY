@@ -6,8 +6,7 @@ import Home from '../screens/HomeScreen';
 import Test from '../screens/TestVocacionalScreen';
 import TestVocacionalScreen from '../screens/TestVocacionalScreen'
 import LifePlanner from '../screens/LifePlannerScreen';
-import Directorio from '../screens/DirectorioScreen';
-import ModalComponent from '../components/ModalComponent';
+// import Directorio from '../screens/DirectorioScreen';
 
 import DetalleUniversidad from '../components/universidadVistaDetalle';
 
@@ -47,11 +46,10 @@ const AppNavigator = createStackNavigator(
       LifePlanner,
       ResultTS,
       ResultLP,
-      Directorio,
+      // Directorio,
       Instruccion_Lp,
       Instruccion_Ts,
       DetalleUniversidad,
-      ModalComponent,
       Dashboard,
       DirectorioP1,
       DashboardScreen,

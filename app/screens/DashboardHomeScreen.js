@@ -106,7 +106,7 @@ export default class DashboarHomeScreen extends Component {
                                 Plan de Vida
                             </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.cartita}
+                        {/* <TouchableOpacity style={styles.cartita}
                             onPress={() => {this.props.navigation.navigate("Directorio")}}
                             >
                             <Text><Icon name='atlas' size={50} color="black"/></Text>
@@ -116,7 +116,7 @@ export default class DashboarHomeScreen extends Component {
                             <Text style={{fontSize:15}}>
                                 Escolar
                             </Text>
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
                         <TouchableOpacity style={styles.cartita} onPress={ ()=> {this.openLink()}} >
                             <Text><Icon name='edit' size={50} color="black"/></Text>
                             <Text style={{fontSize:15}}>

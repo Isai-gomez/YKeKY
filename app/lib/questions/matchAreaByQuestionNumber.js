@@ -1,5 +1,4 @@
 import AsyncStorage from '@react-native-community/async-storage';
-import { count } from '../../../codigo';
 
 const QuestionsByArea = [
     { Ingenieria: new Array( 10, 12, 18, 29, 38, 40) },
@@ -19,12 +18,11 @@ count = {
     CienciasDeLaSalud: 0
 }
 
-
 function matchAreaByQuestionNumber( index ) {
    
     let areaQuestion;
 
-    QuestionsByArea.map( ( area, key )=>{
+    QuestionsByArea.map(( area, key )=>{
         Object.entries( area ).forEach( ( [ keyArea, valueArea ] )=>{
             console.log( 'array: ', key, valueArea, keyArea,  QuestionsByArea[ key ][ keyArea ] );
             if ( QuestionsByArea[ key ][ keyArea ].includes( index + 1 ) ) {

@@ -4,11 +4,11 @@ import {createBottomTabNavigator, createAppContainer} from 'react-navigation';
 import LifePlanner from './_Instruccion_lp';
 import OrientacionEducativa from './_Instruccion_Ts';
 import DashboardHomeScreen from './DashboardHomeScreen';
-import DirectorioUniversitario from './DirectorioScreen';
+// import DirectorioUniversitario from './DirectorioScreen';
 import Profile from './ProfileScreen';
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import MainView from './DirectorioScreen';
+// import MainView from './DirectorioScreen';
 
 const TabNavigator = createBottomTabNavigator({
     PlanDeVida: {
@@ -38,15 +38,15 @@ const TabNavigator = createBottomTabNavigator({
             )
         }
     },
-    Directorio: {
-        screen: DirectorioUniversitario,
-        navigationOptions : {
-            tabBarLabel:'Directorio Escolar',
-            tabBarIcon:({tintColor}) => (
-                <Icon name="address-book" color={tintColor} size={25} />
-            )
-        }
-    },
+    // Directorio: {
+    //     screen: DirectorioUniversitario,
+    //     navigationOptions : {
+    //         tabBarLabel:'Directorio Escolar',
+    //         tabBarIcon:({tintColor}) => (
+    //             <Icon name="address-book" color={tintColor} size={25} />
+    //         )
+    //     }
+    // },
     Perfil:{
         screen: Profile,
         navigationOptions : {

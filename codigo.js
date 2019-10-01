@@ -64,5 +64,3 @@ function matchAreaByQuestionNumber( index ) {
 }
 
 module.exports = matchAreaByQuestionNumber;
-
-export {count}
