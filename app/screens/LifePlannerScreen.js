@@ -109,11 +109,11 @@ export default class LifeScreen extends Component {
             Animated.parallel([
                 Animated.timing(this.state.progress, {
                    toValue: this.state.index + 1,
-                   duration: 400,
+                   duration: 500,
                 }),
                 Animated.timing(this.state.animation, {
                 toValue: 1,
-                duration: 400
+                duration: 500
             })
         ]).start(() => {
                 this.setState((state) => {
@@ -137,11 +137,14 @@ export default class LifeScreen extends Component {
                         <View style={{flex:1,alignItems:'center',marginTop:20}}>    
                                 <Animated.Text style={[styles.questionText, mainStyle]}>
                                     {index+1}.- {question}                        
-                                </Animated.Text>  
+                                </Animated.Text> 
+                                <Animated.Text style={[styles.questionText, nextStyle]}>
+                                    {index}.- {nextQuestion}
+                                </Animated.Text> 
                         </View>   
                         </ImageBackground>                          
                     </View>
-                    <View style={{flex:4,flexDirection:'row',alignItems:'center',justifyContent:'center',flexWrap:'wrap',width:'80%',marginTop:-30}}>
+                    <View style={{flex:4,flexDirection:'row',alignItems:'center',justifyContent:'center',flexWrap:'wrap',width:'75%',marginTop:-30}}>
                         <TouchableOpacity 
                             onPress={this.handleAnswer}
                             style={styles.option}
@@ -255,7 +258,8 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         alignContent: 'stretch',
-        margin:12,
+        marginTop:5,
+        marginLeft:18
     },
     yes: {
         backgroundColor: "rgba(255,255,255, .1)"

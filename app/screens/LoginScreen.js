@@ -160,7 +160,7 @@ export default class LoginScreen extends Component {
                                 style={styles.botonIzq}
                                 onPress={()=>{this.props.navigation.navigate('Recuperar')}}
                                 >
-                                    <Text style={{color: 'rgba(29,58,108, 1.0)',fontFamily:'GothamBold', fontSize:8}}>RECUPERAR CONTRASEÑA</Text>
+                                    <Text style={{color: 'rgba(29,58,108, 1.0)',fontFamily:'GothamBold', fontSize:9}}>RECUPERAR CONTRASEÑA</Text>
                                 </TouchableOpacity>   
                                 <CheckBox
                                     title='RECORDARME'
@@ -327,7 +327,7 @@ const styles = StyleSheet.create({
     checktext:{
         color: 'rgba(29,58,108, 1.0)',
         fontFamily:'GothamBold', 
-        fontSize:8
+        fontSize:9
     },
     gradient:{
         borderRadius: 5,
