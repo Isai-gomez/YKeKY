@@ -1,10 +1,6 @@
 import React ,{Component} from 'react';
 import {View,Text, Image,TouchableOpacity,StyleSheet} from 'react-native';
 
-
-
-
-
 export default class listUniversidades extends Component {
 
     render(){

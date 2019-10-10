@@ -34,7 +34,7 @@ export default class pantalla2 extends Component {
                         </TouchableOpacity>
                         <TouchableOpacity style={[styles.boton,{backgroundColor:'#26AD60'}]}>
                             <Image source={require('../../assets/directorio/pantalla2/icono2.png')} style={styles.icono} resizeMode={'contain'}/>
-                            <Text style={styles.textboton}>ESPECIALEDADES</Text>
+                            <Text style={styles.textboton}>ESPECIALIDADES</Text>
                             <Image source={require('../../assets/directorio/pantalla2/icono3.png')} style={{width:15,height:15,right:'10%',position:'absolute'}} resizeMode={'contain'}/>
                         </TouchableOpacity>
                         <TouchableOpacity style={[styles.boton,{backgroundColor:'#8F44AD'}]}>
@@ -54,7 +54,7 @@ export default class pantalla2 extends Component {
                         </TouchableOpacity>
                         <TouchableOpacity style={[styles.boton,{backgroundColor:'#34495E'}]}>
                             <Image source={require('../../assets/directorio/pantalla2/icono7.png')} style={styles.icono} resizeMode={'contain'}/>
-                            <Text style={styles.textboton}>PROVEDURIA</Text>
+                            <Text style={styles.textboton}>PROVEEDURÍA</Text>
                             <Image source={require('../../assets/directorio/pantalla2/icono3.png')} style={{width:15,height:15,right:'10%',position:'absolute'}} resizeMode={'contain'}/>
                         </TouchableOpacity>
                     </View>                 

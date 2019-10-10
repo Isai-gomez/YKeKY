@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import {View, ImageBackground,StyleSheet,Image,Text,TouchableOpacity,FlatList} from 'react-native';
+import {View, ImageBackground,StyleSheet,Image,Text,ActivityIndicator,TouchableOpacity,FlatList,TextInput} from 'react-native';
 import ListUnivesidades from '../../components/ListUniversidad';
 import Orientation from 'react-native-orientation';
+import {SearchBar} from 'react-native-elements';
+import UniversidadVistaDetalle from '../../components/universidadVistaDetalle';
 
 export default class pantalla5 extends Component {
     static navigationOptions = {
@@ -10,8 +12,12 @@ export default class pantalla5 extends Component {
 
     state = {
         tipo: this.props.navigation.state.params.tipoUniversidad,
-        data:[]
+        data:[],
+        loading: false,
+        error: null
     };
+
+    arrayholder = [];
 
     componentDidMount() {
         this.makeRemoteRequest();
@@ -19,7 +25,7 @@ export default class pantalla5 extends Component {
     }
 
     makeRemoteRequest = () => {
-        const url = `http://3.15.183.131:3001/api/instituciones/byTipo?tipo=${this.state.tipo}`;
+        const url = `http://3.17.60.127:3001/api/instituciones/byTipo?tipo=${this.state.tipo}`;
 
         fetch(url)
             .then((response) => response.json())
@@ -37,7 +43,44 @@ export default class pantalla5 extends Component {
             });
     }
 
+    searchFilterFunction = text => {
+        this.setState({
+          value: text,
+        });
+    
+        const newData = this.arrayholder.filter(item => {
+          const itemData = `${item.nombre.toUpperCase()}`;
+          const textData = text.toUpperCase();
+    
+          return itemData.indexOf(textData) > -1;
+        });
+        this.setState({
+          data: newData,
+        });
+    };
+
+    renderHeader = () => {
+        return(
+          <SearchBar
+            lightTheme
+            round
+            placeholder={"Buscar..."}
+            onChangeText={text => this.searchFilterFunction(text)}
+            autoCorrect={false}
+            value={this.state.value}
+            style={styles.buscador}
+          />
+        )
+      }
+
     render(){
+        if(this.state.loading){
+            return(
+                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                    <ActivityIndicator color={'green'} />
+                </View>
+            );
+        }
         return (
             <ImageBackground source={require('../../assets/directorio/pantalla2/fondop2.png')} style={styles.fondoimage} resizeMode={'cover'}>
                 <Image source={require('../../assets/directorio/pantalla5/Recurso2p5.png')} style={{position:'absolute', width:120, height:120, right:'-12%',top:'-14.5%'}}/>
@@ -54,12 +97,14 @@ export default class pantalla5 extends Component {
                             renderItem={({item, index})=> 
                             <ListUnivesidades
                                 nombre={item.nombre}
+                                web_id={item.web_id}
                                 logo={item.logo}
                                 clave_sep={item.clave_sep}
                                 colorFondo={colors[index % colors.length]}
                                 onPress={() => {this.props.navigation.navigate('DetalleUniversidad', {universidad: item})}}
                             />}
                             keyExtractor={(item, index) => index }
+                            ListHeaderComponent={this.renderHeader}
                        />
                     </View>                 
                 </View>
@@ -90,10 +135,10 @@ const styles = StyleSheet.create({
         fontSize:20
     },
     clasificaciones:{
-        height:'60%',
+        height:'70%',
         width:'90%',
         justifyContent:'center',
-        marginBottom:'8%'
+        marginBottom:'8%',
     },
     boton:{
         flexDirection:'row',
@@ -117,5 +162,11 @@ const styles = StyleSheet.create({
     logo:{
         width:230,
         height:120
+    },
+    buscador: {
+        borderColor: 'rgba(2,2,53, 1.0)',
+        borderWidth: 2,
+        borderRadius: 50,
+        marginBottom: 10
     }
 })

@@ -6,6 +6,8 @@ import Home from '../screens/HomeScreen';
 import Test from '../screens/TestVocacionalScreen';
 import TestVocacionalScreen from '../screens/TestVocacionalScreen'
 import LifePlanner from '../screens/LifePlannerScreen';
+
+import Profile from '../screens/ProfileScreen';
 // import Directorio from '../screens/DirectorioScreen';
 
 import DetalleUniversidad from '../components/universidadVistaDetalle';
@@ -58,7 +60,8 @@ const AppNavigator = createStackNavigator(
       Pantalla3,
       Pantalla4,
       Pantalla5,
-      TestVocacionalScreen
+      TestVocacionalScreen,
+      Profile
     },
     {
       initialRouteName: "DashboardScreen",

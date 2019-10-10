@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {ImageBackground, View, ScrollView, Image, StyleSheet, Text,TouchableOpacity,Alert} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
+import {openLinkWithInAppBrowser} from '../helpers';
 
 export default class DashboardScreen extends Component {
     static navigationOptions = {
@@ -32,6 +33,12 @@ export default class DashboardScreen extends Component {
                     <View style={styles.card}>
                         <TouchableOpacity 
                             style={styles.cartita} 
+                            onPress={()=>{this.props.navigation.navigate('DirectorioP1')}} >
+                            <Image source={require('../assets/dashboard/IconoGuiaYKeKY.png')} style={styles.imagen} resizeMode={'contain'} />
+                            <Text style={styles.menuText}>Guía{"\n"}YKeKY</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity 
+                            style={styles.cartita} 
                             onPress={()=>{this.props.navigation.navigate('Instruccion_Ts')}} >
                             <Image source={require('../assets/dashboard/IconoTestVocacional.png')} style={styles.imagen} resizeMode={'center'} />
                             <Text style={styles.menuText}>Test Vocacional</Text>
@@ -44,9 +51,9 @@ export default class DashboardScreen extends Component {
                         </TouchableOpacity>
                         <TouchableOpacity 
                             style={styles.cartita} 
-                            onPress={()=>{this.props.navigation.navigate('DirectorioP1')}} >
-                            <Image source={require('../assets/dashboard/IconoGuiaYKeKY.png')} style={styles.imagen} resizeMode={'contain'} />
-                            <Text style={styles.menuText}>Directorio {"\n"} Escolar</Text>
+                            onPress={()=>{openLinkWithInAppBrowser('https://www.16personalities.com/es')}} >
+                            <Image source={require('../assets/dashboard/Icono16Personalidades.png')} style={styles.imagen} resizeMode={'contain'} />
+                            <Text style={styles.menuText}>16{"\n"}personalidades</Text>
                         </TouchableOpacity>
                         <TouchableOpacity 
                             style={styles.cartita} 
@@ -55,9 +62,30 @@ export default class DashboardScreen extends Component {
                             <Text style={styles.menuText}>Becas</Text>
                         </TouchableOpacity>
                         <TouchableOpacity 
-                            style={styles.cartitaCerrarSesión} 
-                            onPress={ ()=> {this._logout()} } >
-                            <Text style={styles.menuText}>Cerrar {"\n"} Sesión</Text>
+                            style={styles.cartita} 
+                            onPress={()=>{Alert.alert("Información","Próximamente....espéralo")}} >
+                            <Image source={require('../assets/dashboard/IconoCuponera.png')} style={styles.imagen} resizeMode={'center'} />
+                            <Text style={styles.menuText}>Cuponera{"\n"}estudiantil</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity 
+                            style={styles.cartita} 
+                            onPress={()=>{Alert.alert("Información","Próximamente....espéralo")}} >
+                            <Image source={require('../assets/dashboard/IconoGanayEstudia.png')} style={styles.imagen} resizeMode={'center'} />
+                            <Text style={styles.menuText}>Gana $${"\n"}y estudia</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity 
+                            style={styles.cartita}
+                            onPress={()=>{Alert.alert("Advertencia","¿Está seguro de que desea cerrar sesión?",[
+                                {
+                                  text: 'Cancelar',
+                                  onPress: () => console.log('Cancel Pressed'),
+                                  style: 'cancel',
+                                },
+                                {text: 'OK', onPress: () => {this._logout()}},
+                              ])}}
+                            >
+                            <Image source={require('../assets/dashboard/IconoLogOut.png')} style={styles.imagen} resizeMode={'center'} />
+                            <Text style={styles.menuText}>Cerrar{"\n"}Sesión</Text>
                         </TouchableOpacity>
                     </View>
                     </ScrollView>
