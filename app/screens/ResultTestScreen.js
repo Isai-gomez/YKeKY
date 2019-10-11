@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import InAppBrowser from 'react-native-inappbrowser-reborn';
 import AsyncStorage from '@react-native-community/async-storage';
 import Orientation from 'react-native-orientation';
+import LinearGradient from 'react-native-linear-gradient';
 
 
 var {width, height} = Dimensions.get('window');
@@ -127,53 +128,67 @@ export default class ResultTestScreen extends Component {
                         containerComponent={<VictoryContainer responsive={false}/>}
                         labelComponent={<VictoryLabel angle={0}/>}
                         labelRadius={90}
-                        style={{ labels: { fill: "rgba(29,58,108, 1)", fontSize: 8, fontFamily: 'GothamBook', fontWeight: 'bold' } }}
+                        cornerRadius={5}
+                        style={{ 
+                            labels: { fill: "rgba(29,58,108, 1)", fontSize: 10, fontFamily: 'GothamBoold', fontWeight: 'bold' } , 
+                            data: {fillOpacity: 0.9, stroke: "rgba(29,58,108, 1)", strokeWidth: 1
+                            } }}
                         />
                 </View>    
                 <Text style={{fontSize:14, color: 'black', textAlign: 'justify', fontFamily: 'GothamMedium', marginHorizontal: 20}}>Tu área mejor calificada es: "Ciencias de la Salud"</Text>
                 {/* <Text style={{fontSize:14, color: 'black', textAlign: 'justify'}}>Por lo cual las carreras que puedes escoger son:</Text> */}
                 {/* <Text style={{fontSize:14, color: 'black', textAlign: 'justify'}}>Enfermería, Farmacia, Fisioterapia, Medicina, Nutrición, Odontología</Text> */}
                 <View style={styles.butonContainer}>
-                    <TouchableOpacity 
-                        style={styles.buton}
-                        onPress={()=>{this.openLink("http://introspecta.com.mx/artes-y-humanidades/")}}
-                        >
-                        <Text style={styles.textButon}>
-                            Artes y Humanidades
-                        </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                        style={styles.buton}
-                        onPress={()=>{this.openLink("http://introspecta.com.mx/ciencias/")}}
-                        >
-                        <Text style={styles.textButon}>
-                            Ciencias
-                        </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                        style={styles.buton}
-                        onPress={()=>{this.openLink("http://introspecta.com.mx/ciencias-sociales/")}}
-                        >
-                        <Text style={styles.textButon}>
-                            Ciencias Sociales
-                        </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                        style={styles.buton}
-                        onPress={()=>{this.openLink("http://introspecta.com.mx/negocios-y-economia/")}}
-                        >
-                        <Text style={styles.textButon}>
-                            Negocios
-                        </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                        style={styles.buton}
-                        onPress={()=>{this.openLink("http://introspecta.com.mx/ingenierias/")}}
-                        >
-                        <Text style={styles.textButon}>
-                            Ingenierías
-                        </Text>
-                    </TouchableOpacity>
+                    <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={['#FFD549', '#E88F4F']}  style={styles.buton}>
+                        <TouchableOpacity 
+                            // style={styles.buton}
+                            onPress={()=>{this.openLink("http://introspecta.com.mx/artes-y-humanidades/")}}
+                            >
+                            <Text style={styles.textButon}>
+                                Artes y Humanidades
+                            </Text>
+                        </TouchableOpacity>
+                    </LinearGradient>
+                    <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={['#FFD549', '#E88F4F']}  style={styles.buton}>
+                        <TouchableOpacity 
+                            // style={styles.buton}
+                            onPress={()=>{this.openLink("http://introspecta.com.mx/ciencias/")}}
+                            >
+                            <Text style={styles.textButon}>
+                                Ciencias
+                            </Text>
+                        </TouchableOpacity>
+                    </LinearGradient>
+                    <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={['#FFD549', '#E88F4F']}  style={styles.buton}>
+                        <TouchableOpacity 
+                            // style={styles.buton}
+                            onPress={()=>{this.openLink("http://introspecta.com.mx/ciencias-sociales/")}}
+                            >
+                            <Text style={styles.textButon}>
+                                Ciencias Sociales
+                            </Text>
+                        </TouchableOpacity>
+                    </LinearGradient>
+                    <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={['#FFD549', '#E88F4F']}  style={styles.buton}>
+                        <TouchableOpacity 
+                            // style={styles.buton}
+                            onPress={()=>{this.openLink("http://introspecta.com.mx/negocios-y-economia/")}}
+                            >
+                            <Text style={styles.textButon}>
+                                Negocios
+                            </Text>
+                        </TouchableOpacity>
+                    </LinearGradient>
+                    <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={['#FFD549', '#E88F4F']}  style={styles.buton}>
+                        <TouchableOpacity 
+                            // style={styles.buton}
+                            onPress={()=>{this.openLink("http://introspecta.com.mx/ingenierias/")}}
+                            >
+                            <Text style={styles.textButon}>
+                                Ingenierías
+                            </Text>
+                        </TouchableOpacity>
+                    </LinearGradient>
                 </View>
 
                 <TouchableOpacity 
@@ -198,14 +213,17 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     butonContainer: {
+        justifyContent:'center',
+        alignItems:'center',
         flexDirection: "row",
         flexWrap: 'wrap',
     },
     buton: {
+        width:'80%',
         marginVertical: 5,
         marginHorizontal: 10,
         padding: 10,
-        backgroundColor: 'blue'
+        // backgroundColor: 'blue'
     },
     textButon: {
         textAlign: 'center',
