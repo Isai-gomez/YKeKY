@@ -4,7 +4,7 @@ import MapView,{Marker} from 'react-native-maps';
 import ModalExample from '../components/Modal';
 import Orientation from 'react-native-orientation';
 import axios from 'axios';
-import {openLinkWithInAppBrowser} from '../helpers'
+import {openLinkWithInAppBrowser} from '../helpers';
 
 class LogoTitle extends React.Component {
     render() {
@@ -17,6 +17,12 @@ class LogoTitle extends React.Component {
       );
     }
   }
+
+const HerramientaComponent = () =>(
+    <TouchableOpacity>
+        <Text>HerramientaComponent</Text>
+    </TouchableOpacity>
+);
 
 export default class universidadVistaDetalle extends Component {
     static navigationOptions =
@@ -44,27 +50,72 @@ export default class universidadVistaDetalle extends Component {
 
     componentDidMount(){
         Orientation.lockToPortrait();
-        this.obtenerWeb(this.state.identificador_web);
+        // this.obtenerWeb(this.state.identificador_web);
+        this.makeRequestIdDireccion(this.stateUniversidad.idDireccion);
     }
 
     constructor(props){
         super(props);
+        this.stateUniversidad = {
+            idUniversidad: this.props.navigation.state.params.universidad.id_universidad,
+            clave_sep: this.props.navigation.state.params.universidad.clave_sep,
+            nombre: this.props.navigation.state.params.universidad.nombre,
+            mision: this.props.navigation.state.params.universidad.mision,
+            logo: this.props.navigation.state.params.universidad.logo,
+            icono: this.props.navigation.state.params.universidad.icono,
+            fachada: this.props.navigation.state.params.universidad.fachada,
+            longitud: this.props.navigation.state.params.universidad.longitud,
+            latitud: this.props.navigation.state.params.universidad.latitud,
+            idWeb: this.props.navigation.state.params.universidad.web_id,
+            idTipo: this.props.navigation.state.params.universidad.tipo_id,
+            idContacto: this.props.navigation.state.params.universidad.contacto_id,
+            idDireccion: this.props.navigation.state.params.universidad.direccion_id,
+            portal: null,
+            facebook: null,
+            twitter: null,
+            instagram: null,
+            linkedin: null,
+            youtube: null,
+            email: null,
+            telefono: null,
+            calle: null,
+            copost: null,
+            colonia: null,
+            ciudad: null
+        }
         this.state = {
             titulo : 'NombreUniveridad',
             visible: false,
-            facebook: '',
-            twitter: '',
-            instagram: '',
-            website: '',
-            portal: '',
+            portal: null,
+            facebook: null,
+            twitter: null,
+            instagram: null,
+            linkedin: null,
+            youtube: null,
             WebData: [],
-            telefono: '',
-            email: '',
+            telefono: null,
+            email: null,
             identificador_web: null,
             identificador_direccion: null,
-            identificador_contacto: null
-
+            identificador_contacto: null,
+            calle: null,
+            copost: null,
+            colonia: null,
+            ciudad: null
         }
+    }
+
+    makeRequestIdDireccion(idDireccion){
+        axios.get(`http://3.17.60.127:3001/api/instituciones/byDireccion?direccion=${idDireccion}`)
+        .then((response) => {
+            this.setState(({
+                calle: response.data[0].calle,
+                colonia: response.data[0].colonia
+            }))
+        })
+        .catch((error) => {
+            console.warn("Error en Contacto: ", error);
+        })
     }
 
     obtenerWeb(id){
@@ -174,7 +225,6 @@ export default class universidadVistaDetalle extends Component {
     }
 
     render() {
-        const {clave_sep, nombre, logo, calle, colonia, latitud, longitud,fachada,mision,web_id,direccion_id,contacto_id} = this.props.navigation.state.params.universidad
         return (
             <ImageBackground source={require('../assets/directorio/pantalla2/fondop2.png')} style={{flex:1}}>
             <Image source={require('../assets/directorio/pantalla6/pantalla6r9.png')} style={{width:80, height:150,position:'absolute',bottom:'5%',left:'-12%'}} />            
@@ -183,44 +233,42 @@ export default class universidadVistaDetalle extends Component {
             <Image source={require('../assets/directorio/pantalla6/pantalla6r11.png')} style={{width:100, height:100,position:'absolute',top:'0%',right:'0%'}} />
                 <View style={styles.containerimg}>
                     <ImageBackground
-                        source={{uri:fachada}}
+                        source={{uri:this.stateUniversidad.fachada}}
                         style={{width:'100%',height:'100%'}}
                     />
                 </View>
                 <View style={styles.contenido}>
                     <View style={styles.logocontainer}>
-                        <Text style={{fontFamily: 'GothamBold',width:'70%',color:'rgba(29,58,108, 1.0)'}}>{nombre}</Text>
+                        <Text style={{fontFamily: 'GothamBold',width:'70%',color:'rgba(29,58,108, 1.0)'}}>{this.stateUniversidad.nombre}</Text>
                         <Image
-                            source={{uri:logo}}
+                            source={{uri:this.stateUniversidad.logo}}
                             style={{width:100,height:100,bottom:0,borderRadius:100,borderWidth:2, borderColor:'#ccc',position:'absolute',right:0}}
                         />
                     </View>
                     <View style={styles.contherramientas}>
-                        <TouchableOpacity style={styles.herramienta} onPress={()=>{Linking.openURL(`geo:${latitud},${longitud}?q=${nombre}`)}}><Image source={require('../assets/directorio/pantalla6/mapa.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
-                        <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerWeb(web_id)}}><Image source={require('../assets/directorio/pantalla6/pagina.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
-                        <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerTelefono(contacto_id)}}><Image source={require('../assets/directorio/pantalla6/marcar.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
-                        <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerFacebook(web_id)}}><Image source={require('../assets/directorio/pantalla6/facebook.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
-                        <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerTwitter(web_id)}}><Image source={require('../assets/directorio/pantalla6/twitter.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
-                        <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerInstagram(web_id)}}><Image source={require('../assets/directorio/pantalla6/instagram.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
-                        <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerCorreo(contacto_id)}}><Image source={require('../assets/directorio/pantalla6/correo.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
+                        <TouchableOpacity style={styles.herramienta} onPress={()=>{Linking.openURL(`geo:${this.stateUniversidad.latitud},${this.stateUniversidad.longitud}?q=${this.stateUniversidad.nombre}`)}}><Image source={require('../assets/directorio/pantalla6/mapa.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
+                        <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerWeb(this.stateUniversidad.idWeb)}}><Image source={require('../assets/directorio/pantalla6/pagina.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
+                        <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerTelefono(this.stateUniversidad.idContacto)}}><Image source={require('../assets/directorio/pantalla6/marcar.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
+                        <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerFacebook(this.stateUniversidad.idWeb)}}><Image source={require('../assets/directorio/pantalla6/facebook.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
+                        <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerTwitter(this.stateUniversidad.idWeb)}}><Image source={require('../assets/directorio/pantalla6/twitter.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
+                        <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerInstagram(this.stateUniversidad.idWeb)}}><Image source={require('../assets/directorio/pantalla6/instagram.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
+                        <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerCorreo(this.stateUniversidad.idContacto)}}><Image source={require('../assets/directorio/pantalla6/correo.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
                         <TouchableOpacity style={styles.herramienta} onPress={()=>{Alert.alert("Información", "Aún no disponibles")}}><Image source={require('../assets/directorio/pantalla6/compartir.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
                     </View>
                     <View style={{borderColor:'rgba(29,58,108, 1.0)', borderWidth:2}}>               
                         <Text style={styles.textSub}>Clave de la SEP:</Text>
-                        <Text style={{fontFamily: 'GothamBook'}}>{clave_sep}</Text>
+                        <Text style={{fontFamily: 'GothamBook'}}>{this.stateUniversidad.clave_sep}</Text>
                         <Text style={styles.textSub}>Calle:</Text>
-                        <Text style={{fontFamily: 'GothamBook'}}>{calle}</Text>
+                        <Text style={{fontFamily: 'GothamBook'}}>{this.state.calle}</Text>
                         <Text style={styles.textSub}>Colonia:</Text>
-                        <Text style={{fontFamily: 'GothamBook'}}>{colonia}</Text>
+                        <Text style={{fontFamily: 'GothamBook'}}>{this.state.colonia}</Text>
                         <Text style={styles.textSub}>Misión:</Text>
-                        <Text style={{fontFamily: 'GothamBook'}}>{mision}</Text>
-                        <Text style={{fontFamily: 'GothamBook'}}>Data:{}</Text>
+                        <Text style={{fontFamily: 'GothamBook'}}>{this.stateUniversidad.mision}</Text>
+                        
+                        {this.state.linkedin == null ? (<Text>Nulo</Text>): (<Text>No nulo</Text>)}
+
                         <View style={{flexDirection:"row",margin:3}}>
-                            {/* <Button
-                                title="Carreras"
-                                color="#841584"
-                                accessibilityLabel="Learn more about this purple button"
-                            /> */}
+
                             <ModalExample visible={this.state.visible} close={this.toggleModal}/>
                             {/* <Button
                                 onPress={this.toggleModal}

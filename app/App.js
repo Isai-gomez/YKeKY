@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import SplashScreen from 'react-native-splash-screen'
 
+import './helpers/global';
+
 import AppNavigator from './navigator/StackNavigator';
 import TabNavigator from './screens/Dashboard';
 

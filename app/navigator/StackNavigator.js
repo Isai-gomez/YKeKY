@@ -43,19 +43,31 @@ import Pantalla5 from '../screens/directorio/Pantalla5';
   
 const AppNavigator = createStackNavigator(
     {
-      Home,
+      Home:{
+        screen: Home,
+        path: 'home/'
+      },
       Test,
       LifePlanner,
       ResultTS,
       ResultLP,
       // Directorio,
-      Instruccion_Lp,
-      Instruccion_Ts,
+      Instruccion_Lp: {
+        screen: Instruccion_Lp,
+        path: 'lifeplanner'
+      },
+      Instruccion_Ts:{
+        screen: Instruccion_Ts,
+        path: 'testvocacional'
+      },
       DetalleUniversidad,
       Dashboard,
       DirectorioP1,
       DashboardScreen,
-      Becas,
+      Becas: {
+        screen: Becas,
+        path: 'becas'
+      },
       Pantalla2,
       Pantalla3,
       Pantalla4,
@@ -116,7 +128,10 @@ const Drawer = createDrawerNavigator({
 
 export default createAppContainer(createSwitchNavigator({
   AuthNavigator,
-  AppNavigator,
+  AppNavigator:{
+    screen: AppNavigator,
+    path: ''
+  },
   AuthLoading
 },
 {

@@ -7,7 +7,6 @@ import AsyncStorage from '@react-native-community/async-storage';
 import Orientation from 'react-native-orientation';
 import LinearGradient from 'react-native-linear-gradient';
 
-
 var {width, height} = Dimensions.get('window');
 
 // respuestas : this.props.navigation.state.params.respuestas,

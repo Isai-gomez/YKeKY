@@ -1,0 +1,1 @@
+global.message = 'Hola Mundo desde global.js';
