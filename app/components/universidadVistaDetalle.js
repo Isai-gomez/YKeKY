@@ -1,8 +1,10 @@
 import React,{Component} from 'react';
-import {View,Text,Image,StyleSheet,ScrollView,TouchableOpacity,ImageBackground,Button,Alert} from 'react-native';
+import {View,Text,Image,StyleSheet,ScrollView,TouchableOpacity,ImageBackground,Button,Alert,Linking} from 'react-native';
 import MapView,{Marker} from 'react-native-maps';
 import ModalExample from '../components/Modal';
 import Orientation from 'react-native-orientation';
+import axios from 'axios';
+import {openLinkWithInAppBrowser} from '../helpers'
 
 class LogoTitle extends React.Component {
     render() {
@@ -42,30 +44,152 @@ export default class universidadVistaDetalle extends Component {
 
     componentDidMount(){
         Orientation.lockToPortrait();
+        this.obtenerWeb(this.state.identificador_web);
     }
 
     constructor(props){
         super(props);
         this.state = {
             titulo : 'NombreUniveridad',
-            visible: false
+            visible: false,
+            facebook: '',
+            twitter: '',
+            instagram: '',
+            website: '',
+            portal: '',
+            WebData: [],
+            telefono: '',
+            email: '',
+            identificador_web: null,
+            identificador_direccion: null,
+            identificador_contacto: null
+
         }
     }
-    
+
+    obtenerWeb(id){
+        axios.get(`http://3.17.60.127:3001/api/instituciones/byWebsite?website=${id}`)
+        .then(response => {
+            this.setState({
+                portal: response.data[0].portal        
+            });
+            console.log("Dataaa: ", this.state.portal);
+            openLinkWithInAppBrowser(this.state.portal);
+
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
+
+    obtenerFacebook(id){
+        axios.get(`http://3.17.60.127:3001/api/instituciones/byWebsite?website=${id}`)
+        .then(response => {
+            this.setState({
+                facebook: response.data[0].facebook      
+            });
+            console.log("Dataaa: ", this.state.facebook);
+            openLinkWithInAppBrowser(this.state.facebook);
+
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
+
+    obtenerInstagram(id){
+        axios.get(`http://3.17.60.127:3001/api/instituciones/byWebsite?website=${id}`)
+        .then(response => {
+            this.setState({
+                instagram: response.data[0].instagram
+            });
+            console.log("Dataaa: ", this.state.instagram);
+            openLinkWithInAppBrowser(this.state.instagram);
+
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
+
+    obtenerTwitter(id){
+        axios.get(`http://3.17.60.127:3001/api/instituciones/byWebsite?website=${id}`)
+        .then(response => {
+            this.setState({
+                twitter: response.data[0].twitter        
+            });
+            console.log("Dataaa: ", this.state.twitter);
+            openLinkWithInAppBrowser(this.state.twitter);
+
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
+
+    obtenerTelefono(id){
+        axios.get(`http://3.17.60.127:3001/api/instituciones/byContacto?Contacto=${id}`)
+        .then(response => {
+            this.setState({
+                telefono: response.data[0].telefono        
+            });
+            console.log("Dataaa: ", this.state.telefono);
+            Linking.openURL(`tel:${this.state.telefono}`);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
+
+    obtenerCorreo(id){
+        axios.get(`http://3.17.60.127:3001/api/instituciones/byContacto?Contacto=${id}`)
+        .then(response => {
+            this.setState({
+                email: response.data[0].email        
+            });
+            console.log("Dataaa: ", this.state.email);            
+            Linking.openURL(`mailto:${this.state.email}`);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
+
+    obtenerCalleColonia(id){
+        axios.get(`http://3.17.60.127:3001/api/instituciones/byContacto?Contacto=${id}`)
+        .then(response => {
+            this.setState({
+                email: response.data[0].email        
+            });
+            console.log("Dataaa: ", this.state.email);
+            if (this.state.email==null){
+                Alert.alert('no dispoible');
+            }
+            else{
+                 Linking.openURL(`mailto:${this.state.email}`)
+            }
+           
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
+
     toggleModal = () => {
         this.setState({visible: !this.state.visible});
     }
+    
+    rendercorreo =(id)=> {
+        if(this.state.email){
+           return <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerCorreo(id)}}><Image source={require('../assets/directorio/pantalla6/correo.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
+        }
+        else if(this.state.email=null){
+            return null
+        }
+    }
 
     render() {
-        const {clave_sep, nombre, logo, calle, colonia, latitud, longitud,fachada,vision} = this.props.navigation.state.params.universidad
-        var region = {
-            latitude: parseFloat(latitud),
-            longitude: parseFloat(longitud),
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-        };
-
-        
+        const {clave_sep, nombre, logo, calle, colonia, latitud, longitud,fachada,mision,web_id,direccion_id,contacto_id} = this.props.navigation.state.params.universidad
         return (
             <ImageBackground source={require('../assets/directorio/pantalla2/fondop2.png')} style={{flex:1}}>
             <Image source={require('../assets/directorio/pantalla6/pantalla6r9.png')} style={{width:80, height:150,position:'absolute',bottom:'5%',left:'-12%'}} />            
@@ -87,14 +211,15 @@ export default class universidadVistaDetalle extends Component {
                         />
                     </View>
                     <View style={styles.contherramientas}>
-                        <TouchableOpacity style={styles.herramienta} onPress={()=>{Alert.alert("Información", "Aún no disponibles")}}><Image source={require('../assets/directorio/pantalla6/pantalla6r1.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
-                        <TouchableOpacity style={styles.herramienta} onPress={()=>{Alert.alert("Información", "Aún no disponibles")}}><Image source={require('../assets/directorio/pantalla6/pantalla6r2.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
-                        <TouchableOpacity style={styles.herramienta} onPress={()=>{Alert.alert("Información", "Aún no disponibles")}}><Image source={require('../assets/directorio/pantalla6/pantalla6r3.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
-                        <TouchableOpacity style={styles.herramienta} onPress={()=>{Alert.alert("Información", "Aún no disponibles")}}><Image source={require('../assets/directorio/pantalla6/pantalla6r4.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
-                        <TouchableOpacity style={styles.herramienta} onPress={()=>{Alert.alert("Información", "Aún no disponibles")}}><Image source={require('../assets/directorio/pantalla6/pantalla6r5.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
-                        <TouchableOpacity style={styles.herramienta} onPress={()=>{Alert.alert("Información", "Aún no disponibles")}}><Image source={require('../assets/directorio/pantalla6/pantalla6r6.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
-                        <TouchableOpacity style={styles.herramienta} onPress={()=>{Alert.alert("Información", "Aún no disponibles")}}><Image source={require('../assets/directorio/pantalla6/pantalla6r7.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
-                        <TouchableOpacity style={styles.herramienta} onPress={()=>{Alert.alert("Información", "Aún no disponibles")}}><Image source={require('../assets/directorio/pantalla6/pantalla6r8.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
+                        <TouchableOpacity style={styles.herramienta} onPress={()=>{Linking.openURL(`geo:${latitud},${longitud}?q=${nombre}`)}}><Image source={require('../assets/directorio/pantalla6/mapa.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
+                        <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerWeb(web_id)}}><Image source={require('../assets/directorio/pantalla6/pagina.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
+                        <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerTelefono(contacto_id)}}><Image source={require('../assets/directorio/pantalla6/marcar.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
+                        <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerFacebook(web_id)}}><Image source={require('../assets/directorio/pantalla6/facebook.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
+                        <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerTwitter(web_id)}}><Image source={require('../assets/directorio/pantalla6/twitter.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
+                        <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerInstagram(web_id)}}><Image source={require('../assets/directorio/pantalla6/instagram.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
+                        <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerCorreo(contacto_id)}}><Image source={require('../assets/directorio/pantalla6/correo.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
+                        {this.rendercorreo(contacto_id)}
+                    <TouchableOpacity style={styles.herramienta} onPress={()=>{Alert.alert("Información", "Aún no disponibles")}}><Image source={require('../assets/directorio/pantalla6/compartir.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
                     </View>
                     <View style={{borderColor:'rgba(29,58,108, 1.0)', borderWidth:2}}>               
                         <Text style={styles.textSub}>Clave de la SEP:</Text>
@@ -103,8 +228,9 @@ export default class universidadVistaDetalle extends Component {
                         <Text style={{fontFamily: 'GothamBook'}}>{calle}</Text>
                         <Text style={styles.textSub}>Colonia:</Text>
                         <Text style={{fontFamily: 'GothamBook'}}>{colonia}</Text>
-                        <Text style={styles.textSub}>Vision:</Text>
-                        <Text style={{fontFamily: 'GothamBook'}}>{vision}</Text>
+                        <Text style={styles.textSub}>Misión:</Text>
+                        <Text style={{fontFamily: 'GothamBook'}}>{mision}</Text>
+                        <Text style={{fontFamily: 'GothamBook'}}>Data:{}</Text>
                         <View style={{flexDirection:"row",margin:3}}>
                             {/* <Button
                                 title="Carreras"
@@ -189,19 +315,20 @@ const styles = StyleSheet.create({
     contherramientas:{
         flexDirection:'row',
         flexWrap:'wrap',
-        height:110,
+        height:120,
         width:'90%',
         justifyContent:'center',
         alignItems:'center',
         margin: 25,
-       
+        // backgroundColor:'rgba(2,2,53, 1.0)',
+        borderRadius: 8
     },
     herramienta:{
         // borderColor:'rgba(29,58,108, 1.0)',
-        // backgroundColor:'#FFD549',
-        margin:2,
-        borderRadius:8
-       
+        backgroundColor:'rgba(29,58,108, 1.0)',
+        margin: 2,
+        borderRadius: 8,
+        // backgroundColor:'#ccc'
     },
     textSub:{
         fontFamily: 'GothamBold',

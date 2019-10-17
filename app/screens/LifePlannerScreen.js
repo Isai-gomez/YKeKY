@@ -3,6 +3,7 @@ import {View,Text,Animated,TouchableOpacity,StyleSheet,Alert,ImageBackground,Dim
 // import Slide from '../components/Slider';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Orientation from 'react-native-orientation';
+import axios from 'axios';
 
 var {width, height} = Dimensions.get('window')
 
@@ -68,31 +69,20 @@ export default class LifeScreen extends Component {
         }
 
         sendResponse = () => {
-            const preguntas = [...this.state.respuestas]
-            const answer = ''
-            const link = 'http://3.15.183.131:3001/api/lp_answers'
+            const link = 'http://3.17.60.127:3001/api/lp_answers'
+            let vacio = ''
 
-            fetch(link, {
-                method: 'POST',
-                headers: {
-                  Accept: 'application/json',
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    id_answer_lp: answer,
-                    answer_lp: preguntas,
-                    userId: 1
-                }),
+            axios.post(link, {
+                    id_answer_lp:vacio,
+                    answer_lp:this.state.respuestas,
+                    userId:1
+              },    {headers: {'Accept': 'application/json'}})
+              .then(function (response) {
+                console.log(response);
               })
-              .then((response) => response.json())
-                .then((responseJson) => {
-                    if (responseJson.then = true){
-                    this.props.navigation.navigate('ResultLP')
-                    }
-                })
-                .catch((error) => {
-                console.error(error);
-                });                      
+              .catch(function (error) {
+                console.log(error);
+              });                
         } 
         
         handleAnswer = () => {
@@ -183,7 +173,7 @@ export default class LifeScreen extends Component {
                 'Ha terminado las preguntas',
                 [{
                     text: 'OK', 
-                    onPress :() => {this.sendResponse}
+                    onPress :() => {this.sendResponse()}
                 }]
             );
             // this.props.navigation.navigate("ResultLP")
@@ -280,7 +270,11 @@ export default class LifeScreen extends Component {
                             <Image source={require('../assets/planVida/emojis/emoji10.png')} style={{width:50,height:50}} resizeMode={'contain'}/>
                             <Text style={styles.optionText}>1</Text>
                         </TouchableOpacity>
+                            <TouchableOpacity
+                            onPress={this.sendResponse}
+                            ><Text>Prueba</Text></TouchableOpacity>
                         </View>
+                       
                   </View>
             </ImageBackground>
         );

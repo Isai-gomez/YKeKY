@@ -12,7 +12,7 @@ import Orientation from 'react-native-orientation';
 var {height, width} = Dimensions.get('window');
 
 
-const url = 'http://3.15.183.131:3001/api/users/auth/';
+const url = 'http://3.17.60.127:3001/api/users/auth/';
 const urlLocal = 'http://192.168.1.65:3001/api/users/auth/';
 
 export default class LoginScreen extends Component {

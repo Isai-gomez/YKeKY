@@ -54,7 +54,7 @@ export default class BecasScreen extends Component {
     }
 
     makeRemoteRequest = () =>{
-        const urlServer = 'http://3.15.183.131:3001/api/instituciones/';
+        const urlServer = 'http://3.17.60.127:3001/api/instituciones/';
         fetch(urlServer)
         .then((response) => response.json())
         .then((response)=>{

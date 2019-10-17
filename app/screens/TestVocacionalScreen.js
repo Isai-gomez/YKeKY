@@ -329,7 +329,8 @@ const styles = StyleSheet.create({
         position: "absolute",
         fontSize: 16,
         color: "#FFF",
-        textAlign: "justify"
+        textAlign: "justify",
+        marginHorizontal: 8
     },
     imageBoton:{
         width: 50,
