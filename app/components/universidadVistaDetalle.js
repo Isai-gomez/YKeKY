@@ -104,6 +104,14 @@ export default class universidadVistaDetalle extends Component {
         }
     }
 
+    componentDidMount(){
+        this.obtenerWeb(this.stateUniversidad.idWeb);
+        this.obtenerFacebook(this.stateUniversidad.idWeb);
+        this.obtenerInstagram(this.stateUniversidad.idWeb);
+        this.obtenerTwitter(this.stateUniversidad.idWeb);
+        this.obtenerTelefono(this.stateUniversidad.idContacto);
+        this.obtenerCorreo(this.stateUniversidad.idContacto);
+    }
     makeRequestIdDireccion(idDireccion){
         axios.get(`http://3.17.60.127:3001/api/instituciones/byDireccion?direccion=${idDireccion}`)
         .then((response) => {
@@ -124,7 +132,7 @@ export default class universidadVistaDetalle extends Component {
                 portal: response.data[0].portal        
             });
             console.log("Dataaa: ", this.state.portal);
-            openLinkWithInAppBrowser(this.state.portal);
+            // openLinkWithInAppBrowser(this.state.portal);
 
         })
         .catch(error => {
@@ -139,7 +147,7 @@ export default class universidadVistaDetalle extends Component {
                 facebook: response.data[0].facebook      
             });
             console.log("Dataaa: ", this.state.facebook);
-            openLinkWithInAppBrowser(this.state.facebook);
+            // openLinkWithInAppBrowser(this.state.facebook);
 
         })
         .catch(error => {
@@ -150,12 +158,8 @@ export default class universidadVistaDetalle extends Component {
     obtenerInstagram(id){
         axios.get(`http://3.17.60.127:3001/api/instituciones/byWebsite?website=${id}`)
         .then(response => {
-            this.setState({
-                instagram: response.data[0].instagram
-            });
+            response.data[0].instagram == "" ? this.setState({ instagram: null }): this.setState({instagram: response.data[0].instagram});
             console.log("Dataaa: ", this.state.instagram);
-            {this.state.instagram == "" ? Alert.alert("No disponible") : openLinkWithInAppBrowser(this.state.instagram)};
-
         })
         .catch(error => {
             console.log(error);
@@ -169,7 +173,7 @@ export default class universidadVistaDetalle extends Component {
                 twitter: response.data[0].twitter        
             });
             console.log("Dataaa: ", this.state.twitter);
-            {this.state.twitter == "" ? Alert.alert("No disponible") : openLinkWithInAppBrowser(this.state.twitter)};
+            // {this.state.twitter == "" ? Alert.alert("No disponible") : openLinkWithInAppBrowser(this.state.twitter)};
             
 
         })
@@ -185,7 +189,7 @@ export default class universidadVistaDetalle extends Component {
                 telefono: response.data[0].telefono        
             });
             console.log("Dataaa: ", this.state.telefono);
-            Linking.openURL(`tel:${this.state.telefono}`);
+            // Linking.openURL(`tel:${this.state.telefono}`);
         })
         .catch(error => {
             console.log(error);
@@ -199,7 +203,7 @@ export default class universidadVistaDetalle extends Component {
                 email: response.data[0].email        
             });
             console.log("Dataaa: ", this.state.email);            
-            Linking.openURL(`mailto:${this.state.email}`);
+            // Linking.openURL(`mailto:${this.state.email}`);
         })
         .catch(error => {
             console.log(error);
@@ -229,14 +233,73 @@ export default class universidadVistaDetalle extends Component {
     toggleModal = () => {
         this.setState({visible: !this.state.visible});
     }
+    // Open Herramientas
+    openPortal(){
+        openLinkWithInAppBrowser(this.state.portal);
+    }
+    OpenCorreo(){
+        Linking.openURL(`mailto:${this.state.email}`);
+    }
+    OpenTelefono(){
+        Linking.openURL(`tel:${this.state.telefono}`);
+    }
+    OpenFacebook(){
+        openLinkWithInAppBrowser(this.state.facebook);
+    }
+    OpenTwitter(){
+        openLinkWithInAppBrowser(this.state.twitter);
+    }
+    OpenInstagram(){
+        openLinkWithInAppBrowser(this.state.instagram);
+    }
     
     rendercorreo =(id)=> {
         if(this.state.email){
-           return <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerCorreo(id)}}><Image source={require('../assets/directorio/pantalla6/correo.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
+           return <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerCorreo(id);this.OpenCorreo()}}><Image source={require('../assets/directorio/pantalla6/correo.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
         }
         else if(this.state.email=null){
             return null
         }
+    }
+    renderWeb = (id) => {
+        if(this.state.portal){
+            return <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerWeb(id);this.openPortal()}}><Image source={require('../assets/directorio/pantalla6/pagina.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
+         }
+         else if(this.state.portal=null){
+             return null
+         }
+    }
+    renderTelefono = (id) => {
+        if(this.state.portal){
+            return  <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerTelefono(id);this.OpenTelefono()}}><Image source={require('../assets/directorio/pantalla6/marcar.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
+         }
+         else if(this.state.portal=null){
+             return null
+         }
+    }
+    renderFacebook = (id) => {
+        if(this.state.portal){
+            return <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerFacebook(id);this.OpenFacebook()}}><Image source={require('../assets/directorio/pantalla6/facebook.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
+         }
+         else if(this.state.portal=null){
+             return null
+         }
+    }
+    renderTwitter = (id) => {
+        if(this.state.portal){
+            return  <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerTwitter(id);this.OpenTwitter()}}><Image source={require('../assets/directorio/pantalla6/twitter.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
+         }
+         else if(this.state.portal=null){
+             return null
+         }
+    }
+    renderInstagram = (id) => {
+        if(this.state.portal){
+            return <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerInstagram(id);this.OpenInstagram()}}><Image source={require('../assets/directorio/pantalla6/instagram.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
+         }
+         else if(this.state.portal=null){
+             return null
+         }
     }
 
     render() {
@@ -261,14 +324,20 @@ export default class universidadVistaDetalle extends Component {
                         />
                     </View>
                     <View style={styles.contherramientas}>
-                        <TouchableOpacity style={styles.herramienta} onPress={()=>{Linking.openURL(`geo:${this.stateUniversidadlatitud},${this.stateUniversidadlongitud}?q=${this.stateUniversidad.nombre}`)}}><Image source={require('../assets/directorio/pantalla6/mapa.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
+                        {/* <TouchableOpacity style={styles.herramienta} onPress={()=>{Linking.openURL(`geo:${this.stateUniversidadlatitud},${this.stateUniversidadlongitud}?q=${this.stateUniversidad.nombre}`)}}><Image source={require('../assets/directorio/pantalla6/mapa.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
                         <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerWeb(this.stateUniversidad.idWeb)}}><Image source={require('../assets/directorio/pantalla6/pagina.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
                         <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerTelefono(this.stateUniversidad.idContacto)}}><Image source={require('../assets/directorio/pantalla6/marcar.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
                         <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerFacebook(this.stateUniversidad.idWeb)}}><Image source={require('../assets/directorio/pantalla6/facebook.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
                         <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerTwitter(this.stateUniversidad.idWeb)}}><Image source={require('../assets/directorio/pantalla6/twitter.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
                         <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerInstagram(this.stateUniversidad.idWeb)}}><Image source={require('../assets/directorio/pantalla6/instagram.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
-                        <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerCorreo(this.stateUniversidad.idContacto)}}><Image source={require('../assets/directorio/pantalla6/correo.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
+                        <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerCorreo(this.stateUniversidad.idContacto)}}><Image source={require('../assets/directorio/pantalla6/correo.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity> */}
+                        {this.renderWeb(this.stateUniversidad.idWeb)}
+                        {this.renderTelefono(this.stateUniversidad.idContacto)}
+                        {this.renderFacebook(this.stateUniversidad.idWeb)}
+                        {this.renderTwitter(this.stateUniversidad.idWeb)}
+                        {this.renderInstagram(this.stateUniversidad.idWeb)}
                         {this.rendercorreo(this.stateUniversidad.idContacto)}
+
                     <TouchableOpacity style={styles.herramienta} onPress={()=>{Alert.alert("Información", "Aún no disponibles")}}><Image source={require('../assets/directorio/pantalla6/compartir.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
                     </View>
                     <View style={{borderColor:'rgba(29,58,108, 1.0)', borderWidth:2}}>               
