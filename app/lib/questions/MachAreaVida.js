@@ -1,16 +1,16 @@
 const QuestionsByArea = [
-    { Familiar: new Array( 10, 12, 18, 29, 38, 40) },
-    { Conyugal: new Array(2, 4, 8, 9, 14, 17, 20, 24, 26, 32) },
-    { Hijos: new Array(3, 6, 16, 22, 39) },
-    { Social: new Array(5, 7, 13, 19, 23, 28, 31, 37) },
-    { Salud: new Array(11, 21, 25, 27) },
-    { Servir: new Array(1, 15, 30, 33, 34, 35, 36) },
-    { Intelectual: new Array(1, 15, 30, 33, 34, 35, 36) },
-    { Trabajo: new Array(1, 15, 30, 33, 34, 35, 36) },
-    { Financiera: new Array(1, 15, 30, 33, 34, 35, 36) },
-    { Profesional: new Array(1, 15, 30, 33, 34, 35, 36) },
-    { Emocional: new Array(1, 15, 30, 33, 34, 35, 36) },
-    { Espiritual: new Array(1, 15, 30, 33, 34, 35, 36) }
+    { Familiar: new Array(5)},
+    { Conyugal: new Array(4)},
+    { Hijos: new Array(3)},
+    { Social: new Array(2)},
+    { Salud: new Array(1)},
+    { Servir: new Array(12)},
+    { Intelectual: new Array(11)},
+    { Trabajo: new Array(9)},
+    { Financiera: new Array(10)},
+    { Profesional: new Array(8)},
+    { Emocional: new Array(7)},
+    { Espiritual: new Array(6)}
 ];
 
 count = {

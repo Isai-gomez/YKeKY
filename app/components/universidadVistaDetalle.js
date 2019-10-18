@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import {View,Text,Image,StyleSheet,ScrollView,TouchableOpacity,ImageBackground,Button,Alert,Linking} from 'react-native';
-import MapView,{Marker} from 'react-native-maps';
 import ModalExample from '../components/Modal';
 import Orientation from 'react-native-orientation';
 import axios from 'axios';
@@ -18,9 +17,9 @@ class LogoTitle extends React.Component {
     }
   }
 
-const HerramientaComponent = () =>(
+const HerramientaComponent = (arg) =>(
     <TouchableOpacity>
-        <Text>HerramientaComponent</Text>
+        <Text>HerramientaComponent{arg}</Text>
     </TouchableOpacity>
 );
 
@@ -155,7 +154,7 @@ export default class universidadVistaDetalle extends Component {
                 instagram: response.data[0].instagram
             });
             console.log("Dataaa: ", this.state.instagram);
-            openLinkWithInAppBrowser(this.state.instagram);
+            {this.state.instagram == "" ? Alert.alert("No disponible") : openLinkWithInAppBrowser(this.state.instagram)};
 
         })
         .catch(error => {
@@ -170,7 +169,8 @@ export default class universidadVistaDetalle extends Component {
                 twitter: response.data[0].twitter        
             });
             console.log("Dataaa: ", this.state.twitter);
-            openLinkWithInAppBrowser(this.state.twitter);
+            {this.state.twitter == "" ? Alert.alert("No disponible") : openLinkWithInAppBrowser(this.state.twitter)};
+            
 
         })
         .catch(error => {
@@ -198,7 +198,7 @@ export default class universidadVistaDetalle extends Component {
             this.setState({
                 email: response.data[0].email        
             });
-            console.log("Dataaa: ", this.state.email);
+            console.log("Dataaa: ", this.state.email);            
             Linking.openURL(`mailto:${this.state.email}`);
         })
         .catch(error => {
@@ -213,7 +213,13 @@ export default class universidadVistaDetalle extends Component {
                 email: response.data[0].email        
             });
             console.log("Dataaa: ", this.state.email);
-            LLinking.openURL(`mailto:${this.state.email}`)
+            if (this.state.email==null){
+                Alert.alert('no dispoible');
+            }
+            else{
+                 Linking.openURL(`mailto:${this.state.email}`)
+            }
+           
         })
         .catch(error => {
             console.log(error);
@@ -222,6 +228,15 @@ export default class universidadVistaDetalle extends Component {
 
     toggleModal = () => {
         this.setState({visible: !this.state.visible});
+    }
+    
+    rendercorreo =(id)=> {
+        if(this.state.email){
+           return <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerCorreo(id)}}><Image source={require('../assets/directorio/pantalla6/correo.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
+        }
+        else if(this.state.email=null){
+            return null
+        }
     }
 
     render() {
@@ -246,14 +261,15 @@ export default class universidadVistaDetalle extends Component {
                         />
                     </View>
                     <View style={styles.contherramientas}>
-                        <TouchableOpacity style={styles.herramienta} onPress={()=>{Linking.openURL(`geo:${this.stateUniversidad.latitud},${this.stateUniversidad.longitud}?q=${this.stateUniversidad.nombre}`)}}><Image source={require('../assets/directorio/pantalla6/mapa.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
+                        <TouchableOpacity style={styles.herramienta} onPress={()=>{Linking.openURL(`geo:${this.stateUniversidadlatitud},${this.stateUniversidadlongitud}?q=${this.stateUniversidad.nombre}`)}}><Image source={require('../assets/directorio/pantalla6/mapa.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
                         <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerWeb(this.stateUniversidad.idWeb)}}><Image source={require('../assets/directorio/pantalla6/pagina.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
                         <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerTelefono(this.stateUniversidad.idContacto)}}><Image source={require('../assets/directorio/pantalla6/marcar.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
                         <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerFacebook(this.stateUniversidad.idWeb)}}><Image source={require('../assets/directorio/pantalla6/facebook.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
                         <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerTwitter(this.stateUniversidad.idWeb)}}><Image source={require('../assets/directorio/pantalla6/twitter.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
                         <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerInstagram(this.stateUniversidad.idWeb)}}><Image source={require('../assets/directorio/pantalla6/instagram.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
                         <TouchableOpacity style={styles.herramienta} onPress={()=>{this.obtenerCorreo(this.stateUniversidad.idContacto)}}><Image source={require('../assets/directorio/pantalla6/correo.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
-                        <TouchableOpacity style={styles.herramienta} onPress={()=>{Alert.alert("Información", "Aún no disponibles")}}><Image source={require('../assets/directorio/pantalla6/compartir.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
+                        {this.rendercorreo(this.stateUniversidad.idContacto)}
+                    <TouchableOpacity style={styles.herramienta} onPress={()=>{Alert.alert("Información", "Aún no disponibles")}}><Image source={require('../assets/directorio/pantalla6/compartir.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
                     </View>
                     <View style={{borderColor:'rgba(29,58,108, 1.0)', borderWidth:2}}>               
                         <Text style={styles.textSub}>Clave de la SEP:</Text>
@@ -265,7 +281,7 @@ export default class universidadVistaDetalle extends Component {
                         <Text style={styles.textSub}>Misión:</Text>
                         <Text style={{fontFamily: 'GothamBook'}}>{this.stateUniversidad.mision}</Text>
                         
-                        {this.state.linkedin == null ? (<Text>Nulo</Text>): (<Text>No nulo</Text>)}
+                        {/* {this.state.linkedin == null ? (<Text>Nulo</Text>): (<Text>No nulo</Text>)} */}
 
                         <View style={{flexDirection:"row",margin:3}}>
 
@@ -352,14 +368,15 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems:'center',
         margin: 25,
-        backgroundColor:'rgba(2,2,53, 1.0)',
+        // backgroundColor:'rgba(2,2,53, 1.0)',
         borderRadius: 8
     },
     herramienta:{
         // borderColor:'rgba(29,58,108, 1.0)',
-        backgroundColor:'rgba(2,2,53, 1.0)',
+        backgroundColor:'rgba(29,58,108, 1.0)',
         margin: 2,
-        borderRadius: 8
+        borderRadius: 8,
+        // backgroundColor:'#ccc'
     },
     textSub:{
         fontFamily: 'GothamBold',

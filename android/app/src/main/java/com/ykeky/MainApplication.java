@@ -3,7 +3,6 @@ import android.app.Application;
 import com.facebook.react.ReactApplication;
 import com.github.yamill.orientation.OrientationPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
-import com.airbnb.android.react.maps.MapsPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.proyecto26.inappbrowser.RNInAppBrowserPackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
@@ -45,7 +44,6 @@ public class MainApplication extends Application implements ReactApplication {
             new OrientationPackage(),
             new FBSDKPackage(),
             new LinearGradientPackage(),
-            new MapsPackage(),
             new SplashScreenReactPackage(),
             new RNInAppBrowserPackage(),
             new AsyncStoragePackage(),

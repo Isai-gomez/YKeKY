@@ -175,7 +175,7 @@ export default class TestVocacionalScreen extends Component {
             <ImageBackground source={require('../assets/testVocacional/preguntas/fondo.png')} style={{width: width, height: height}} resizeMode={'cover'} >
                 <Image source={require('../assets/testVocacional/preguntas/Recurso1Test.png')} style={{width: 100, height: 100, position: 'absolute', left: '-9%', top:'-5%'}} />
                 <Image source={require('../assets/testVocacional/preguntas/Recurso2Test.png')} style={{width: 200, height: 200, position: 'absolute', right: '-2%', top:'-10%'}} />
-                <Image source={require('../assets/testVocacional/preguntas/Recurso3Test.png')} style={{width: 200, height: 200, position: 'absolute', right: '0%', bottom:'-15%'}} />
+                <Image source={require('../assets/testVocacional/preguntas/Recurso3Test.png')} style={{width: 350, height: 250, position: 'absolute', right: '0%', bottom:'-25%'}} />
                 <View style={styles.container}>
                     <View style={styles.numberContainer}>
                         <ImageBackground source={require('../assets/testVocacional/preguntas/Recurso4Test.png')} style={{width: 100, height: 100, alignItems: 'center', justifyContent: 'center'}} >
