@@ -69,7 +69,7 @@ export default class DashboardScreen extends Component {
                         </TouchableOpacity>
                         <TouchableOpacity 
                             style={styles.cartita} 
-                            onPress={()=>{Alert.alert("Información","Próximamente....espéralo")}} >
+                            onPress={()=>{this.props.navigation.navigate("GanaDinero")}} >
                             <Image source={require('../assets/dashboard/IconoGanayEstudia.png')} style={styles.imagen} resizeMode={'center'} />
                             <Text style={styles.menuText}>Gana $${"\n"}y estudia</Text>
                         </TouchableOpacity>

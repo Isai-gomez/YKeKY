@@ -40,6 +40,8 @@ import Pantalla3 from '../screens/directorio/Pantalla3';
 import Pantalla4 from '../screens/directorio/Pantalla4';
 import Pantalla5 from '../screens/directorio/Pantalla5';
 
+import GanaDinero from '../screens/GanaDineroScreen';
+
   
 const AppNavigator = createStackNavigator(
     {
@@ -73,7 +75,8 @@ const AppNavigator = createStackNavigator(
       Pantalla4,
       Pantalla5,
       TestVocacionalScreen,
-      Profile
+      Profile,
+      GanaDinero
     },
     {
       initialRouteName: "DashboardScreen",

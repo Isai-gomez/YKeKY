@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import {ImageBackground,View,Text,StyleSheet,TouchableOpacity,ScrollView,FlatList,Linking,Alert} from 'react-native';
-import InAppBrowser from 'react-native-inappbrowser-reborn';
+import {ImageBackground,View,Text,StyleSheet,TouchableOpacity,ScrollView,Alert} from 'react-native';
 import Orientation from 'react-native-orientation';
+import {openLinkWithInAppBrowser} from '../helpers';
 
 colores = ['#8F44AD', '#2A80B9', '#16A086', '#26AD60', '#F29B10', '#C30052', '#18BC9A'];
-
-universidades = ['UniversidadA','UniversidadB'];
 
 function obtenerColor(colores) {
         let number = parseInt(Math.random()*7);
@@ -20,21 +18,6 @@ const BecasBox = (props) => {
             <Text style={styles.textBecasBox}>{nombreBeca}</Text>
         </TouchableOpacity>
     );
-}
-
-const Cajita = (props) =>{
-    const { colorFondo, nombre, logo, clave_sep, onPress } = props
-    return(
-        <TouchableOpacity 
-            style={{flex: 1,width: 70, height: 70}}
-            onPress={onPress}
-        >
-            <Text style={{color: 'black', backgroundColor: colorFondo}}>Cuadro: {nombre}</Text>
-            <Text style={{color: 'black', backgroundColor: colorFondo}}>Cuadro: {logo}</Text>
-            <Text style={{color: 'black', backgroundColor: colorFondo}}>Cuadro: {clave_sep}</Text>
-            
-        </TouchableOpacity>
-    )
 }
 
 export default class BecasScreen extends Component {
@@ -67,48 +50,6 @@ export default class BecasScreen extends Component {
             Alert.alert("Error",error.message)
         })
     }
-
-    async openLink(urlR) {
-        try {
-          const url = urlR;
-          if (await InAppBrowser.isAvailable()) {
-            const result = await InAppBrowser.open(url, {
-              // iOS Properties
-              dismissButtonStyle: 'cancel',
-              preferredBarTintColor: '#020235',
-              preferredControlTintColor: 'white',
-              readerMode: false,
-              animated: true,
-              modalPresentationStyle: 'overFullScreen',
-              modalTransitionStyle: 'partialCurl',
-              modalEnabled: true,
-              // Android Properties
-              showTitle: true,
-              toolbarColor: '#020235',
-              secondaryToolbarColor: 'black',
-              enableUrlBarHiding: true,
-              enableDefaultShare: true,
-              forceCloseOnRedirection: false,
-              // Specify full animation resource identifier(package:anim/name)
-              // or only resource name(in case of animation bundled with app).
-              animations: {
-                startEnter: 'slide_in_right',
-                startExit: 'slide_out_left',
-                endEnter: 'slide_in_left',
-                endExit: 'slide_out_right'
-              },
-              headers: {
-                'my-custom-header': 'my custom header value'
-              }
-            })
-            // Alert.alert(JSON.stringify(result))
-          }
-          else Linking.openURL(url)
-        } catch (error) {
-          Alert.alert(error.message)
-        }
-      }
-
     render() {
         return (
             <ImageBackground source={require('../assets/dashboard/fondo.png')} style={{flex:1}} resizeMode={'cover'} >            
@@ -126,11 +67,11 @@ export default class BecasScreen extends Component {
                 /> */}
                 <BecasBox 
                     nombreBeca={'Becas Educación Superior'}
-                    onPress={()=>{this.openLink("https://www.becaseducacionsuperior.sep.gob.mx/")}} 
+                    onPress={()=>{openLinkWithInAppBrowser("https://www.becaseducacionsuperior.sep.gob.mx/")}} 
                 />
                 <BecasBox 
                     nombreBeca={'Becas SEP'}
-                    onPress={()=>{this.openLink("https://www.becas.sep.gob.mx/")}} 
+                    onPress={()=>{openLinkWithInAppBrowser("https://www.becas.sep.gob.mx/")}} 
                 />
 
                 </View>
