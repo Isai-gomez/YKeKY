@@ -4,6 +4,7 @@ import ModalExample from '../components/Modal';
 import Orientation from 'react-native-orientation';
 import axios from 'axios';
 import {openLinkWithInAppBrowser} from '../helpers';
+import Share from 'react-native-share';
 
 class LogoTitle extends React.Component {
     render() {
@@ -318,6 +319,7 @@ export default class universidadVistaDetalle extends Component {
          }
     }
 
+
     render() {
         return (
             <ImageBackground source={require('../assets/directorio/pantalla2/fondop2.png')} style={{flex:1}}>
@@ -355,7 +357,11 @@ export default class universidadVistaDetalle extends Component {
                         {this.renderInstagram(this.stateUniversidad.idWeb)}
                         {this.rendercorreo(this.stateUniversidad.idContacto)}
 
-                    <TouchableOpacity style={styles.herramienta} onPress={()=>{Alert.alert("Información", "Aún no disponibles")}}><Image source={require('../assets/directorio/pantalla6/compartir.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/></TouchableOpacity>
+                    <TouchableOpacity style={styles.herramienta}
+                        onPress={()=>{Share.open({title:'Ykeky App',message:'Comparte Ykeky', url:'www.ykeky.com.mx'})}}
+                        >
+                        <Image source={require('../assets/directorio/pantalla6/compartir.png')} style={{height:50,width:50,margin:3}} resizeMode={"contain"}/>
+                    </TouchableOpacity>
                     </View>
                     <View style={{borderColor:'rgba(29,58,108, 1.0)', borderWidth:2}}>               
                         <Text style={styles.textSub}>Clave de la SEP:</Text>

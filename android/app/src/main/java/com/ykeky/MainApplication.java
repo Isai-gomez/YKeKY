@@ -1,6 +1,7 @@
 package com.ykeky;
 import android.app.Application;
 import com.facebook.react.ReactApplication;
+import cl.json.RNSharePackage;
 import com.github.yamill.orientation.OrientationPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
@@ -41,6 +42,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
             new MainReactPackage(),
+            new RNSharePackage(),
             new OrientationPackage(),
             new FBSDKPackage(),
             new LinearGradientPackage(),
