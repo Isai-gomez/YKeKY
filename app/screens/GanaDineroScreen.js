@@ -12,11 +12,11 @@ export default class GanaDineroScreen extends Component{
         return(
             <ImageBackground source={require('../assets/ganaDinero/fondo.png')} style={{flex: 1}} resizeMode={'cover'} >
                 <Image source={require('../assets/ganaDinero/Recurso1.png')} style={{width: 100, height: 100, position: 'absolute', top: '-9%', left: '-10%' }} />
-                <Image source={require('../assets/ganaDinero/Recurso2.png')} style={{width: 200, height: 170, position: 'absolute', top: '-9%', right: '-1%' }} />
+                {/* <Image source={require('../assets/ganaDinero/Recurso2.png')} style={{width: 200, height: 170, position: 'absolute', top: '-9%', right: '-1%' }} /> */}
                 <Image source={require('../assets/ganaDinero/Recurso3.png')} style={{width: '95%', height: '40%', position: 'absolute', bottom: '-20%', right: '-2%' }} />
                 <View style={styles.container}>
                     <View style={styles.logoContainer}>
-                        <Image source={require('../assets/ganaDinero/logo.png')} style={{width: 100, height: 100, marginLeft: '5%'}} resizeMode={'contain'} />
+                        <Image source={require('../assets/ganaDinero/logo.png')} style={{width: 50, height: 50, marginLeft: '2%'}} resizeMode={'contain'} />
                     </View>
                     <View style={styles.titleContainer}>
                         <Text style={styles.titleText}>¿Quieres ganar dinero sin dejar de estudiar? $$</Text>

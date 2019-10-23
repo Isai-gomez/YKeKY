@@ -1,11 +1,63 @@
 import React,{Component} from 'react';
-import {ImageBackground,View,Text,StyleSheet, Dimensions,TouchableOpacity} from 'react-native';
+import {ImageBackground,View,Text,StyleSheet, Dimensions,TouchableOpacity, Image, Alert} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
 export default class ProfileScreen extends Component {
     static navigationOptions = {
-        headerStyle: {
-            backgroundColor: 'transparent'
+        header: null
+    }
+
+    constructor(){
+        super();
+        this.state = {
+            nombreUser: '',
+            apellidoUser: '',
+            edadUser: '',
+            sexoUser: '',
+            estadoUser: '',
+            ciudadUser: '',
+            idUser: '',
+            tokerUser: ''
         }
+    }
+
+    componentDidMount(){
+        this.getData();
+    }
+
+    getData = async() =>{
+        try {
+            const TokenUser = await AsyncStorage.getItem('token');
+            const userId = await AsyncStorage.getItem('userid');
+            this.setState({
+                tokenUser: TokenUser,
+                idUser: userId
+            });
+            console.warn("Data Store Token: ", TokenUser);
+            console.warn("Data Store Id Usuario: ", userId);
+            this.makeRemoteRequestProfile(this.state.idUser);
+        } catch(error) {
+            console.warn("Error");
+        }
+    }
+
+    makeRemoteRequestProfile = (id) => {
+        const url = `http://3.17.60.127:3001/api/users/${id}`;
+
+        fetch(url)
+            .then((response) => response.json())
+            .then((response)=> {
+                console.warn("Response: ", response)
+                this.setState({
+                    nombreUser: response.first_name,
+                    apellidoUser: response.last_name,
+                    edadUser: response.age,
+                    sexoUser: response.gender,
+                  });
+            })
+            .catch(error => {
+                console.warn("Error: ", error)
+            });
     }
 
     render() {
@@ -17,17 +69,23 @@ export default class ProfileScreen extends Component {
                             <TouchableOpacity 
                                 style={styles.fotoTouchable}
                             >
-
+                                <Image source={require('../assets/perfil.png')} resizeMode={'contain'} style={{width:120, height: 120, borderRadius: 100}} />
                             </TouchableOpacity>
+                            <Text 
+                                style={{color: '#FFF', marginTop: 5}}
+                                onPress={()=>{Alert.alert("Información", "Aún no disponible")}}
+                                >
+                                Editar perfil
+                            </Text>
                         </View>
                         <View style={styles.nombreContainer}>
-                            <Text style={[styles.text,{fontWeight: 'bold'}]}>SARA ELIZABETH</Text>
+                            <Text style={[styles.text,{fontWeight: 'bold'}]}>{this.state.nombreUser.toUpperCase()} {this.state.apellidoUser.toUpperCase()}</Text>
                             <Text style={styles.text}>UNIVERSIDAD</Text>
                         </View>
                         <View style={styles.edadDomicilioContainer}>
                         <View style={{alignItems: 'center'}}>
-                            <Text style={[styles.text,{fontWeight: 'bold'}]}>20 años</Text>
-                            <Text style={styles.text}>Mujer</Text>
+                            <Text style={[styles.text,{fontWeight: 'bold'}]}>{this.state.edadUser} años.</Text>
+                            <Text style={styles.text}>{this.state.sexoUser}</Text>
                         </View>
                         <View style={{alignItems: 'center'}}>
                             <Text style={[styles.text,{fontWeight: 'bold'}]}>TABASCO</Text>
@@ -36,7 +94,6 @@ export default class ProfileScreen extends Component {
                         </View>
                     </View>
                     <View style={styles.bottomContainer}>
-                        
                     </View>
                 </View>
             </ImageBackground>
@@ -80,7 +137,8 @@ const styles = StyleSheet.create({
     },
     text: {
         color: '#fff',
-        fontSize: 18
+        fontSize: 18,
+        textAlign: 'center'
     }, 
     fotoTouchable: {
         backgroundColor: '#fff',

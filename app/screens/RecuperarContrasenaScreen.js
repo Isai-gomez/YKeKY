@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {View,Text,StyleSheet,Image,ImageBackground,StatusBar,TouchableHighlight,TextInput} from 'react-native';
+import {View,Text,StyleSheet,Image,ImageBackground,StatusBar,TouchableOpacity,TextInput} from 'react-native';
 import colors from '../styles/colors';
 import Orientation from 'react-native-orientation';
 
@@ -40,9 +40,9 @@ export default class RecuperarContrasenaScreen extends Component{
                                     placeholder={'Type your email'}
                                     placeholderTextColor={colors.blue}
                                 />
-                                <TouchableHighlight style={styles.boton}>
+                                <TouchableOpacity style={styles.boton}>
                                     <Text>Send</Text>
-                                </TouchableHighlight>
+                                </TouchableOpacity>
                             </View>
                         </ImageBackground>
                     </ImageBackground>
@@ -72,7 +72,8 @@ const styles = StyleSheet.create({
     textInput: {
         backgroundColor: colors.white,
         width: '80%',
-        borderRadius: 5
+        borderRadius: 5,
+        marginTop: 20,
     },
     boton: {
         backgroundColor: colors.darkOrange

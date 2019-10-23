@@ -8,6 +8,33 @@ export default class DashboardScreen extends Component {
         header: null
     }
 
+    componentDidMount(){
+        this.getData();
+    }
+
+    constructor(){
+        super();
+        this.state = {
+            TokenUser: '',
+            UserId: ''
+        }
+    }
+
+    getData = async() =>{
+        try {
+            const TokenUser = await AsyncStorage.getItem('token');
+            const userId = await AsyncStorage.getItem('userid');
+            this.setState({
+                TokenUser: TokenUser,
+                UserId: userId
+            });
+            // console.warn("Data Store Token: ", TokenUser);
+            // console.warn("Data Store Id Usuario: ", userId);
+        } catch(error) {
+            console.warn("Error");
+        }
+    }
+
     _logout = async() => {
         try {
             await AsyncStorage.clear();
@@ -87,6 +114,12 @@ export default class DashboardScreen extends Component {
                             <Image source={require('../assets/dashboard/IconoLogOut.png')} style={styles.imagen} resizeMode={'center'} />
                             <Text style={styles.menuText}>Cerrar{"\n"}Sesión</Text>
                         </TouchableOpacity>
+                        <TouchableOpacity 
+                            style={styles.cartita} 
+                            onPress={()=>{this.props.navigation.navigate("Profile")}} >
+                            <Image source={require('../assets/avatar.png')} style={styles.imagen} resizeMode={'center'} />
+                            <Text style={styles.menuText}>Perfil</Text>
+                        </TouchableOpacity>
                     </View>
                     </ScrollView>
                 </View>
@@ -142,7 +175,7 @@ const styles = StyleSheet.create({
     },
     imagen: {
         width: 100,
-        height: 120
+        height: 110
     },
     titulo: {
         color: '#FFF',

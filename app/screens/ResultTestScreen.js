@@ -1,11 +1,12 @@
 import React,{Component} from 'react';
 import {ImageBackground,View,Text,StyleSheet,Image,TouchableOpacity,Dimensions,Alert, ScrollView} from 'react-native';
-import { VictoryPie, VictoryContainer, VictoryLabel, VictoryChart, VictoryTheme } from "victory-native";
+import { VictoryPie, VictoryContainer, VictoryLabel, VictoryChart, VictoryTheme, VictoryBar } from "victory-native";
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import InAppBrowser from 'react-native-inappbrowser-reborn';
 import AsyncStorage from '@react-native-community/async-storage';
 import Orientation from 'react-native-orientation';
 import LinearGradient from 'react-native-linear-gradient';
+import ChartTV from '../components/chartTV';
 
 var {width, height} = Dimensions.get('window');
 
@@ -112,7 +113,7 @@ export default class ResultTestScreen extends Component {
                         Esto es una simulación
                 </Text>
                 <View style={styles.chart}>    
-                        <VictoryPie
+                        {/* <VictoryPie
                         width={width}
                         height={300}
                         data={[
@@ -132,8 +133,32 @@ export default class ResultTestScreen extends Component {
                             labels: { fill: "rgba(29,58,108, 1)", fontSize: 10, fontFamily: 'GothamBoold', fontWeight: 'bold' } , 
                             data: {fillOpacity: 0.9, stroke: "rgba(29,58,108, 1)", strokeWidth: 1
                             } }}
-                        />
-                </View>    
+                        /> */}
+                        {/* <ScrollView style={{flex: 1}} horizontal>
+                            <VictoryChart
+                                theme={VictoryTheme.material}
+                                domainPadding={10}
+                                >
+                                <VictoryBar
+                                    horizontal
+                                    standalone
+                                    style={{ data: { fill: "#c43a31" } }}
+                                    data={[
+                                        { x: 'Ingeniería', y: 0, y0: 1 },
+                                        { x: 'Económico-Admvo', y: 0, y0: 2 },
+                                        { x: 'Ciencias Básicas Exactas', y: 0, y0: 2 },
+                                        { x: 'Humanidades', y: 0, y0: 3 },
+                                        { x: 'Ciencias Sociales', y: 0, y0: 3 },
+                                        { x: 'Ciencias de la Salud', y: 0, y0: 3 }
+                                    ]}
+                                />
+                            </VictoryChart>
+                        </ScrollView> */}
+                        <ScrollView style={{flex: 1}} horizontal>
+                            <ChartTV />
+                        </ScrollView>
+                </View>
+
                 <Text style={{fontSize:14, color: 'black', textAlign: 'justify', fontFamily: 'GothamMedium', marginHorizontal: 20}}>Tu área mejor calificada es: "Ciencias de la Salud"</Text>
                 {/* <Text style={{fontSize:14, color: 'black', textAlign: 'justify'}}>Por lo cual las carreras que puedes escoger son:</Text> */}
                 {/* <Text style={{fontSize:14, color: 'black', textAlign: 'justify'}}>Enfermería, Farmacia, Fisioterapia, Medicina, Nutrición, Odontología</Text> */}

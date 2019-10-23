@@ -1,11 +1,10 @@
 import React,{Component} from 'react';
 import {View,Image,Text,TextInput,ImageBackground,StyleSheet,TouchableOpacity,Alert, Dimensions} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5';
 import AsyncStorage from '@react-native-community/async-storage';
 import { CheckBox } from 'react-native-elements';
 import axios from 'axios';
 import LinearGradient from 'react-native-linear-gradient';
-import  {LoginManager} from 'react-native-fbsdk'
+import  {LoginManager} from 'react-native-fbsdk';
 import Orientation from 'react-native-orientation';
 
 
@@ -43,7 +42,7 @@ export default class LoginScreen extends Component {
     constructor(){
         super();
         this.state = {
-            email: '',
+            email: 'Juanbrj',
             password: '',
             error: '',
             checked:true,
@@ -70,42 +69,49 @@ export default class LoginScreen extends Component {
         }
       }
 
-    onLoginPressed = async() => {
-        if(this.state.email !== '' && this.state.password !== ''){
-            const firstPair = ["isLoggedIn", "1"]
-            const secondPair = ["usuario", this.state.email]
-            await AsyncStorage.multiSet([firstPair, secondPair])
-            console.log('email: ' + this.state.email);
-            this.props.navigation.navigate('DashboardScreen');
-        } else {
-            Alert.alert("Email y/o Password son requeridos")
-        }
-    }
-
-    // async onLoginPressed(){
-    //     axios.post(url,{
-    //         username: this.state.email,
-    //         password: this.state.password
-    //     }).then(response =>{
-    //         let res = response;
-    //         if (response.status >= 200 && response.status < 300){
-    //             console.warn('Token is: ', res.data.id);
-    //             this.setState({error: ""});
-    //             const firstPair = ["isLoggedIn", "1"]
-    //             const secondPair = ["usuario", this.state.email]
-    //             AsyncStorage.multiSet([firstPair, secondPair])
-    //             console.log('email: ' + this.state.email);
-    //             this.props.navigation.navigate('DashboardScreen');
-    //         }else{
-    //             let error = res;
-    //             throw error
-    //         }
-    //     }).catch(error => {
-    //         //console.warn("error: " + error);
-    //         this.setState({error});
-    //         Alert.alert("Advertencia!", error.response.data.error.message);
-    //     })
+    // onLoginPressed = async() => {
+    //     if(this.state.email !== '' && this.state.password !== ''){
+    //         const firstPair = ["isLoggedIn", "1"]
+    //         const secondPair = ["usuario", this.state.email]
+    //         await AsyncStorage.multiSet([firstPair, secondPair])
+    //         console.log('email: ' + this.state.email);
+    //         this.props.navigation.navigate('DashboardScreen');
+    //     } else {
+    //         Alert.alert("Email y/o Password son requeridos")
+    //     }
     // }
+
+    async onLoginPressed(){
+        axios.post(url,{
+            username: this.state.email,
+            password: this.state.password
+        }).then(response =>{
+            let res = response;
+            if (response.status >= 200 && response.status < 300){
+                // console.warn('Token is: ', res.data.id);
+                // console.warn('Id del Usuario loggeado es: ', res.data.userId)
+                this.setState({error: ""});
+                const firstPair = ["isLoggedIn", "1"];
+                const secondPair = ["usuario", this.state.email];
+                const thirdPair = ["token", res.data.id];
+                const fourthPair = ["userid", JSON.stringify(res.data.userId)]
+                // AsyncStorage.setItem("isLoggedIn", "1");
+                // AsyncStorage.setItem("usuario", this.state.email);
+                // AsyncStorage.setItem("token", res.data.id);
+                // AsyncStorage.setItem("userid", JSON.stringify(res.data.userId));
+                AsyncStorage.multiSet([firstPair, secondPair, thirdPair, fourthPair])
+                // console.warn('email: ' + this.state.email);
+                this.props.navigation.navigate('DashboardScreen');
+            }else{
+                let error = res;
+                throw error
+            }
+        }).catch(error => {
+            //console.warn("error: " + error);
+            this.setState({error});
+            Alert.alert("Advertencia!", error.response.data.error.message);
+        })
+    }
 
     oncheked = () => {
         this.setState({checked:!this.state.checked});

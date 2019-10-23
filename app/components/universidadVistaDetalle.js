@@ -17,12 +17,6 @@ class LogoTitle extends React.Component {
     }
   }
 
-const HerramientaComponent = (arg) =>(
-    <TouchableOpacity>
-        <Text>HerramientaComponent{arg}</Text>
-    </TouchableOpacity>
-);
-
 export default class universidadVistaDetalle extends Component {
     static navigationOptions =
     {    
@@ -45,12 +39,6 @@ export default class universidadVistaDetalle extends Component {
         },
         headerTransparent: true,
         visible: false
-    }
-
-    componentDidMount(){
-        Orientation.lockToPortrait();
-        // this.obtenerWeb(this.state.identificador_web);
-        this.makeRequestIdDireccion(this.stateUniversidad.idDireccion);
     }
 
     constructor(props){
@@ -105,6 +93,8 @@ export default class universidadVistaDetalle extends Component {
     }
 
     componentDidMount(){
+        Orientation.lockToPortrait();
+        this.makeRequestIdDireccion(this.stateUniversidad.idDireccion);
         this.obtenerWeb(this.stateUniversidad.idWeb);
         this.obtenerFacebook(this.stateUniversidad.idWeb);
         this.obtenerInstagram(this.stateUniversidad.idWeb);
@@ -120,6 +110,7 @@ export default class universidadVistaDetalle extends Component {
                 calle: response.data[0].calle,
                 colonia: response.data[0].colonia
             }))
+            console.warn("Calle: ", response.data[0].calle)
         })
         .catch((error) => {
             console.warn("Error en Contacto: ", error);

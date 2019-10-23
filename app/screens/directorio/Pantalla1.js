@@ -18,6 +18,16 @@ export default class Pantalla1 extends Component {
         Orientation.lockToPortrait();
     }
 
+    seleccionarEstado(){
+        if(this.state.estados !== "TAB"){
+            Alert.alert("Instrucción", `Por favor seleccione otro estado ${this.state.estados} aún no está disponible.`)
+        } else if(this.state.estados === "Seleccione"){
+            Alert.alert("intrucción", "Por favor seleccione un estado para continuar")
+        } else{
+            this.props.navigation.navigate('Pantalla2')
+        }
+    }
+
     render() {
         return (
             <ImageBackground source={require('../../assets/directorio/pantalla1Fondo.png')} style={{flex:1}} resizeMode={'cover'}>
@@ -33,19 +43,51 @@ export default class Pantalla1 extends Component {
                         style={{width: 200, height: 50, backgroundColor: 'rgba(24,56,103, 1.0)', 
                             color: '#FFF', }} 
                         itemStyle={{height: 44, right: 50}}
+                        mode={'dropdown'}
                         selectedValue={this.state.estados}
-                        onValueChange={(itemValue, itemIndex) =>
-                            this.setState({estados: (itemValue !== 'TAB'? Alert.alert("Información","Estado no disponible"): itemValue )})
+                        onValueChange={(itemValue, itemIndex) =>{
+                            this.setState({estados: itemValue})
+                            // this.setState({estados: (itemValue !== 'TAB'? Alert.alert("Información","Estado no disponible"): itemValue )})
+                        }
                         }>
-                        {/* <Picker.Item label="Seleccione un estado" value="TAB" /> */}
+                        <Picker.Item label="Seleccione un estado" value="Seleccione" />
                         <Picker.Item label="Tabasco" value="TAB" />
-                        <Picker.Item label="Veracruz" value="VER" />
+                        <Picker.Item label="AguasCalientes" value="AGS" />
+                        <Picker.Item label="Baja California" value="BCA" />
+                        <Picker.Item label="Baja California Sur" value="BCS" />
                         <Picker.Item label="Campeche" value="CAM" />
+                        <Picker.Item label="Coahuila" value="COA" />
+                        <Picker.Item label="Colima" value="COL" />
+                        <Picker.Item label="Chiapas" value="CHS" />
+                        <Picker.Item label="Chihuahua" value="CHI" />
+                        <Picker.Item label="Ciudad de México" value="CMX" />
+                        <Picker.Item label="Durango" value="DUR" />
+                        <Picker.Item label="Guanajuato" value="GUA" />
+                        <Picker.Item label="Guerrero" value="GUE" />
+                        <Picker.Item label="Hidalgo" value="HID" />
+                        <Picker.Item label="Jalisco" value="JAL" />
+                        <Picker.Item label="México" value="MXN" />
+                        <Picker.Item label="Michoacán" value="MIC" />
+                        <Picker.Item label="Morelos" value="MOR" />
+                        <Picker.Item label="Nayarit" value="NAY" />
+                        <Picker.Item label="Nuevo León" value="NUL" />
+                        <Picker.Item label="Oaxaca" value="OAX" />
+                        <Picker.Item label="Puebla" value="PUE" />
+                        <Picker.Item label="Querétaro" value="QUE" />
+                        <Picker.Item label="Quintana Roo" value="QUI" />
+                        <Picker.Item label="San Luis Potosí" value="SLP" />
+                        <Picker.Item label="Sinaloa" value="SIN" />
+                        <Picker.Item label="Sonora" value="SON" />
+                        <Picker.Item label="Tamaulipas" value="TAM" />
+                        <Picker.Item label="Tlaxcala" value="TLA" />
+                        <Picker.Item label="Veracruz" value="VER" />
+                        <Picker.Item label="Yucatán" value="YUC" />
+                        <Picker.Item label="Zacatecas" value="ZAC" />
                         </Picker>
                         
                         <TouchableOpacity 
                             style={styles.boton}
-                            onPress={()=>{this.props.navigation.navigate('Pantalla2')}}
+                            onPress={()=>{this.seleccionarEstado()}}
                         >
                             <Text style={styles.textBoton}>ENTRAR</Text>
                         </TouchableOpacity>

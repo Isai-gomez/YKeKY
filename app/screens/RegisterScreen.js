@@ -29,8 +29,6 @@ export default class RegisterScreen extends Component {
         }
     }
     
-
-
     async onRegisterPressed(){
         axios.post(url,{
             first_name: this.state.first_name,
@@ -50,7 +48,7 @@ export default class RegisterScreen extends Component {
         }).catch(error => {
             console.warn("Error: " + error);
             this.setState({error:error})
-            Alert.alert("Error", "Error con el registro")
+            Alert.alert("Error", "Error con el registro");
         })
     }
 
