@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { View,Text,StyleSheet,ScrollView} from 'react-native';
-import { VictoryPie,VictoryBar, VictoryChart, VictoryTheme,VictoryAxis,VictoryArea,VictoryPolarAxis,VictoryLine,VictoryScatter} from "victory-native";
+import { VictoryPie,VictoryBar, VictoryChart, VictoryTheme,VictoryAxis,VictoryArea,VictoryPolarAxis,VictoryLine,VictoryScatter,VictoryLabel} from "victory-native";
 
 const data = [
-    { x: 1, y: 2, label:"Ingeniería"},
+    { x: 1, y: 6, label:"Ingeniería"},
     { x: 2, y: 2, label:"Económico-Admvo"},
-    { x: 3, y: 3, label:"Ciencias Básicas y Exactas"},
+    { x: 3, y: 1, label:"Ciencias Básicas y Exactas"},
     { x: 4, y: 4, label:"Humanidades" },
     { x: 5, y: 5, label:"Ciencias Sociales" },
     { x: 6, y: 6, label:"Ciencias de la Salud" },
@@ -17,7 +17,7 @@ export default class ChartTV extends Component {
         return (
             <View style={styles.container}>
                 <VictoryChart
-                horizontal
+                
                 animate={{
                   duration: 2000,
                   onLoad: { duration: 1000 }
@@ -25,7 +25,9 @@ export default class ChartTV extends Component {
                   <VictoryLine
                     interpolation="natural"
                     data={data}
-                    style={{ data: { stroke: "#fff", strokeWidth: 2, strokeLinecap: "round" } }}
+                    labels={(datum) => datum.y}
+                    labelComponent={<VictoryLabel renderInPortal dy={-5}/>}
+                    style={{ data: { stroke: 'rgba(29,58,108, 1.0)', strokeWidth: 3, strokeLinecap: "round" } }}
                   />
                   <VictoryScatter
                     style={{
@@ -39,7 +41,8 @@ export default class ChartTV extends Component {
                     }}
                     size={9}
                     data={data}
-                    labels={(datum) => datum.x}
+                    labels={(datum) => datum.y}
+                    labelComponent={<VictoryLabel renderInPortal dy={-5}/>}
                   />
                   </VictoryChart>
             </View>
