@@ -17,7 +17,7 @@ export default class ProfileScreen extends Component {
             estadoUser: '',
             ciudadUser: '',
             idUser: '',
-            tokerUser: ''
+            tokenUser: ''
         }
     }
 
