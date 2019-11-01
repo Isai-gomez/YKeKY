@@ -8,6 +8,7 @@ import TestVocacionalScreen from '../screens/TestVocacionalScreen'
 import LifePlanner from '../screens/LifePlannerScreen';
 
 import Profile from '../screens/ProfileScreen';
+import EditProfile from '../screens/EditProfile';
 // import Directorio from '../screens/DirectorioScreen';
 
 import DetalleUniversidad from '../components/universidadVistaDetalle';
@@ -76,7 +77,8 @@ const AppNavigator = createStackNavigator(
       Pantalla5,
       TestVocacionalScreen,
       Profile,
-      GanaDinero
+      GanaDinero,
+      EditProfile
     },
     {
       initialRouteName: "DashboardScreen",

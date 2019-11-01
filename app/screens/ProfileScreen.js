@@ -73,7 +73,7 @@ export default class ProfileScreen extends Component {
                             </TouchableOpacity>
                             <Text 
                                 style={{color: '#FFF', marginTop: 5}}
-                                onPress={()=>{Alert.alert("Información", "Aún no disponible")}}
+                                onPress={()=>this.props.navigation.navigate('EditProfile')}
                                 >
                                 Editar perfil
                             </Text>
