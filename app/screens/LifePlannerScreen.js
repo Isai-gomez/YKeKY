@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import {View,Text,Animated,TouchableOpacity,StyleSheet,Alert,ImageBackground,Dimensions,ScrollView,Image} from 'react-native';
 // import Slide from '../components/Slider';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import AsyncStorage from '@react-native-community/async-storage';
 import Orientation from 'react-native-orientation';
 import axios from 'axios';
 
@@ -27,31 +28,54 @@ export default class LifeScreen extends Component {
         static navigationOptions = {
             header:null
         };
-        state = {
-            index : 0,
-            questions :  [
-                "¿Cómo se siente en relación a tu salud y disposición?",
-                "En relación a su vida social, ¿cómo se siente?",
-                "¿Cómo se siente en relación a los hijos? sí tuviera, como se siente en relación a eso?",
-                "Con respecto a su vida conyugal, ¿cómo esta?",
-                "¿Cómo se siente en relación a sus parientes o familiares?",
-                "¿Cómo se siente en relación a sus espiritualidad?",
-                "¿Cómo se siente en relación a su situación sentimental?",
-                "Con relacion a su vida profesional, ¿cómo se siente?",
-                "¿Cómo se siente en relación a su ambiente laboral?",
-                "¿Cómo se siente usted relacionado a sus recursos finacieros?",
-                "¿Cómo se siente en relación a su desenvolvimiento intelectual?",
-                "¿Cómo se siente usted con relación a su comunicación social?",
-            ],
-            answers : ["Muy mal","Mal","Bien","Muy Bien"],
-            animation: new Animated.Value(0),
-            progress: new Animated.Value(0),
-            respuestas:[]
+        
+        constructor(){
+            super();
+            this.state = {
+                index : 0,
+                questions :  [
+                    "¿Cómo se siente en relación a tu salud y disposición?",
+                    "En relación a su vida social, ¿cómo se siente?",
+                    "¿Cómo se siente en relación a los hijos? sí tuviera, como se siente en relación a eso?",
+                    "Con respecto a su vida conyugal, ¿cómo esta?",
+                    "¿Cómo se siente en relación a sus parientes o familiares?",
+                    "¿Cómo se siente en relación a sus espiritualidad?",
+                    "¿Cómo se siente en relación a su situación sentimental?",
+                    "Con relacion a su vida profesional, ¿cómo se siente?",
+                    "¿Cómo se siente en relación a su ambiente laboral?",
+                    "¿Cómo se siente usted relacionado a sus recursos finacieros?",
+                    "¿Cómo se siente en relación a su desenvolvimiento intelectual?",
+                    "¿Cómo se siente usted con relación a su comunicación social?",
+                ],
+                answers : ["Muy mal","Mal","Bien","Muy Bien"],
+                animation: new Animated.Value(0),
+                progress: new Animated.Value(0),
+                numeros:[],
+                respuestas:[],
+                idUser: '',
+
+                
+            } 
         }
+        
     
         componentDidMount(){
             Orientation.lockToPortrait();
+            this.getData();
         }
+
+        getData = async() =>{
+            try {
+                const userId = await AsyncStorage.getItem('userid');
+                this.setState({
+                    idUser: userId
+                });
+                console.warn("Data Store Id Usuario: ", userId);
+            } catch(error) {
+                console.warn("Error");
+            }
+        }
+        
 
         saveResponse = ( response, questionIndex ) => {
             console.log( 'estado sin act: ', this.state.respuestas );
@@ -62,20 +86,22 @@ export default class LifeScreen extends Component {
             };
     
             this.setState({
-              respuestas : [ ...this.state.respuestas, currentResponse ]
+              respuestas : [ ...this.state.respuestas, currentResponse ],
+              numeros:[...this.state.numeros,response]
             });
-        
+            
             console.log( 'estado actualizado: ', this.state.respuestas );
         }
 
         sendResponse = () => {
             const link = 'http://3.17.60.127:3001/api/lp_answers'
             let vacio = ''
-            this.props.navigation.navigate("ResultLP")
+            // this.props.navigation.navigate("ResultLP")
+            console.warn(this.state.numeros)
             axios.post(link, {
                     id_answer_lp:vacio,
-                    answer_lp:this.state.respuestas,
-                    userId:1
+                    answer_lp:this.state.numeros,
+                    userId:this.state.idUser,
               },    {headers: {'Accept': 'application/json'}})
               .then(function (response) {
                 console.log(response);
@@ -173,7 +199,7 @@ export default class LifeScreen extends Component {
                 'Ha terminado las preguntas',
                 [{
                     text: 'OK', 
-                    onPress :() => {this.sendResponse()}
+                    onPress :() => {this.sendResponse(),this.props.navigation.navigate("ResultLP")}
                 }]
             );
             // this.props.navigation.navigate("ResultLP")

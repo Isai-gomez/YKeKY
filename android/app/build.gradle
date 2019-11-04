@@ -111,8 +111,9 @@ android {
         applicationId "com.ykeky"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        resConfigs "es"
+        versionName "1.1"
     }
     signingConfigs {
         release {
