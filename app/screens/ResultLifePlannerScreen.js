@@ -32,7 +32,7 @@ export default class ResultLifePlannerScreen extends Component {
                             <View style={styles.resu}>
                                 <Text style={{color:'white'}}>Esp</Text>
                             </View>
-                            <View style={styles.resu2}>
+                            <View style={[styles.resu2,{backgroundColor:'orange'}]}>
                                 <Text style={{color:'white'}}>10</Text>
                             </View>
                         </View>
@@ -40,7 +40,7 @@ export default class ResultLifePlannerScreen extends Component {
                             <View style={styles.resu}>
                                 <Text style={{color:'white'}}>Econo</Text>
                             </View>
-                            <View style={styles.resu2}>
+                            <View style={[styles.resu2,{backgroundColor:'orange'}]}>
                                 <Text style={{color:'white'}}>3</Text>
                             </View>
                         </View>
@@ -48,7 +48,7 @@ export default class ResultLifePlannerScreen extends Component {
                             <View style={styles.resu}>
                                 <Text style={{color:'white'}}>Tra</Text>
                             </View>
-                            <View style={styles.resu2}>
+                            <View style={[styles.resu2,{backgroundColor:'orange'}]}>
                                 <Text style={{color:'white'}}>8</Text>
                             </View>
                         </View>
@@ -56,7 +56,7 @@ export default class ResultLifePlannerScreen extends Component {
                             <View style={styles.resu}>
                                 <Text style={{color:'white'}}>Ecol</Text>
                             </View>
-                            <View style={styles.resu2}>
+                            <View style={[styles.resu2,{backgroundColor:'orange'}]}>
                                 <Text style={{color:'white'}}>9</Text>
                             </View>
                         </View>
@@ -64,7 +64,7 @@ export default class ResultLifePlannerScreen extends Component {
                             <View style={styles.resu}>
                                 <Text style={{color:'white'}}>Sex</Text>
                             </View>
-                            <View style={styles.resu2}>
+                            <View style={[styles.resu2,{backgroundColor:'orange'}]}>
                                 <Text style={{color:'white'}}>1</Text>
                             </View>
                         </View>
@@ -72,7 +72,7 @@ export default class ResultLifePlannerScreen extends Component {
                             <View style={styles.resu}>
                                 <Text style={{color:'white'}}>Soc</Text>
                             </View>
-                            <View style={styles.resu2}>
+                            <View style={[styles.resu2,{backgroundColor:'orange'}]}>
                                 <Text style={{color:'white'}}>5</Text>
                             </View>
                         </View>
@@ -80,7 +80,7 @@ export default class ResultLifePlannerScreen extends Component {
                             <View style={styles.resu}>
                                 <Text style={{color:'white'}}>Salud</Text>
                             </View>
-                            <View style={styles.resu2}>
+                            <View style={[styles.resu2,{backgroundColor:'orange'}]}>
                                 <Text style={{color:'white'}}>6</Text>
                             </View>
                         </View>
@@ -88,7 +88,7 @@ export default class ResultLifePlannerScreen extends Component {
                             <View style={styles.resu}>
                                 <Text style={{color:'white'}}>Fam</Text>
                             </View>
-                            <View style={styles.resu2}>
+                            <View style={[styles.resu2,{backgroundColor:'orange'}]}>
                                 <Text style={{color:'white'}}>7</Text>
                             </View>
                         </View>
@@ -96,7 +96,7 @@ export default class ResultLifePlannerScreen extends Component {
                             <View style={styles.resu}>
                                 <Text style={{color:'white'}}>Prof</Text>
                             </View>
-                            <View style={styles.resu2}>
+                            <View style={[styles.resu2,{backgroundColor:'orange'}]}>
                                 <Text style={{color:'white'}}>3</Text>
                             </View>
                         </View>
@@ -104,7 +104,7 @@ export default class ResultLifePlannerScreen extends Component {
                             <View style={styles.resu}>
                                 <Text style={{color:'white'}}>Pareja</Text>
                             </View>
-                            <View style={styles.resu2}>
+                            <View style={[styles.resu2,{backgroundColor:'orange'}]}>
                                 <Text style={{color:'white'}}>2</Text>
                             </View>
                         </View>
@@ -112,7 +112,7 @@ export default class ResultLifePlannerScreen extends Component {
                             <View style={styles.resu}>
                                 <Text style={{color:'white'}}>Emoci</Text>
                             </View>
-                            <View style={styles.resu2}>
+                            <View style={[styles.resu2,{backgroundColor:'orange'}]}>
                                 <Text style={{color:'white'}}>10</Text>
                             </View>
                         </View>
@@ -120,7 +120,7 @@ export default class ResultLifePlannerScreen extends Component {
                             <View style={styles.resu}>
                                 <Text style={{color:'white'}}>Con</Text>
                             </View>
-                            <View style={styles.resu2}>
+                            <View style={[styles.resu2,{backgroundColor:'orange'}]}>
                                 <Text style={{color:'white'}}>10</Text>
                             </View>
                         </View>
