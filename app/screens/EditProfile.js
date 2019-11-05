@@ -1,5 +1,5 @@
 import React from 'react';
-import {View,Text,ImageBackground, StyleSheet, Dimensions,Image,TouchableOpacity,TextInput,Alert} from 'react-native';
+import {View,Text,ImageBackground, StyleSheet, Dimensions,Image,TouchableOpacity,TextInput,Alert, ScrollView} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import axios from 'axios';
 
@@ -117,7 +117,7 @@ export default class EditProfile extends React.Component {
                   <Image source={require('../assets/profile/editProfile/Recurso7ep.png')} style={{width:100, height:110,position:'absolute',top:'-15%',left:'17%'}}/>
                   <Image source={require('../assets/profile/editProfile/Recurso8ep.png')} style={{width:100, height:100,position:'absolute',top:'-3%',left:'-15%'}}/>
                 <View style={styles.container}>
-                <View style={styles.topContainer}>
+                {/* <View style={styles.topContainer}> */}
                         <View style={styles.fotoPerfilContainer}>
                             <TouchableOpacity 
                                 style={styles.fotoTouchable}
@@ -131,7 +131,9 @@ export default class EditProfile extends React.Component {
                                 Cambiar foto de perfil
                             </Text>
                         </View>
+                        <ScrollView style={{flex: 1}} >
                         <View style={styles.nombreContainer}>
+                            
                             <View style={styles.input}>
                                 <Text style={styles.text}>Nombre</Text>
                                 <TextInput
@@ -139,6 +141,26 @@ export default class EditProfile extends React.Component {
                                         value={this.state.nombreUser}
                                         placeholder={'Nombre'}
                                         onChangeText={(nombre) => {this.setState({nombreUser: nombre})}}
+                                        placeholderTextColor={'rgba(29,58,108, 1.0)'}
+                                /> 
+                            </View>
+                            <View style={styles.input}>
+                                <Text style={styles.text}>Apellido</Text>
+                                <TextInput
+                                        style={styles.textInput} 
+                                        value={this.state.apellidoUser}
+                                        placeholder={'Apellido'}
+                                        onChangeText={(apellido) => {this.setState({apellidoUser: apellido})}}
+                                        placeholderTextColor={'rgba(29,58,108, 1.0)'}
+                                /> 
+                            </View>
+                            <View style={styles.input}>
+                                <Text style={styles.text}>Sexo</Text>
+                                <TextInput
+                                        style={styles.textInput} 
+                                        value={this.state.sexoUser}
+                                        placeholder={'Sexo'}
+                                        onChangeText={(sexo) => {this.setState({sexoUser: sexo})}}
                                         placeholderTextColor={'rgba(29,58,108, 1.0)'}
                                 /> 
                             </View>
@@ -191,13 +213,15 @@ export default class EditProfile extends React.Component {
                                         placeholderTextColor={'rgba(29,58,108, 1.0)'}
                                 /> 
                            </View> */}
+                          
                         </View>
+                        </ScrollView>
                             <View style={styles.boton}>
                                 <TouchableOpacity style={styles.botonl}  onPress={() => this.update(this.state.idUser)}>
                                     <Text style={styles.textboton}>Listo</Text>
                                 </TouchableOpacity>
                             </View>
-                    </View>
+                    {/* </View> */}
                 </View> 
         </ImageBackground>
         )
@@ -214,7 +238,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     topContainer: {
-        flex: 3,
+        flex: 1,
     },
     bottomContainer: {
         flex: 3,
@@ -226,7 +250,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end'    
     }, 
     nombreContainer: {
-        flex: 4,
+        flex: 3,
         marginLeft:'10%',
         marginRight: 10      // backgroundColor: 'green',
     },
@@ -249,7 +273,7 @@ const styles = StyleSheet.create({
         alignItems:'center'
     },
     boton:{
-        flex:1,
+        flex:2,
         alignItems:'center',
         justifyContent:"center"
     },

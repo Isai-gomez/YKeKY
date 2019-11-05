@@ -1,15 +1,38 @@
 import React,{Component} from 'react';
-import {View,Text,StyleSheet,Image,ImageBackground,StatusBar,TouchableOpacity,TextInput} from 'react-native';
+import {View,Text,StyleSheet,Image,ImageBackground,StatusBar,TouchableOpacity,TextInput,Alert} from 'react-native';
 import colors from '../styles/colors';
 import Orientation from 'react-native-orientation';
+import axios from 'axios';
+
+const url = "http://3.17.60.127:3001/request-password-reset/"
 
 export default class RecuperarContrasenaScreen extends Component{
     static navigationOptions = {
         header: null,
     }
 
+    constructor(){
+        super();
+        this.state = {
+            emailRecuperacion: ''
+        }
+    }
+
     componentDidMount(){
         Orientation.lockToPortrait();
+    }
+
+    async enviarCorreoRecuperacion(){
+        axios.post(url,
+            {
+                "email": this.state.emailRecuperacion
+            }).then(response => {
+                if(response.status >= 200 && response.status < 300){
+                    Alert.alert("Informacion", "Verifique su bandeja de correo electrónico")
+                }
+            }).catch(error => {
+                Alert.alert("Advertencia", error)
+            })
     }
 
     render(){
@@ -32,16 +55,17 @@ export default class RecuperarContrasenaScreen extends Component{
                         >
                             {/* <StatusBar barStyle = 'default' hidden = {false} backgroundColor = {colors.blue} translucent = {true}/>     */}
                             <View style={styles.container}>
-                                <Text style={styles.textTitle}>Forgot Your</Text>
-                                <Text style={styles.textTitle}>Password?</Text>
-                                <Text style={styles.text}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet mauris accumsan, pharetra massa sit amet, vehicula sapien.</Text>
+                                <Text style={styles.textTitle}>¿Olvidaste tu contraseña?</Text>
                                 <TextInput 
                                     style={styles.textInput}
-                                    placeholder={'Type your email'}
+                                    placeholder={'Escribe tu correo electrónico'}
                                     placeholderTextColor={colors.blue}
+                                    onChangeText={(email) => {this.setState({emailRecuperacion: email})}}
                                 />
-                                <TouchableOpacity style={styles.boton}>
-                                    <Text>Send</Text>
+                                <TouchableOpacity style={styles.boton}
+                                onPress={()=>{this.enviarCorreoRecuperacion();}}
+                                >
+                                    <Text style={styles.textBoton}>Recuperar</Text>
                                 </TouchableOpacity>
                             </View>
                         </ImageBackground>
@@ -62,7 +86,8 @@ const styles = StyleSheet.create({
     textTitle: {
         fontSize: 20,
         color: colors.white,
-        textAlign: 'justify'
+        textAlign: 'justify',
+        fontFamily: 'GothamBold'
     },
     text: {
         color: colors.white,
@@ -74,8 +99,19 @@ const styles = StyleSheet.create({
         width: '80%',
         borderRadius: 5,
         marginTop: 20,
+        marginBottom: 20
     },
     boton: {
-        backgroundColor: colors.darkOrange
+        backgroundColor: colors.darkOrange,
+        borderRadius: 20,
+        width: '50%',
+        height: 40,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    textBoton: {
+        color: '#FFF',
+        textAlign: 'center',
+        fontFamily: 'GothamBook'
     }
 })
